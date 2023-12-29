@@ -2,7 +2,7 @@
     color: #47F252;
   }
 
-  .form-container {
+  .forms-container {
     max-width: 700px;
     margin: 30px;
     background-color: #001925;
@@ -19,7 +19,7 @@
     margin-bottom: 20px;
   }
 
-  .form-container .form .input {
+  .forms-container .forms .input {
     color: #87a4b6;
     width: 100%;
     background-color: #002733;
@@ -32,11 +32,11 @@
     border-left: 1px solid transparent;
   }
 
-  .form-container .form .input:focus {
+  .forms-container .forms .input:focus {
     border-left: 5px solid #47F252;
   }
 
-  .form-container .form .textarea {
+  .forms-container .forms .textarea {
     width: 100%;
     padding: 10px;
     border: none;
@@ -51,16 +51,16 @@
     transition: all 0.2s ease-in-out;
   }
 
-  .form-container .form .textarea:focus {
+  .forms-container .forms .textarea:focus {
     border-left: 5px solid #47F252;
   }
 
-  .form-container .form .button-container {
+  .forms-container .forms .button-container {
     display: flex;
     gap: 10px;
   }
 
-  .form-container .form .button-container .send-button {
+  .forms-container .forms .button-container .send-button {
     flex-basis: 70%;
     background: #47F252;
     padding: 10px;
@@ -71,18 +71,18 @@
     transition: all 0.2s ease-in-out;
   }
 
-  .form-container .form .button-container .send-button:hover {
+  .forms-container .forms .button-container .send-button:hover {
     background: transparent;
     border: 1px solid #47F252;
     color: #47F252;
   }
 
-  .form-container .form .button-container .reset-button-container {
+  .forms-container .forms .button-container .reset-button-container {
     filter: drop-shadow(1px 1px 0px #47F252);
     flex-basis: 30%;
   }
 
-  .form-container .form .button-container .reset-button-container .reset-button {
+  .forms-container .forms .button-container .reset-button-container .reset-button {
     position: relative;
     text-align: center;
     padding: 10px;
@@ -93,7 +93,7 @@
     transition: all 0.2s ease-in-out;
   }
 
-  .form-container .form .button-container .reset-button-container .reset-button:hover {
+  .forms-container .forms .button-container .reset-button-container .reset-button:hover {
     background: #47F252;
     color: #001925;
   }
@@ -103,7 +103,7 @@
   }
 
   @media screen and (min-width: 700px) {
-      .form-container {
+      .forms-container {
         margin-left:auto;
         margin-right:auto;
         }

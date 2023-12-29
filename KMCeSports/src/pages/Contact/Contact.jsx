@@ -5,8 +5,8 @@ import "./Contact.css";
 const Contact = () => {
   return (
     <div>
-      <div className="form-container">
-        <div className="form">
+      <div className="forms-container">
+        <div className="forms">
           <span className="heading">Get in touch</span>
           <input placeholder="Name" type="text" className="input" />
           <input placeholder="Email" id="mail" type="email" className="input" />
@@ -43,7 +43,7 @@ const Contact = () => {
           mail="mailto:Sanskar362002@gmail.com"
           linkedin="https://www.linkedin.com/in/sanskar-gupta-12476423b/"
         />
-        <Contributor name="Aman Raj" dev="Contributor" images={images.Aman} />
+        <Contributor name="Aman Raj" dev="Co-Founder" images={images.Aman} />
       </div>
 
       <div
