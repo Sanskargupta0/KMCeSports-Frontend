@@ -60,6 +60,6 @@ button.login {
 
   @media screen and (max-width: 400px) {
     .fix {
-      width: 7rem;
+      width: 6rem;
     }
 } 

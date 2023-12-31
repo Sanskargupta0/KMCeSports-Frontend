@@ -623,7 +623,7 @@ const Login_SignUp = () => {
     <>
       <div className="loginForm">
         <form
-          className="form"
+          className="forms"
           style={{ position: "relative", marginTop: "28rem" }}
         >
           <div className="svgContainer">
@@ -985,10 +985,10 @@ const Login_SignUp = () => {
 
           <div className="inputGroup inputGroup1">
             <label htmlFor="loginEmail" id="loginEmailLabel">
-              Email
+              Email \ @Username
             </label>
-            <input type="email" id="loginEmail" maxLength="254" />
-            <p className="helper helper1">email@domain.com</p>
+            <input type="text" id="loginEmail" maxLength="254" />
+            <p className="helper helper1">@Username</p>
           </div>
           <div className="inputGroup inputGroup2">
             <label htmlFor="loginPassword" id="loginPasswordLabel">
@@ -1076,6 +1076,7 @@ const Login_SignUp = () => {
           </div>
         </form>
       </div>
+
       <div className="centeredButton">
         <p
           className=""
@@ -1083,12 +1084,12 @@ const Login_SignUp = () => {
             paddingBottom: "2rem",
             fontSize: "21px",
             fontFamily: "cursive",
-            color: "black"
+            color: "black",
           }}
         >
           Don't have an account?{" "}
           <a className="underline decoration-red-500">Signup</a>
-        </p>
+        </p><a href="/registration">
         <button className="cssbuttons-io-button">
           Sign Up
           <div className="icon">
@@ -1105,7 +1106,7 @@ const Login_SignUp = () => {
               ></path>
             </svg>
           </div>
-        </button>
+        </button></a>
       </div>
     </>
   );

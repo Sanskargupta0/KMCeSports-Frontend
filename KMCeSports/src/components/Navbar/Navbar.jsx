@@ -3,7 +3,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, useLocation } from "react-router-dom";
 import { images } from "../../assets";
-import "./Navbar.css";
+import navStyles from "./Navbar.module.css";
 
 const navigation = [
   { name: "Home", href: "/", current: false },
@@ -80,9 +80,10 @@ export default function Navbar(props) {
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 fix">
-                <Link to="/Login_SignUp">
-                  <button className="login" style={{ display: props.login }}>
+              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
+                <div className={navStyles.fix}>
+                <Link to="/auth">
+                  <button className={navStyles.login} style={{ display: props.login }}>
                     <svg
                       height="36px"
                       width="36px"
@@ -129,10 +130,11 @@ export default function Navbar(props) {
                         fill="#e1f5fe"
                       ></path>
                     </svg>
-                    <span className="now">now!</span>
-                    <span className="play">play</span>
+                    <span className={navStyles.now}>now!</span>
+                    <span className={navStyles.play}>play</span>
                   </button>
                 </Link>
+                </div>
                 <button
                   type="button"
                   className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
