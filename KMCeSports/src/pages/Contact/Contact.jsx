@@ -34,6 +34,9 @@ const Contact = () => {
           name="Akash Gupta"
           dev="Co-Founder"
           images={images.Akash}
+          git="https://github.com/saysky2"
+          mail="mailto:10582akash@gmail.com"
+          linkedin="https://www.linkedin.com/in/saysky2/"
         />
         <Contributor
           name="Sanskar Gupta"
