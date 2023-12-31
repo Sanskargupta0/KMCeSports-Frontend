@@ -1083,6 +1083,7 @@ const Login_SignUp = () => {
             paddingBottom: "2rem",
             fontSize: "21px",
             fontFamily: "cursive",
+            color: "black"
           }}
         >
           Don't have an account?{" "}

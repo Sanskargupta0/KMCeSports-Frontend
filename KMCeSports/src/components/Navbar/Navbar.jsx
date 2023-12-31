@@ -1,38 +1,30 @@
 import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon } from "@heroicons/react/24/outline";
-import { Link } from "react-router-dom";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link, useLocation } from "react-router-dom";
 import { images } from "../../assets";
 import "./Navbar.css";
 
 const navigation = [
-  { name: "Home", href: "/", current: true },
+  { name: "Home", href: "/", current: false },
   { name: "Top Players", href: "/TopPlayers", current: false },
   { name: "About", href: "/About", current: false },
   { name: "Contact", href: "/Contact", current: false },
 ];
+
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar(props) {
-  // const [isChecked, setChecked] = useState("checked");
+  const location = useLocation();
 
-  // const handleCheckboxChange = () => {
-  //   console.log("handleCheckboxChange running");
-  //   if (isChecked == "") {
-  //     console.log("if running");
-  //     setChecked("checked");
-  //   } else if (isChecked == "checked") {
-  //     console.log("else if running");
-  //     setChecked("");
-  //   }
-  // };
-  // setTimeout(() => {
-  //   handleCheckboxChange();
-  // }, 3000);
-
+  // Update the current property based on the current path
+  navigation.forEach((item) => {
+    item.current = item.href === location.pathname;
+  });
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -45,21 +37,11 @@ export default function Navbar(props) {
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-1 ml-1 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-1 focus:ring-inset focus:ring-white">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
-                  <label className="hamburger">
-                    <input
-                      type="checkbox"
-                      // checked={isChecked}
-                      // onChange={handleCheckboxChange}
-                    />
-                    <svg viewBox="0 0 32 32">
-                      <path
-                        className="line line-top-bottom"
-                        d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22"
-                      ></path>
-                      <path className="line" d="M7 16 27 16"></path>
-                    </svg>
-                    {/* {console.log(isChecked)} */}
-                  </label>
+                  {open ? (
+                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                  ) : (
+                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                  )}
                 </Disclosure.Button>
               </div>
               <div
