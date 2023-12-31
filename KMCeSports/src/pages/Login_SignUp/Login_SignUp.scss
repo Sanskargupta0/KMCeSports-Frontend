@@ -1,304 +1,301 @@
-
-
 /* colors */
 $darkBlue: #217093;
 $medBlue: #4eb8dd;
 $lightBlue: #ddf1fa;
 $inputBG: #f3fafd;
 
-
-  .loginForm html {
-    width: 100%;
-    height: 100%;
-  }
-  .loginForm body {
-    background-color: #eff3f4;
+.loginForm html {
+  width: 100%;
+  height: 100%;
+}
+.loginForm body {
+  background-color: #eff3f4;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+.loginForm form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  margin: 0;
+  padding: 2.25em;
+  box-sizing: border-box;
+  border: solid 1px #ddd;
+  border-radius: 0.5em;
+  font-family: "Source Sans Pro", sans-serif;
+  .svgContainer {
     position: relative;
-    width: 100%;
-    height: 100%;
-    font-size: 16px;
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: 400;
-    -webkit-font-smoothing: antialiased;
-  }
-  .loginForm form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: block;
-    width: 100%;
-    max-width: 400px;
-    background-color: #fff;
-    margin: 0;
-    padding: 2.25em;
-    box-sizing: border-box;
-    border: solid 1px #ddd;
-    border-radius: 0.5em;
-    font-family: "Source Sans Pro", sans-serif;
-    .svgContainer {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto 1em;
+    border-radius: 50%;
+    pointer-events: none;
+    div {
       position: relative;
-      width: 200px;
-      height: 200px;
-      margin: 0 auto 1em;
+      width: 100%;
+      height: 0;
+      overflow: hidden;
       border-radius: 50%;
+      padding-bottom: 100%;
+    }
+    .mySVG {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
-      div {
-        position: relative;
-        width: 100%;
-        height: 0;
-        overflow: hidden;
-        border-radius: 50%;
-        padding-bottom: 100%;
-      }
-      .mySVG {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-      }
-      &:after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 10;
-        width: inherit;
-        height: inherit;
-        box-sizing: border-box;
-        border: solid 2.5px $darkBlue;
-        border-radius: 50%;
-      }
     }
-    .inputGroup {
-      margin: 0 0 2em;
-      padding: 0;
-      position: relative;
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-    }
-    label {
-      margin: 0 0 12px;
-      display: block;
-      font-size: 1.25em;
-      color: #217093;
-      font-weight: 700;
-      font-family: inherit;
-    }
-    input[type="email"],
-    input[type="text"],
-    input[type="number"],
-    input[type="url"],
-    input[type="search"],
-    input[type="password"] {
-      display: block;
-      margin: 0;
-      padding: 0 1em 0;
-      padding: 0.875em 1em 0;
-      background-color: $inputBG;
-      border: solid 2px $darkBlue;
-      border-radius: 4px;
-      -webkit-appearance: none;
-      appearance: none;
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      width: inherit;
+      height: inherit;
       box-sizing: border-box;
-      width: 100%;
-      height: 65px;
-      font-size: 1.55em;
-      color: #353538;
-      font-weight: 600;
-      font-family: inherit;
-      transition: box-shadow 0.2s linear, border-color 0.25s ease-out;
-      &:focus {
-        outline: none;
-        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-        border: solid 2px $medBlue;
-      }
-    }
-   .loginbtn button {
-      display: block;
-      margin: 0;
-      padding: 0.65em 1em 1em;
-      background-color: $medBlue;
-      border: none;
-      border-radius: 4px;
-      box-sizing: border-box;
-      box-shadow: none;
-      width: 100%;
-      height: 65px;
-      font-size: 1.55em;
-      color: #fff;
-      font-weight: 600;
-      font-family: inherit;
-      transition: background-color 0.2s ease-out;
-      &:hover,
-      &:active {
-        background-color: $darkBlue;
-      }
-    }
-
-    .inputGroup1 {
-      .helper {
-        position: absolute;
-        z-index: 1;
-        font-family: inherit;
-      }
-      .helper1 {
-        top: 0;
-        left: 0;
-        transform: translate(1em, 2.2em) scale(1);
-        transform-origin: 0 0;
-        color: $darkBlue;
-        font-size: 1.55em;
-        font-weight: 400;
-        opacity: 0.65;
-        pointer-events: none;
-        transition: transform 0.2s ease-out, opacity 0.2s linear;
-      }
-
-      &.focusWithText .helper {
-        transform: translate(1em, 1.55em) scale(0.6);
-        opacity: 1;
-      }
-    }
-    .inputGroup2 {
-      input[type="password"] {
-        padding: 0.4em 1em 0.5em;
-      }
-      input[type="text"] {
-        padding: 0.025em 1em 0;
-      }
-      #showPasswordToggle {
-        display: block;
-        padding: 0 0 0 1.45em;
-        position: absolute;
-        top: 0.25em;
-        right: 0;
-        font-size: 1em;
-        input {
-          position: absolute;
-          z-index: -1;
-          opacity: 0;
-        }
-        .indicator {
-          margin-top: 0.3rem;
-          position: absolute;
-          top: 0;
-          left: 0;
-          height: 0.85em;
-          width: 0.85em;
-          background-color: $inputBG;
-          border: solid 2px $darkBlue;
-          border-radius: 3px;
-          &:after {
-            content: "";
-            position: absolute;
-            left: 0.25em;
-            top: 0.025em;
-            width: 0.2em;
-            height: 0.5em;
-            border: solid $darkBlue;
-            border-width: 0 3px 3px 0;
-            transform: rotate(45deg);
-            visibility: hidden;
-          }
-        }
-        input:checked ~ .indicator {
-          &:after {
-            visibility: visible;
-          }
-        }
-        input:focus ~ .indicator,
-        input:hover ~ .indicator {
-          border-color: $medBlue;
-        }
-        input:disabled ~ .indicator {
-          opacity: 0.5;
-          &:after {
-            visibility: hidden;
-          }
-        }
-      }
+      border: solid 2.5px $darkBlue;
+      border-radius: 50%;
     }
   }
-
-  .cssbuttons-io-button {
-    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
-    color: white;
-    font-family: inherit;
-    padding: 0.35em;
-    padding-left: 1.2em;
-    font-size: 17px;
-    border-radius: 10em;
-    border: none;
-    letter-spacing: 0.05em;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
+  .inputGroup {
+    margin: 0 0 2em;
+    padding: 0;
     position: relative;
-    height: 2.8em;
-    padding-right: 3.3em;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-weight: 500;
-    box-shadow: 0 0 1.6em rgba(183, 33, 255,0.3),0 0 1.6em hsla(191, 98%, 56%, 0.3);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    &:last-of-type {
+      margin-bottom: 0;
+    }
   }
-  
-  .cssbuttons-io-button .icon {
-    background: white;
-    margin-left: 1em;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 2.2em;
-    width: 2.2em;
-    border-radius: 10em;
-    right: 0.3em;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  label {
+    margin: 0 0 12px;
+    display: block;
+    font-size: 1.25em;
+    color: #217093;
+    font-weight: 700;
+    font-family: inherit;
   }
-  
-  .cssbuttons-io-button:hover .icon {
-    width: calc(100% - 0.6em);
+  input[type="email"],
+  input[type="text"],
+  input[type="number"],
+  input[type="url"],
+  input[type="search"],
+  input[type="password"] {
+    display: block;
+    margin: 0;
+    padding: 0 1em 0;
+    padding: 0.875em 1em 0;
+    background-color: $inputBG;
+    border: solid 2px $darkBlue;
+    border-radius: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    box-sizing: border-box;
+    width: 100%;
+    height: 65px;
+    font-size: 1.55em;
+    color: #353538;
+    font-weight: 600;
+    font-family: inherit;
+    transition: box-shadow 0.2s linear, border-color 0.25s ease-out;
+    &:focus {
+      outline: none;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+      border: solid 2px $medBlue;
+    }
   }
-  
-  .cssbuttons-io-button .icon svg {
-    width: 1.1em;
-    transition: transform 0.3s;
-    color: #B721FF;
-  }
-  
-  .cssbuttons-io-button:hover .icon svg {
-    transform: translateX(0.1em);
-  }
-  
-  .cssbuttons-io-button:active .icon {
-    transform: scale(0.9);
+  .loginbtn button {
+    display: block;
+    margin: 0;
+    padding: 0.65em 1em 1em;
+    background-color: $medBlue;
+    border: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    box-shadow: none;
+    width: 100%;
+    height: 65px;
+    font-size: 1.55em;
+    color: #fff;
+    font-weight: 600;
+    font-family: inherit;
+    transition: background-color 0.2s ease-out;
+    &:hover,
+    &:active {
+      background-color: $darkBlue;
+    }
   }
 
-  
-  /* Hide the default checkbox */
+  .inputGroup1 {
+    .helper {
+      position: absolute;
+      z-index: 1;
+      font-family: inherit;
+    }
+    .helper1 {
+      top: 0;
+      left: 0;
+      transform: translate(1em, 2.2em) scale(1);
+      transform-origin: 0 0;
+      color: $darkBlue;
+      font-size: 1.55em;
+      font-weight: 400;
+      opacity: 0.65;
+      pointer-events: none;
+      transition: transform 0.2s ease-out, opacity 0.2s linear;
+    }
+
+    &.focusWithText .helper {
+      transform: translate(1em, 1.55em) scale(0.6);
+      opacity: 1;
+    }
+  }
+  .inputGroup2 {
+    input[type="password"] {
+      padding: 0.4em 1em 0.5em;
+    }
+    input[type="text"] {
+      padding: 0.025em 1em 0;
+    }
+    #showPasswordToggle {
+      display: block;
+      padding: 0 0 0 1.45em;
+      position: absolute;
+      top: 0.25em;
+      right: 0;
+      font-size: 1em;
+      input {
+        position: absolute;
+        z-index: -1;
+        opacity: 0;
+      }
+      .indicator {
+        margin-top: 0.3rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 0.85em;
+        width: 0.85em;
+        background-color: $inputBG;
+        border: solid 2px $darkBlue;
+        border-radius: 3px;
+        &:after {
+          content: "";
+          position: absolute;
+          left: 0.25em;
+          top: 0.025em;
+          width: 0.2em;
+          height: 0.5em;
+          border: solid $darkBlue;
+          border-width: 0 3px 3px 0;
+          transform: rotate(45deg);
+          visibility: hidden;
+        }
+      }
+      input:checked ~ .indicator {
+        &:after {
+          visibility: visible;
+        }
+      }
+      input:focus ~ .indicator,
+      input:hover ~ .indicator {
+        border-color: $medBlue;
+      }
+      input:disabled ~ .indicator {
+        opacity: 0.5;
+        &:after {
+          visibility: hidden;
+        }
+      }
+    }
+  }
+}
+
+.cssbuttons-io-button {
+  background-image: linear-gradient(19deg, #21d4fd 0%, #b721ff 100%);
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  border-radius: 10em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  box-shadow: 0 0 1.6em rgba(183, 33, 255, 0.3),
+    0 0 1.6em hsla(191, 98%, 56%, 0.3);
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 10em;
+  right: 0.3em;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #b721ff;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.9);
+}
+
+/* Hide the default checkbox */
 .container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
   height: 0;
   width: 0;
- }
- 
- .container {
+}
+
+.container {
   display: block;
   position: relative;
   cursor: pointer;
   font-size: 25px;
   user-select: none;
- }
- 
- /* Create a custom checkbox */
- .checkmark {
+}
+
+/* Create a custom checkbox */
+.checkmark {
   position: relative;
   top: 0;
   left: 0;
@@ -308,30 +305,33 @@ $inputBG: #f3fafd;
   border-radius: 50px;
   transition: all 0.7s;
   --spread: 20px;
- }
- 
- /* When the checkbox is checked, add a blue background */
- .container input:checked ~ .checkmark {
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
   background: black;
-  box-shadow: -10px -10px var(--spread) 0px #5B51D8, 0 -10px var(--spread) 0px #833AB4, 10px -10px var(--spread) 0px #E1306C, 10px 0 var(--spread) 0px #FD1D1D, 10px 10px var(--spread) 0px #F77737, 0 10px var(--spread) 0px #FCAF45, -10px 10px var(--spread) 0px #FFDC80;
- }
- 
- /* Create the checkmark/indicator (hidden when not checked) */
- .checkmark:after {
+  box-shadow: -10px -10px var(--spread) 0px #5b51d8,
+    0 -10px var(--spread) 0px #833ab4, 10px -10px var(--spread) 0px #e1306c,
+    10px 0 var(--spread) 0px #fd1d1d, 10px 10px var(--spread) 0px #f77737,
+    0 10px var(--spread) 0px #fcaf45, -10px 10px var(--spread) 0px #ffdc80;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
   content: "";
   position: absolute;
   display: none;
- }
- 
- /* Show the checkmark when checked */
- .container input:checked ~ .checkmark:after {
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
   display: block;
   margin-top: 0.2rem;
   margin-left: 0.1rem;
- }
- 
- /* Style the checkmark/indicator */
- .container .checkmark:after {
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
   left: 0.45em;
   top: 0.25em;
   width: 0.25em;
@@ -339,13 +339,13 @@ $inputBG: #f3fafd;
   border: solid #f0f0f0;
   border-width: 0 0.15em 0.15em 0;
   transform: rotate(45deg);
- }
+}
 
- .rememberMe {
+.rememberMe {
   display: flex;
- }
+}
 
- .forget-password {
+.forget-password {
   font-size: 14px;
   font-weight: 700;
   color: #2879f3;
@@ -359,7 +359,7 @@ $inputBG: #f3fafd;
   color: #bd4a4a;
 }
 
-.centeredButton{
+.centeredButton {
   display: flex;
   justify-content: center;
   margin-top: -23rem;
@@ -369,7 +369,7 @@ $inputBG: #f3fafd;
 }
 
 /* DEOXY Was Here */
-.form {
+.forms {
   --background: #d3d3d3;
   --input-focus: #2d8cf0;
   --font-color: #323232;
@@ -387,8 +387,6 @@ $inputBG: #f3fafd;
   border: 2px solid var(--main-color);
   box-shadow: 4px 4px var(--main-color);
 }
-
-
 
 .separator {
   width: 100%;
@@ -416,7 +414,7 @@ $inputBG: #f3fafd;
   justify-content: center;
   align-items: center;
   gap: 5px;
-    /* margin: 50px auto 0 auto; */
+  /* margin: 50px auto 0 auto; */
   padding: auto 15px 15px auto;
   width: 250px;
   height: 40px;
@@ -456,14 +454,12 @@ $inputBG: #f3fafd;
   width: 100%;
 }
 
-
-
 .icon {
   width: 1.5rem;
   height: 1.5rem;
 }
 
-.otherSginInOptions{
+.otherSginInOptions {
   justify-content: center;
   display: flex;
 }

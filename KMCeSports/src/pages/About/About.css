@@ -62,7 +62,7 @@
   }
   
   html,
-  body {
+  main {
     color: white;
     font-family: system-ui;
     line-height: 2;

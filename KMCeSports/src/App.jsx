@@ -7,6 +7,7 @@ import About from './pages/About/About'
 import Contact from './pages/Contact/Contact'
 import TopPlayers from './pages/TopPlayers/TopPlayers'
 import Login_SignUp from './pages/Login_SignUp/Login_SignUp'
+import Registration from './pages/Registration/registration'
 import './App.css'
 
 const App = () => {
@@ -19,7 +20,8 @@ const App = () => {
           <Route path="/About" element={<About />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/TopPlayers" element={<TopPlayers />} />
-          <Route path="/Login_SignUp" element={<Login_SignUp />} />
+          <Route path="/auth" element={<Login_SignUp />} />
+          <Route path="/registration" element={<Registration />} />
         </Routes>
         <Footer/>
       </BrowserRouter>

@@ -1,27 +1,72 @@
 import React from "react";
 import { images } from "../../assets";
 import Contributor from "../../components/Contributor/Contributor";
-import "./Contact.css";
+import constactStyles from "./Contact.module.css";
 const Contact = () => {
+  function reset() {
+    document.getElementById("name").value = "";
+    document.getElementById("mail").value = "";
+    document.getElementById("message").value = "";
+  }
+
+  function check() {
+    var name = document.getElementById("name").value;
+    var mail = document.getElementById("mail").value;
+    var message = document.getElementById("message").value;
+    if (name === "" || mail === "" || message === "") {
+      alert("Please fill all the fields");
+    } else if (!mail.includes("@") || !mail.includes(".")) {
+      alert("Please enter a valid email");
+    } else if (message.length < 10) {
+      alert("Please enter a valid message");
+    } else if (name.length < 3) {
+      alert("Please enter a valid name");
+    } else {
+      alert("Thank you for your response");
+    }
+  }
+
   return (
     <div>
-      <div className="forms-container">
-        <div className="forms">
-          <span className="heading">Get in touch</span>
-          <input placeholder="Name" type="text" className="input" />
-          <input placeholder="Email" id="mail" type="email" className="input" />
+      <div className={constactStyles.formscontainer}>
+        <div className={constactStyles.forms}>
+          <span className={constactStyles.heading}>Get in touch</span>
+          <input
+            placeholder="Name"
+            id="name"
+            type="text"
+            className={constactStyles.input}
+          />
+          <input
+            placeholder="Email"
+            id="mail"
+            type="email"
+            className={constactStyles.input}
+          />
           <textarea
             placeholder="Say Hello"
             rows="10"
             cols="30"
             id="message"
             name="message"
-            className="textarea"
+            className={constactStyles.textarea}
           ></textarea>
-          <div className="button-container">
-            <div className="send-button">Send</div>
-            <div className="reset-button-container">
-              <div id="reset-btn" className="reset-button">
+          <div className={constactStyles.buttoncontainer}>
+            <div
+              className={constactStyles.sendbutton}
+              onClick={(e) => {
+                e.preventDefault();
+                check();
+              }}
+            >
+              Send
+            </div>
+            <div className={constactStyles.resetbuttoncontainer}>
+              <div
+                id="reset-btn"
+                className={constactStyles.resetbutton}
+                onClick={reset}
+              >
                 Reset
               </div>
             </div>
@@ -29,7 +74,7 @@ const Contact = () => {
         </div>
       </div>
 
-      <div className="Contributor">
+      <div className={constactStyles.Contributor}>
         <Contributor
           name="Akash Gupta"
           dev="Co-Founder"
