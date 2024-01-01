@@ -115,7 +115,7 @@ const Footer = () => {
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4" style={{ marginLeft: "0rem" }}>
                     <a
-                      href="#"
+                      href="/legal"
                       className="hover:underline hover:text-[#47F252]"
                     >
                       Privacy Policy
@@ -123,7 +123,7 @@ const Footer = () => {
                   </li>
                   <li style={{ marginLeft: "0rem" }}>
                     <a
-                      href="#"
+                      href="/legal"
                       className="hover:underline hover:text-[#47F252]"
                     >
                       Terms &amp; Conditions
