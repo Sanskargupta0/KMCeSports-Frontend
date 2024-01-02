@@ -8,6 +8,7 @@ import Contact from './pages/Contact/Contact'
 import TopPlayers from './pages/TopPlayers/TopPlayers'
 import Login_SignUp from './pages/Login_SignUp/Login_SignUp'
 import Registration from './pages/Registration/registration'
+import Legal from './pages/Legal/legal'
 import './App.css'
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/TopPlayers" element={<TopPlayers />} />
           <Route path="/auth" element={<Login_SignUp />} />
           <Route path="/registration" element={<Registration />} />
+          <Route path="/legal" element={<Legal />} />
         </Routes>
         <Footer/>
       </BrowserRouter>
