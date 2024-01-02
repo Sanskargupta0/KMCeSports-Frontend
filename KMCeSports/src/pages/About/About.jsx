@@ -86,11 +86,11 @@ const About = () => {
         >
           <div className="stickybtn">
             <a href="#">
-            <button className="button">
-              <svg className="svgIcon" viewBox="0 0 384 512">
-                <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
-              </svg>
-            </button>
+              <button className="button">
+                <svg className="svgIcon" viewBox="0 0 384 512">
+                  <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+                </svg>
+              </button>
             </a>
           </div>
           <main>
@@ -307,16 +307,16 @@ const About = () => {
           </main>
         </div>
         <div className="" id="joinbody" style={{ display: joinStyles.display }}>
-        <div className="stickybtn">
+          <div className="stickybtn">
             <a href="#">
-            <button className="button">
-              <svg className="svgIcon" viewBox="0 0 384 512">
-                <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
-              </svg>
-            </button>
+              <button className="button">
+                <svg className="svgIcon" viewBox="0 0 384 512">
+                  <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
+                </svg>
+              </button>
             </a>
           </div>
-           <main>
+          <main>
             <div className="aboutUs">
               <section id="intro">
                 <h1
@@ -331,10 +331,11 @@ const About = () => {
                   How to join KMCesports
                 </h1>
                 <p>
-                  KMC Esports provides an exciting platform for gamers to showcase 
-                  their skills and compete in various online gaming tournaments. 
-                  If you're eager to join the action, follow this step-by-step guide 
-                  to participate in KMC Esports games and elevate your gaming experience.
+                  KMC Esports provides an exciting platform for gamers to
+                  showcase their skills and compete in various online gaming
+                  tournaments. If you're eager to join the action, follow this
+                  step-by-step guide to participate in KMC Esports games and
+                  elevate your gaming experience.
                 </p>
               </section>
               <section id="getStarted">
@@ -342,43 +343,42 @@ const About = () => {
                 <section id="getStarted1">
                   <h3>Visit the KMC Esports Website:</h3>
                   <p>
-                  Start by visiting the official KMC Esports website. Navigate to the 
-                  registration or sign-up section to create a user account. Fill in the 
-                  required information accurately and confirm your account through the 
-                  verification process.
+                    Start by visiting the official KMC Esports website. Navigate
+                    to the registration or sign-up section to create a user
+                    account. Fill in the required information accurately and
+                    confirm your account through the verification process.
                   </p>
                 </section>
                 <section id="getStarted2">
                   <h3>Explore Available Tournaments:</h3>
                   <p>
-                  Once your account is set up, browse through the website to discover 
-                  the ongoing and upcoming tournaments. KMC Esports hosts a variety of 
-                  games, so choose the one that aligns with your interests and expertise.
-
-
+                    Once your account is set up, browse through the website to
+                    discover the ongoing and upcoming tournaments. KMC Esports
+                    hosts a variety of games, so choose the one that aligns with
+                    your interests and expertise.
                   </p>
                 </section>
               </section>
               <section id="Regt-tour">
                 <h2>Register to Tournaments:</h2>
                 <section id="Regt-tour1">
-                  <h3>
-                  Review Tournament Details:
-                  </h3>
+                  <h3>Review Tournament Details:</h3>
                   <p>
-                  Click on the tournament you wish to participate in and carefully read 
-                  the details provided. Take note of the tournament format, rules, 
-                  registration deadlines, and any other relevant information. Ensure 
-                  that you meet the eligibility criteria for the chosen tournament
+                    Click on the tournament you wish to participate in and
+                    carefully read the details provided. Take note of the
+                    tournament format, rules, registration deadlines, and any
+                    other relevant information. Ensure that you meet the
+                    eligibility criteria for the chosen tournament
                   </p>
                 </section>
                 <section id="Regt-tour2">
                   <h3>Register for the Tournament:</h3>
                   <p>
-                  After selecting a tournament, proceed to register for it. This typically 
-                  involves clicking a "Register" or "Join" button and confirming your 
-                  participation. Some tournaments may have entry fees, so be prepared to 
-                  make the necessary payments, if required.
+                    After selecting a tournament, proceed to register for it.
+                    This typically involves clicking a "Register" or "Join"
+                    button and confirming your participation. Some tournaments
+                    may have entry fees, so be prepared to make the necessary
+                    payments, if required.
                   </p>
                 </section>
               </section>
@@ -387,56 +387,61 @@ const About = () => {
                 <section id="prep4tour1">
                   <h2>Set Up Your Gaming Gear:</h2>
                   <p>
-                  Prepare your gaming setup, ensuring that your hardware, software, 
-                  and internet connection meet the tournament requirements. 
-                  Check for any specific rules related to equipment, as some 
-                  tournaments may have restrictions on certain peripherals or settings.
+                    Prepare your gaming setup, ensuring that your hardware,
+                    software, and internet connection meet the tournament
+                    requirements. Check for any specific rules related to
+                    equipment, as some tournaments may have restrictions on
+                    certain peripherals or settings.
                   </p>
                 </section>
                 <section id="prep4tour2">
                   <h2>Practice and Warm-up:</h2>
                   <p>
-                  Before the tournament begins, dedicate time to practice and warm-up
-                  sessions. Familiarize yourself with the game mechanics, maps, and 
-                  strategies to improve your performance during the competition.
+                    Before the tournament begins, dedicate time to practice and
+                    warm-up sessions. Familiarize yourself with the game
+                    mechanics, maps, and strategies to improve your performance
+                    during the competition.
                   </p>
                 </section>
                 <section id="prep4tour3">
                   <h2>Join the Tournament Lobby:</h2>
                   <p>
-                  On the day of the tournament, log in to your KMC Esports account and 
-                  navigate to the tournament lobby. Follow the provided instructions to 
-                  join the lobby or wait for an invitation from the tournament organizers.
+                    On the day of the tournament, log in to your KMC Esports
+                    account and navigate to the tournament lobby. Follow the
+                    provided instructions to join the lobby or wait for an
+                    invitation from the tournament organizers.
                   </p>
                 </section>
               </section>
               <section id="fun-enjoy">
                 <h2 className="text-2xl " style={{ marginBottom: "1rem" }}>
-                Compete and Enjoy:
+                  Compete and Enjoy:
                 </h2>
                 <p>
-                Once in the tournament lobby, compete against other participants in 
-                your assigned matches. Follow the tournament schedule, adhere to the 
-                rules, and maintain good sportsmanship throughout. Enjoy the experience 
-                and use it as an opportunity to learn and grow as a gamer.
+                  Once in the tournament lobby, compete against other
+                  participants in your assigned matches. Follow the tournament
+                  schedule, adhere to the rules, and maintain good sportsmanship
+                  throughout. Enjoy the experience and use it as an opportunity
+                  to learn and grow as a gamer.
                 </p>
               </section>
               <section id="connected">
                 <h2 className="text-2xl" style={{ marginBottom: "1rem" }}>
-                Stay Informed and Connect:
+                  Stay Informed and Connect:
                 </h2>
                 <p style={{ marginBottom: "2rem" }}>
-                Keep an eye on the tournament updates and results. Stay informed about 
-                future tournaments, events, and community activities. Connect with fellow 
-                gamers, share experiences, and embrace the sense of camaraderie within the 
-                KMC Esports community.
+                  Keep an eye on the tournament updates and results. Stay
+                  informed about future tournaments, events, and community
+                  activities. Connect with fellow gamers, share experiences, and
+                  embrace the sense of camaraderie within the KMC Esports
+                  community.
                 </p>
                 <p>
-                Participating in KMC Esports games is a thrilling adventure for gaming 
-                enthusiasts. By following these steps, you'll be well-prepared to dive 
-                into the world of competitive gaming and enjoy the challenges and 
-                camaraderie that come with it. Good luck, and may you achieve victory 
-                in your esports endeavors!
+                  Participating in KMC Esports games is a thrilling adventure
+                  for gaming enthusiasts. By following these steps, you'll be
+                  well-prepared to dive into the world of competitive gaming and
+                  enjoy the challenges and camaraderie that come with it. Good
+                  luck, and may you achieve victory in your esports endeavors!
                 </p>
               </section>
             </div>
@@ -460,7 +465,9 @@ const About = () => {
                   <a href="#Regt-tour">Register to Tournament</a>
                   <ul>
                     <li className="">
-                      <a href="#Regt-tour1">Review Tournament Details</a>
+                      <a href="#Regt-tour1" style={{ textWrap: "nowrap" }}>
+                        Review Tournament Details
+                      </a>
                     </li>
                     <li className="">
                       <a href="#Regt-tour2">Participate in Tournament</a>

@@ -3,7 +3,7 @@ import { images } from "../../assets";
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-white dark:bg-gray-900">
+      <footer style={{backgroundColor: "rgb(31 41 55)"}}>
         <div
           className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 "
           style={{ background: "#1F2937" }}
@@ -57,10 +57,11 @@ const Footer = () => {
                       Prize Pool
                     </a>
                   </li>
-                  <li style={{ marginLeft: "0rem", marginBottom: "1rem" }}>
+                  <li style={{ marginLeft: "0rem", marginBottom: "1rem"   ,  textWrap: "nowrap" }}>
                     <a
                       href="#"
                       className="hover:underline hover:text-[#47F252]"
+
                     >
                       Become a Moderator
                       <br />
@@ -121,7 +122,7 @@ const Footer = () => {
                       Privacy Policy
                     </a>
                   </li>
-                  <li style={{ marginLeft: "0rem" }}>
+                  <li style={{ marginLeft: "0rem"  ,  textWrap: "nowrap"}}>
                     <a
                       href="#"
                       className="hover:underline hover:text-[#47F252]"
