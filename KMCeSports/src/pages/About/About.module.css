@@ -30,20 +30,20 @@
   }
   
   /* 3. ScrollSpy active styles (see JS tab for activation) */
-  .section-nav li.active > a {
+  .sectionNav li.active > a {
     color: #47f252;
     font-weight: 500;
   }
   
   /* Sidebar Navigation */
-  .section-nav {
+  .sectionNav {
     padding-left: 0;
     border-left: 1px solid #efefef;
     margin-top: 10rem;
     margin-bottom:2rem;
   }
   
-  .section-nav a {
+  .sectionNav a {
     text-decoration: none;
     display: block;
     padding: 0.125rem 0;
@@ -51,8 +51,8 @@
     transition: all 50ms ease-in-out; /* 💡 This small transition makes setting of the active state smooth */
   }
   
-  .section-nav a:hover,
-  .section-nav a:focus {
+  .sectionNav a:hover,
+  .sectionNav a:focus {
     color: #666;
   }
   
@@ -61,7 +61,7 @@
     box-sizing: border-box;
   }
   
-  html,
+  
   main {
     color: white;
     font-family: system-ui;
@@ -79,6 +79,7 @@
     padding: 0;
   }
   li {
+    color: white;
     margin-left: 1rem;
   }
   
@@ -110,7 +111,7 @@
   }
 
   @media screen and (max-width: 700px){
-    .section-nav {
+    .sectionNav {
       display: none
     }
     main {

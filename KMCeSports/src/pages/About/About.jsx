@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import "./About.css";
+import styleAbout from './About.module.css'
 const About = () => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -9,11 +9,11 @@ const About = () => {
         if (entry.isIntersecting) {
           document
             .querySelector(`nav li a[href="#${id}"]`)
-            .parentElement.classList.add("active");
+            .parentElement.classList.add(styleAbout.active);
         } else {
           document
             .querySelector(`nav li a[href="#${id}"]`)
-            .parentElement.classList.remove("active");
+            .parentElement.classList.remove(styleAbout.active);
         }
       });
     });
@@ -45,7 +45,7 @@ const About = () => {
   };
 
   return (
-    <div className="about">
+    <div className={styleAbout.about}>
       <div className="mb-4 border-b border-gray-200 dark:border-gray-700">
         <ul
           className="flex flex-wrap -mb-px text-sm font-medium text-center"
@@ -80,21 +80,21 @@ const About = () => {
       </div>
       <div id="default-tab-content">
         <div
-          className=""
+          
           style={{ display: aboutStyles.display }}
           id="aboutUsBody"
         >
-          <div className="stickybtn">
+          <div className={styleAbout.stickybtn}>
             <a href="#">
-              <button className="button">
-                <svg className="svgIcon" viewBox="0 0 384 512">
+              <button className={styleAbout.button}>
+                <svg className={styleAbout.svgIcon} viewBox="0 0 384 512">
                   <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
                 </svg>
               </button>
             </a>
           </div>
           <main>
-            <div className="aboutUs">
+            <div className={styleAbout.aboutUs}>
               <section id="aboutKMCesports">
                 <h1
                   className="text-4xl"
@@ -246,7 +246,7 @@ const About = () => {
                 </p>
               </section>
             </div>
-            <nav className="section-nav">
+            <nav className={styleAbout.sectionNav}>
               <ol>
                 <li>
                   <a href="#aboutKMCesports">About KMCesports</a>
@@ -254,10 +254,10 @@ const About = () => {
                 <li>
                   <a href="#ourMission">Our Mission</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#ourMission1">Platform for gamers</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#ourMission2">Values</a>
                     </li>
                   </ul>
@@ -265,10 +265,10 @@ const About = () => {
                 <li>
                   <a href="#whatWeOffer">What We Offer</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#whatWeOffer1">Tournaments</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#whatWeOffer2">Claim Your Glory</a>
                     </li>
                   </ul>
@@ -276,28 +276,28 @@ const About = () => {
                 <li>
                   <a href="#powerhouse">Prize Pool</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#powerhouse1">Exciting Escalation</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#powerhouse2">Multiple prize tiers</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#powerhouse3">Rewards</a>
                     </li>
                   </ul>
                 </li>
-                <li className="">
+                <li >
                   <a href="#pointsSystem">Points System</a>
                 </li>
-                <li className="">
+                <li >
                   <a href="#KMCesports">KMCesports</a>
                 </li>
               </ol>
-              <div className="backToTopBtn">
+              <div className={styleAbout.backToTopBtn}>
                 <a href="#about-Us">
-                  <button className="button">
-                    <svg className="svgIcon" viewBox="0 0 384 512">
+                  <button className={styleAbout.button}>
+                    <svg className={styleAbout.svgIcon} viewBox="0 0 384 512">
                       <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
                     </svg>
                   </button>
@@ -306,18 +306,18 @@ const About = () => {
             </nav>
           </main>
         </div>
-        <div className="" id="joinbody" style={{ display: joinStyles.display }}>
-          <div className="stickybtn">
+        <div  id="joinbody" style={{ display: joinStyles.display }}>
+          <div className={styleAbout.stickybtn}>
             <a href="#">
-              <button className="button">
-                <svg className="svgIcon" viewBox="0 0 384 512">
+              <button className={styleAbout.button}>
+                <svg className={styleAbout.svgIcon} viewBox="0 0 384 512">
                   <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
                 </svg>
               </button>
             </a>
           </div>
           <main>
-            <div className="aboutUs">
+            <div className={styleAbout.aboutUs}>
               <section id="intro">
                 <h1
                   className="text-4xl"
@@ -445,7 +445,7 @@ const About = () => {
                 </p>
               </section>
             </div>
-            <nav className="section-nav">
+            <nav className={styleAbout.sectionNav}>
               <ol>
                 <li>
                   <a href="#intro">Introduction</a>
@@ -453,10 +453,10 @@ const About = () => {
                 <li>
                   <a href="#getStarted">How to get started</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#getStarted1">Visit KMCesports</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#getStarted2">Browse Tournaments</a>
                     </li>
                   </ul>
@@ -464,12 +464,12 @@ const About = () => {
                 <li>
                   <a href="#Regt-tour">Register to Tournament</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#Regt-tour1" style={{ textWrap: "nowrap" }}>
                         Review Tournament Details
                       </a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#Regt-tour2">Participate in Tournament</a>
                     </li>
                   </ul>
@@ -477,28 +477,28 @@ const About = () => {
                 <li>
                   <a href="#prep4tour">Prep for Tournament</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#prep4tour1">Set Up Your Gaming Gear</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#prep4tour2">Practice and Warm-up</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#prep4tour3">Enter Tournament Lobby</a>
                     </li>
                   </ul>
                 </li>
-                <li className="">
+                <li >
                   <a href="#fun-enjoy">Compete and Enjoy</a>
                 </li>
-                <li className="">
+                <li >
                   <a href="#connected">Stay Informed and Connect</a>
                 </li>
               </ol>
-              <div className="backToTopBtn">
+              <div className={styleAbout.backToTopBtn}>
                 <a href="#join">
-                  <button className="button">
-                    <svg className="svgIcon" viewBox="0 0 384 512">
+                  <button className={styleAbout.button}>
+                    <svg className={styleAbout.svgIcon} viewBox="0 0 384 512">
                       <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
                     </svg>
                   </button>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import "../About/About.css";
+import styleAbout from '../About/About.module.css'
 const legal = () => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -9,11 +9,11 @@ const legal = () => {
         if (entry.isIntersecting) {
           document
             .querySelector(`nav li a[href="#${id}"]`)
-            .parentElement.classList.add("active");
+            .parentElement.classList.add(styleAbout.active);
         } else {
           document
             .querySelector(`nav li a[href="#${id}"]`)
-            .parentElement.classList.remove("active");
+            .parentElement.classList.remove(styleAbout.active);
         }
       });
     });
@@ -45,7 +45,7 @@ const legal = () => {
   };
 
   return (
-    <div className="about">
+    <div className={styleAbout.about}>
       <div className="mb-4 border-b border-gray-200 dark:border-gray-700">
         <ul
           className="flex flex-wrap -mb-px text-sm font-medium text-center"
@@ -80,21 +80,21 @@ const legal = () => {
       </div>
       <div id="default-tab-content">
         <div
-          className=""
+          
           style={{ display: aboutStyles.display }}
           id="aboutUsBody"
         >
-          <div className="stickybtn">
+          <div className={styleAbout.stickybtn}>
             <a href="#">
-            <button className="button">
-              <svg className="svgIcon" viewBox="0 0 384 512">
+            <button className={styleAbout.button}>
+              <svg className={styleAbout.svgIcon} viewBox="0 0 384 512">
                 <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
               </svg>
             </button>
             </a>
           </div>
           <main>
-            <div className="PrivacyPolicy">
+            <div className={styleAbout.PrivacyPolicy}>
               <section id="privacyPolicy">
                 <h1
                   className="text-4xl"
@@ -219,7 +219,7 @@ To exercise these rights.
                 </p>
               </section>
             </div>
-            <nav className="section-nav">
+            <nav className={styleAbout.sectionNav}>
               <ol>
                 <li>
                   <a href="#privacyPolicy">Privacy Policy</a>
@@ -227,10 +227,10 @@ To exercise these rights.
                 <li>
                   <a href="#weCollect">Information We Collect</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#weCollect1">Data we Collect</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#weCollect2">Information we use</a>
                     </li>
                   </ul>
@@ -238,11 +238,11 @@ To exercise these rights.
                 <li>
                   <a href="#infoCookies">Privacy and Tracking</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#infoCookies1">                  Sharing Your Information 
 </a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#infoCookies2">Cookies</a>
                     </li>
                   </ul>
@@ -250,28 +250,28 @@ To exercise these rights.
                 <li>
                   <a href="#security">Privacy Safeguards</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#security1">Security</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#security2">Children's Privacy</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#security3">International Transfers</a>
                     </li>
                   </ul>
                 </li>
-                <li className="">
+                <li >
                   <a href="#yourRight">Your Rights</a>
                 </li>
-                <li className="">
+                <li >
                   <a href="#updateContact">Policy Updates, Contact</a>
                 </li>
               </ol>
-              <div className="backToTopBtn">
+              <div className={styleAbout.backToTopBtn}>
                 <a href="#about-Us">
-                  <button className="button">
-                    <svg className="svgIcon" viewBox="0 0 384 512">
+                  <button className={styleAbout.button}>
+                    <svg className={styleAbout.svgIcon} viewBox="0 0 384 512">
                       <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
                     </svg>
                   </button>
@@ -280,18 +280,18 @@ To exercise these rights.
             </nav>
           </main>
         </div>
-        <div className="" id="joinbody" style={{ display: joinStyles.display }}>
-        <div className="stickybtn">
+        <div  id="joinbody" style={{ display: joinStyles.display }}>
+        <div className={styleAbout.stickybtn}>
             <a href="#">
-            <button className="button">
-              <svg className="svgIcon" viewBox="0 0 384 512">
+            <button className={styleAbout.button}>
+              <svg className={styleAbout.svgIcon} viewBox="0 0 384 512">
                 <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
               </svg>
             </button>
             </a>
           </div>
            <main>
-            <div className="aboutUs">
+            <div className={styleAbout.aboutUs}>
               <section id="termsCondition">
                 <h1
                   className="text-4xl"
@@ -391,7 +391,7 @@ Thank you for choosing KMC Esports!
                 </p>
               </section>
             </div>
-            <nav className="section-nav">
+            <nav className={styleAbout.sectionNav}>
               <ol>
                 <li>
                   <a href="#termsCondition">T&C</a>
@@ -399,10 +399,10 @@ Thank you for choosing KMC Esports!
                 <li>
                   <a href="#fairPlay">Fair Play Policy</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#fairPlay1">Zero Tolerance</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#fairPlay2">Payment & Refund
 </a>
                     </li>
@@ -411,10 +411,10 @@ Thank you for choosing KMC Esports!
                 <li>
                   <a href="#responsibility">Participant Responsibility</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#responsibility1">Participant Accountability</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#responsibility2">Financial Disclaimer</a>
                     </li>
                   </ul>
@@ -422,28 +422,28 @@ Thank you for choosing KMC Esports!
                 <li>
                   <a href="#coc">Conduct Guidelines</a>
                   <ul>
-                    <li className="">
+                    <li >
                       <a href="#coc1">Code of Conduct</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#coc2">Eligibility</a>
                     </li>
-                    <li className="">
+                    <li >
                       <a href="#coc3">Intellectual Property</a>
                     </li>
                   </ul>
                 </li>
-                <li className="">
+                <li >
                   <a href="#termsPrivacy">Privacy Policy</a>
                 </li>
-                <li className="">
+                <li >
                   <a href="#governingLaw">Governing Law</a>
                 </li>
               </ol>
-              <div className="backToTopBtn">
+              <div className={styleAbout.backToTopBtn}>
                 <a href="#join">
-                  <button className="button">
-                    <svg className="svgIcon" viewBox="0 0 384 512">
+                  <button className={styleAbout.button}>
+                    <svg className={styleAbout.svgIcon} viewBox="0 0 384 512">
                       <path d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z"></path>
                     </svg>
                   </button>
