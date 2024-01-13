@@ -9,6 +9,7 @@ import TopPlayers from './pages/TopPlayers/TopPlayers'
 import Login from './pages/Login/Login'
 import Registration from './pages/Registration/registration'
 import Legal from './pages/Legal/legal'
+import Error from './pages/Error/Error'
 import './App.css'
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/auth" element={<Login />} />
           <Route path="/registration" element={<Registration />} />
           <Route path="/legal" element={<Legal />} />
+          <Route path="*" element={<Error />} />
         </Routes>
         <Footer/>
       </BrowserRouter>
