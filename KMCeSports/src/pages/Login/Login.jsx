@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { gsap, Power2, Expo, Quad } from "gsap";
 import MorphSVGPlugin from "gsap-trial/dist/MorphSVGPlugin";
-import "./Login_SignUp.scss";
+import "./Login.scss";
 
 //register plugins
 gsap.config({ trialWarn: false });
 gsap.registerPlugin(MorphSVGPlugin);
 
-const Login_SignUp = () => {
+const Login = () => {
   setTimeout(() => {
     var emailLabel = document.querySelector("#loginEmailLabel"),
       email = document.querySelector("#loginEmail"),
@@ -619,6 +619,20 @@ const Login_SignUp = () => {
     initLoginForm();
   }, 100);
 
+  const [login, setLogin]=useState({
+    email:"",
+    password:""
+  });
+
+  const handleLogin = (e)=>{
+    let name = e.target.name;
+    let value = e.target.value;
+    setLogin({
+      ...login,
+      [name]:value
+    });
+  }
+;
   return (
     <>
       <div className="loginForm">
@@ -987,14 +1001,14 @@ const Login_SignUp = () => {
             <label htmlFor="loginEmail" id="loginEmailLabel">
               Email \ @Username
             </label>
-            <input type="text" id="loginEmail" maxLength="254" />
+            <input type="text" id="loginEmail" maxLength="254" name='email' value={login.email} onChange={handleLogin}/>
             <p className="helper helper1">@Username</p>
           </div>
           <div className="inputGroup inputGroup2">
             <label htmlFor="loginPassword" id="loginPasswordLabel">
               Password
             </label>
-            <input type="password" id="loginPassword" />
+            <input type="password" id="loginPassword" name="password" value={login.password} onChange={handleLogin} />
             <label id="showPasswordToggle" htmlFor="showPasswordCheck">
               Show
               <input id="showPasswordCheck" type="checkbox" />
@@ -1094,4 +1108,4 @@ const Login_SignUp = () => {
     </>
   );
 };
-export default Login_SignUp;
+export default Login;

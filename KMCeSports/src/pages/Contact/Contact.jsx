@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { images } from "../../assets";
 import Contributor from "../../components/Contributor/Contributor";
 import constactStyles from "./Contact.module.css";
@@ -7,6 +7,8 @@ const Contact = () => {
     document.getElementById("name").value = "";
     document.getElementById("mail").value = "";
     document.getElementById("message").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("subEmail").value = "";
   }
 
   function check() {
@@ -22,26 +24,82 @@ const Contact = () => {
     } else if (name.length < 3) {
       alert("Please enter a valid name");
     } else {
-      alert("Thank you for your response");
+      try {
+        alert("Thank you for your response");
+        reset();
+      } catch (error) {
+        confirm.log(error);
+        alert("Something went wrong");
+      }
     }
   }
 
+  const [contact, setContact] = useState({
+    name: "",
+    mail: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleConatct = (e) => {
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setContact({
+      ...contact,
+      [name]: value,
+    });
+  };
+
+  const [email, setEmail] = useState("");
+  const handelEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  function checkEmail() {
+    var mail = document.getElementById("subEmail").value;
+    if (!mail.includes("@") || !mail.includes(".")) {
+      alert("Please enter a valid email");
+    } else {
+      try {
+        reset();
+        alert("Thank for Subscribing our news later");
+      } catch (error) {
+        confirm.log(error);
+        alert("Something went wrong");
+      }
+    }
+  }
   return (
     <div>
       <div className={constactStyles.formscontainer}>
         <div className={constactStyles.forms}>
           <span className={constactStyles.heading}>Get in touch</span>
           <input
+            name="name"
             placeholder="Name"
             id="name"
             type="text"
             className={constactStyles.input}
+            value={contact.name}
+            onChange={handleConatct}
           />
           <input
+            name="mail"
             placeholder="Email"
             id="mail"
             type="email"
             className={constactStyles.input}
+            value={contact.mail}
+            onChange={handleConatct}
+          />
+          <input
+            name="phone"
+            placeholder="Phone  ( Not Compulsory )"
+            id="phone"
+            type="number"
+            className={constactStyles.input}
+            value={contact.phone}
+            onChange={handleConatct}
           />
           <textarea
             placeholder="Say Hello"
@@ -50,6 +108,8 @@ const Contact = () => {
             id="message"
             name="message"
             className={constactStyles.textarea}
+            value={contact.message}
+            onChange={handleConatct}
           ></textarea>
           <div className={constactStyles.buttoncontainer}>
             <div
@@ -108,11 +168,19 @@ const Contact = () => {
               placeholder="Enter your email address"
               className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
               type="email"
+              name="email"
+              id="subEmail"
+              value={email.email}
+              onChange={handelEmail}
             />
 
             <button
               className="bg-gradient-to-r from-green-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-green-600 hover:to-blue-600 transition ease-in-out duration-150"
               type="submit"
+              onClick={(e) => {
+                e.preventDefault();
+                checkEmail();
+              }}
             >
               Subscribe
             </button>

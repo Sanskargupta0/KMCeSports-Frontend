@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import registrationStyle from "./Registration.module.css";
 
 const registration = () => {
@@ -30,7 +30,23 @@ function checkInput() {
         alert("Registration completed successfully");
     }
 }
+  
+  const [user, setUser] = useState({
+    firstName:"",
+    lastName:"",
+    userName:"",
+    email:"",
+    password:""
+  })
 
+  const handleUser= (e)=>{
+    let name = e.target.name;
+    let value = e.target.value;
+    setUser({
+      ... user,
+      [name]:value
+    })
+  }
   return (
     <div className={registrationStyle.container}>
       <div className={registrationStyle.form_area}>
@@ -56,12 +72,18 @@ function checkInput() {
                 style={{ marginRight: "10px" }}
                 type="text"
                 id="firstName"
+                name="firstName"
+                value={user.firstName}
+                onChange={handleUser}
               />
               <input
                 placeholder="Last Name"
                 className={registrationStyle.form_style}
                 type="text"
                 id="lastName"
+                name="lastName"
+                value={user.lastName}
+                onChange={handleUser}
               />
             </div>
           </div>
@@ -74,6 +96,9 @@ function checkInput() {
               id="userName"
               className={registrationStyle.form_style}
               type="text"
+              name="userName"
+              value={user.userName}
+              onChange={handleUser}
             />
           </div>
           <div className={registrationStyle.form_group}>
@@ -85,6 +110,9 @@ function checkInput() {
               id="email"
               className={registrationStyle.form_style}
               type="email"
+              name="email"
+              value={user.email}
+              onChange={handleUser}
             />
           </div>
           <div className={registrationStyle.form_group}>
@@ -107,6 +135,9 @@ function checkInput() {
               id="cpassword"
               className={registrationStyle.form_style}
               type="password"
+              name="password"
+              value={user.password}
+              onChange={handleUser}
             />
           </div>
           <div>
