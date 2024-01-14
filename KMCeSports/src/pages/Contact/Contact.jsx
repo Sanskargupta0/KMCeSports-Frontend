@@ -15,9 +15,13 @@ const Contact = () => {
     var name = document.getElementById("name").value;
     var mail = document.getElementById("mail").value;
     var message = document.getElementById("message").value;
+    var  phone = document.getElementById("phone").value;
     if (name === "" || mail === "" || message === "") {
       alert("Please fill all the fields");
-    } else if (!mail.includes("@") || !mail.includes(".")) {
+    } else if (phone.length>0 && phone.length < 10) {
+      alert("Please enter a valid phone number");
+    }
+      else if (!mail.includes("@") || !mail.includes(".")) {
       alert("Please enter a valid email");
     } else if (message.length < 10) {
       alert("Please enter a valid message");
@@ -25,8 +29,7 @@ const Contact = () => {
       alert("Please enter a valid name");
     } else {
       try {
-        alert("Thank you for your response");
-        reset();
+        return true;
       } catch (error) {
         confirm.log(error);
         alert("Something went wrong");
@@ -36,7 +39,7 @@ const Contact = () => {
 
   const [contact, setContact] = useState({
     name: "",
-    mail: "",
+    email: "",
     phone: "",
     message: "",
   });
@@ -60,15 +63,69 @@ const Contact = () => {
     if (!mail.includes("@") || !mail.includes(".")) {
       alert("Please enter a valid email");
     } else {
-      try {
-        reset();
-        alert("Thank for Subscribing our news later");
-      } catch (error) {
-        confirm.log(error);
-        alert("Something went wrong");
-      }
+      return true;
     }
   }
+  const handelEmailSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      const pass = checkEmail();
+      if (pass) {
+        const emailResponse = await fetch(
+          `http://localhost:3000/subscribeEmail`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: email,
+            }),
+          }
+        );
+        const emailData = await emailResponse.json();
+        console.log(emailData);
+        
+        if(!(emailResponse.status===422)){
+          reset();
+          alert(emailData.message);
+        }
+        else{
+          alert(emailData.extraDetails); // Show response object in alert
+        }
+      }
+    } catch (error) {
+      console.log({ err: error });
+    }
+  };
+
+  const handelConatct = async (e) => {
+    try {
+      e.preventDefault();
+      const pass = check();
+      if (pass) {
+        console.log(contact);
+        const contactResponse = await fetch(`http://localhost:3000/contact`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(contact),
+        });
+        const contactData = await contactResponse.json();
+        console.log(contactData);
+        if (!(contactResponse.status === 422)) {
+          reset();
+          alert(contactData.message); 
+        }
+        else{
+          alert(contactData.extraDetails); // Show response object in alert
+        }
+      }
+    } catch (error) {
+      console.log({ err: error });
+    }
+  };
   return (
     <div>
       <div className={constactStyles.formscontainer}>
@@ -84,12 +141,12 @@ const Contact = () => {
             onChange={handleConatct}
           />
           <input
-            name="mail"
+            name="email"
             placeholder="Email"
             id="mail"
             type="email"
             className={constactStyles.input}
-            value={contact.mail}
+            value={contact.email}
             onChange={handleConatct}
           />
           <input
@@ -112,13 +169,7 @@ const Contact = () => {
             onChange={handleConatct}
           ></textarea>
           <div className={constactStyles.buttoncontainer}>
-            <div
-              className={constactStyles.sendbutton}
-              onClick={(e) => {
-                e.preventDefault();
-                check();
-              }}
-            >
+            <div className={constactStyles.sendbutton} onClick={handelConatct}>
               Send
             </div>
             <div className={constactStyles.resetbuttoncontainer}>
@@ -177,10 +228,7 @@ const Contact = () => {
             <button
               className="bg-gradient-to-r from-green-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-green-600 hover:to-blue-600 transition ease-in-out duration-150"
               type="submit"
-              onClick={(e) => {
-                e.preventDefault();
-                checkEmail();
-              }}
+              onClick={handelEmailSubmit}
             >
               Subscribe
             </button>
