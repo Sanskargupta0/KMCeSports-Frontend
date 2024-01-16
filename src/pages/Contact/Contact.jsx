@@ -91,7 +91,7 @@ const Contact = () => {
           alert(emailData.message);
         }
         else{
-          alert(emailData.extraDetails); // Show response object in alert
+          alert(emailData.message); // Show response object in alert
         }
       }
     } catch (error) {

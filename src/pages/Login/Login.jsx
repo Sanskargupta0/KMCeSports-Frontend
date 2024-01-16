@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { gsap, Power2, Expo, Quad } from "gsap";
 import MorphSVGPlugin from "gsap-trial/dist/MorphSVGPlugin";
 import "./Login.scss";
+import { useAuth } from '../../store/auth';
 
 //register plugins
 gsap.config({ trialWarn: false });
 gsap.registerPlugin(MorphSVGPlugin);
 
+
+
 const Login = () => {
+  const { storeTokenInLs } = useAuth();
   setTimeout(() => {
     var emailLabel = document.querySelector("#loginEmailLabel"),
       email = document.querySelector("#loginEmail"),
@@ -619,20 +623,46 @@ const Login = () => {
     initLoginForm();
   }, 100);
 
-  const [login, setLogin]=useState({
-    email:"",
-    password:""
+  const [login, setLogin] = useState({
+    email: "",
+    password: "",
   });
 
-  const handleLogin = (e)=>{
+  const handleLogin = (e) => {
     let name = e.target.name;
     let value = e.target.value;
     setLogin({
       ...login,
-      [name]:value
+      [name]: value,
     });
-  }
-;
+  };
+
+  const handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(`http://localhost:3000/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(login),
+      });
+      const responseData = await response.json();
+      console.log(responseData);
+      if (response.status === 200) {
+        storeTokenInLs(responseData.token , responseData.userid);
+        alert(responseData.msg);
+        setLogin({
+          email: "",
+          password: "",
+        });
+      } else {
+        alert(responseData.msg);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <>
       <div className="loginForm">
@@ -999,24 +1029,40 @@ const Login = () => {
 
           <div className="inputGroup inputGroup1">
             <label htmlFor="loginEmail" id="loginEmailLabel">
-              Email \ @Username
+              Email
             </label>
-            <input type="text" id="loginEmail" maxLength="254" name='email' value={login.email} onChange={handleLogin}/>
-            <p className="helper helper1">@Username</p>
+            <input
+              type="email"
+              id="loginEmail"
+              maxLength="254"
+              name="email"
+              value={login.email}
+              onChange={handleLogin}
+            />
+            <p className="helper helper1">Email</p>
           </div>
           <div className="inputGroup inputGroup2">
             <label htmlFor="loginPassword" id="loginPasswordLabel">
               Password
             </label>
-            <input type="password" id="loginPassword" name="password" value={login.password} onChange={handleLogin} />
+            <input
+              type="password"
+              id="loginPassword"
+              name="password"
+              value={login.password}
+              onChange={handleLogin}
+              autoComplete="off"
+            />
             <label id="showPasswordToggle" htmlFor="showPasswordCheck">
               Show
-              <input id="showPasswordCheck" type="checkbox" />
+              <input id="showPasswordCheck" type="checkbox"/>
               <div className="indicator"></div>
             </label>
           </div>
           <div className="inputGroup inputGroup3 loginbtn">
-            <button id="login">Log in</button>
+            <button id="login" onClick={handleLoginSubmit}>
+              Log in
+            </button>
           </div>
           <div className="rememberMe">
             <label
@@ -1102,7 +1148,13 @@ const Login = () => {
           }}
         >
           Don't have an account?{" "}
-          <a href="/registration"className="underline decoration-red-500" style={{cursor:"pointer" ,fontSize: "30px"}}>Signup</a>
+          <a
+            href="/registration"
+            className="underline decoration-red-500"
+            style={{ cursor: "pointer", fontSize: "30px" }}
+          >
+            Signup
+          </a>
         </p>
       </div>
     </>
