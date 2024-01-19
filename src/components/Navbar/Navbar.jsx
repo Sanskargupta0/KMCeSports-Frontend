@@ -19,6 +19,7 @@ function classNames(...classes) {
 }
 
 export default function Navbar(props) {
+
   const location = useLocation();
 
   // Update the current property based on the current path
@@ -81,9 +82,10 @@ export default function Navbar(props) {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
+                {(!props.islogedIn) ?
                 <div className={navStyles.fix}>
-                <Link to="/auth">
-                  <button className={navStyles.login} style={{ display: props.login }}>
+                <Link to="/login">
+                  <button className={navStyles.login}>
                     <svg
                       height="36px"
                       width="36px"
@@ -135,10 +137,10 @@ export default function Navbar(props) {
                   </button>
                 </Link>
                 </div>
+                :<>
                 <button
                   type="button"
                   className="relative rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  style={{ display: props.state }}
                 >
                   <span className="absolute -inset-1.5" />
                   <span className="sr-only">View notifications</span>
@@ -155,7 +157,6 @@ export default function Navbar(props) {
                         className="h-8 w-8 rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         alt="User Image"
-                        style={{ display: props.state }}
                       />
                     </Menu.Button>
                   </div>
@@ -198,7 +199,7 @@ export default function Navbar(props) {
                       <Menu.Item>
                         {({ active }) => (
                           <a
-                            href="#"
+                            href="/logout"
                             className={classNames(
                               active ? "bg-gray-100" : "",
                               "block px-4 py-2 text-sm text-gray-700"
@@ -210,7 +211,7 @@ export default function Navbar(props) {
                       </Menu.Item>
                     </Menu.Items>
                   </Transition>
-                </Menu>
+                </Menu> </>}
               </div>
             </div>
           </div>

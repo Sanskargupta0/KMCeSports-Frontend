@@ -3,6 +3,7 @@ import { gsap, Power2, Expo, Quad } from "gsap";
 import MorphSVGPlugin from "gsap-trial/dist/MorphSVGPlugin";
 import "./Login.scss";
 import { useAuth } from '../../store/auth';
+import { useNavigate } from "react-router-dom";
 
 //register plugins
 gsap.config({ trialWarn: false });
@@ -11,6 +12,7 @@ gsap.registerPlugin(MorphSVGPlugin);
 
 
 const Login = () => {
+  const navigate = useNavigate();
   const { storeTokenInLs } = useAuth();
   setTimeout(() => {
     var emailLabel = document.querySelector("#loginEmailLabel"),
@@ -648,7 +650,6 @@ const Login = () => {
         body: JSON.stringify(login),
       });
       const responseData = await response.json();
-      console.log(responseData);
       if (response.status === 200) {
         storeTokenInLs(responseData.token , responseData.userid);
         alert(responseData.msg);
@@ -656,6 +657,10 @@ const Login = () => {
           email: "",
           password: "",
         });
+        navigate("/");
+        window.location.reload();
+      }else if (responseData.redirectedURL) {
+         navigate((responseData.redirectedURL+`?email=${login.email}`))
       } else {
         alert(responseData.msg);
       }

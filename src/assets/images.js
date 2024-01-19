@@ -6,5 +6,5 @@ export default {
     KMCeSportsLogo,
     Sanskar,
     Aman,
-    Akash
+    Akash,
 }

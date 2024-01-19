@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import registrationStyle from "./Registration.module.css";
-
+import { useNavigate } from "react-router-dom";
 const registration = () => {
+  const nevigate = useNavigate();
   function checkInput() {
     var firstName = document.getElementById("firstName").value;
     var lastName = document.getElementById("lastName").value;
@@ -66,7 +67,7 @@ const registration = () => {
 
         const registrationData = await registrationResponse.json();
         console.log(registrationData);
-        if (!(registrationResponse.status === 422)) {
+        if (registrationResponse.status === 201) {
           setUser({
             firstName: "",
             lastName: "",
@@ -74,11 +75,15 @@ const registration = () => {
             email: "",
             password: "",
           });
-          document.getElementById("cpassword").value = "";
+          document.getElementById("password").value = "";
           alert(registrationData.msg);
+          nevigate(`/otpVerfication?email=${user.email}`)
         } else {
-          alert(registrationData.extraDetails); // Show response object in alert
-        }
+          if(registrationData.extrD === undefined){
+            alert(registrationData.msg); // Show response object in alert
+          }else{
+          alert(registrationData.msg+registrationData.extrD); // Show response object in alert
+        }}
       }
     } catch (error) {
       console.log({ err: error });
@@ -189,7 +194,7 @@ const registration = () => {
             </button>
             <p>
               Have an Account?{" "}
-              <a className={registrationStyle.link} href="/auth">
+              <a className={registrationStyle.link} href="/login">
                 Login Here!
               </a>
             </p>
