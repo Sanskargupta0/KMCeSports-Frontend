@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import otpStyle from "./OtpVerfication.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import Loader from "../../components/Loader/Loader";
 
 const OtpVerfication = () => {
   const navigate = useNavigate();
@@ -8,8 +9,6 @@ const OtpVerfication = () => {
   const queryParams = new URLSearchParams(location.search);
   const getEmail = queryParams.get("email") || "";
   const mode = queryParams.get("mode") || "ValidateUser";
-  console.log(getEmail);
-  console.log(mode);
   useEffect(() => {
     setEmail(getEmail);
     document.getElementById("email").value = getEmail;
@@ -48,6 +47,7 @@ const OtpVerfication = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [show, setShow] = useState(true);
+  const [showLoader, setShowLoader] = useState(true);
   const [otp, setOtp] = useState({ otp1: "", otp2: "", otp3: "", otp4: "" });
   const inputOtp = otp.otp1 + otp.otp2 + otp.otp3 + otp.otp4;
   const handleInput = (e) => {
@@ -104,8 +104,6 @@ const OtpVerfication = () => {
           }),
         });
         const responseData = await response.json();
-        console.log(response);
-        console.log(responseData);
         if (response.status === 200) {
           alert(responseData.msg);
           navigate("/login");
@@ -124,6 +122,7 @@ const OtpVerfication = () => {
   const handelEmailSubmit = async (e) => {
     e.preventDefault();
     if (checkemail()) {
+      setShowLoader(false);
       try {
         const response = await fetch(Url1, {
           method: "POST",
@@ -134,6 +133,7 @@ const OtpVerfication = () => {
         });
         const jsonData = await response.json();
         alert(jsonData.msg);
+        setShowLoader(true);
         if (jsonData.redirected) {
           setShow(false);
         }
@@ -147,40 +147,53 @@ const OtpVerfication = () => {
     <div className={otpStyle.main}>
       {show ? (
         <div className={otpStyle.email}>
-          <div className="font-semibold text-xl text-lime-600">
-            <h2 className={otpStyle.text}>
-              Enter your Register Email Id for OTP Verification
-            </h2>
-          </div>
-          <div className="relative mt-6">
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email address"
-              autoComplete="email"
-              aria-label="Email address"
-              className="block w-full rounded-2xl border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5"
-              onChange={handleEmail}
-            />
-            <div className="absolute inset-y-1 right-1 flex justify-end">
-              <button
-                type="submit"
-                aria-label="Submit"
-                className="flex aspect-square h-full items-center justify-center rounded-xl bg-neutral-950 text-white transition hover:bg-neutral-800"
-                onClick={handelEmailSubmit}
-              >
-                <svg viewBox="0 0 16 6" aria-hidden="true" className="w-4">
-                  <path
-                    fill="currentColor"
-                    fillRule="evenodd"
-                    clipRule="evenodd"
-                    d="M16 3 10 .5v2H0v1h10v2L16 3Z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-          </div>
+          {showLoader ? (
+            <>
+              <div className="font-semibold text-xl text-lime-600">
+                <h2 className={otpStyle.text}>
+                  Enter your Register Email Id for OTP Verification
+                </h2>
+              </div>
+              <div className="relative mt-6">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  placeholder="Email address"
+                  autoComplete="email"
+                  aria-label="Email address"
+                  className="block w-full rounded-2xl border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5"
+                  onChange={handleEmail}
+                />
+                <div className="absolute inset-y-1 right-1 flex justify-end">
+                  <button
+                    type="submit"
+                    aria-label="Submit"
+                    className="flex aspect-square h-full items-center justify-center rounded-xl bg-neutral-950 text-white transition hover:bg-neutral-800"
+                    onClick={handelEmailSubmit}
+                  >
+                    <svg viewBox="0 0 16 6" aria-hidden="true" className="w-4">
+                      <path
+                        fill="currentColor"
+                        fillRule="evenodd"
+                        clipRule="evenodd"
+                        d="M16 3 10 .5v2H0v1h10v2L16 3Z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>{" "}
+            </>
+          ) : (
+            <>
+              <Loader />
+              <div className="font-semibold text-xl text-lime-600">
+                <h2 className={otpStyle.text}>
+                  Your OTP Verification Mail is getting Generated
+                </h2>
+              </div>
+            </>
+          )}
         </div>
       ) : (
         <>
