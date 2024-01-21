@@ -1078,7 +1078,7 @@ const Login = () => {
               <div className="checkmark"></div>
             </label>
             <label style={{ fontSize: "1em" }}>Remember me</label>
-            <a href="#" className="forget-password">
+            <a href={"/otpVerfication?email="+login.email+"&mode=ResetPassword"} className="forget-password">
               Forget Password?
             </a>
           </div>
