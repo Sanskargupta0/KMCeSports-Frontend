@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import registrationStyle from "./Registration.module.css";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+
 const registration = () => {
   const nevigate = useNavigate();
   function checkInput() {
@@ -12,21 +14,37 @@ const registration = () => {
     var cpassword = document.getElementById("cpassword").value;
 
     if (firstName.length < 3) {
-      alert("First name should be at least 3 characters long");
+      toast.warn("First name should be at least 3 characters long",{
+        position:"top-center"
+      });
     } else if (lastName.length < 3) {
-      alert("Last name should be at least 3 characters long");
+      toast.warn("Last name should be at least 3 characters long",{
+        position:"top-center"
+      });
     } else if (!/^[a-zA-Z0-9]+$/.test(userName)) {
-      alert("Username can only contain letters and numbers");
+      toast.warn("Username can only contain letters and numbers",{
+        position:"top-center"
+      });
     } else if (email === "") {
-      alert("Please enter your email");
+      toast.warn("Please enter your email",{
+        position:"top-center"
+      });
     } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      alert("Please enter a valid email address");
+      toast.warn("Please enter a valid email address",{
+        position:"top-center"
+      });
     } else if (password === "") {
-      alert("Please enter your password");
+      toast.warn("Please enter your password",{
+        position:"top-center"
+      });
     } else if (cpassword === "") {
-      alert("Please enter your confirm password");
+      toast.warn("Please enter your confirm password",{
+        position:"top-center"
+      });
     } else if (password !== cpassword) {
-      alert("Password and confirm password do not match");
+      toast.warn("Password and confirm password do not match",{
+        position:"top-center"
+      });
     } else {
       return true;
     }
@@ -76,13 +94,19 @@ const registration = () => {
             password: "",
           });
           document.getElementById("password").value = "";
-          alert(registrationData.msg);
+          toast.success(`${registrationData.msg}`,{
+            position:"top-center"
+          });
           nevigate(`/otpVerfication?email=${user.email}`)
         } else {
           if(registrationData.extrD === undefined){
-            alert(registrationData.msg); // Show response object in alert
+            toast.error(`${registrationData.msg}`,{
+              position:"top-center"
+            }); 
           }else{
-          alert(registrationData.msg+registrationData.extrD); // Show response object in alert
+            toast.error(`${registrationData.msg+registrationData.extrD}`,{
+              position:"top-center"
+            });
         }}
       }
     } catch (error) {
@@ -204,6 +228,7 @@ const registration = () => {
         </form>
       </div>
       <a className={registrationStyle.link} href=""></a>
+      <ToastContainer />
     </div>
   );
 };

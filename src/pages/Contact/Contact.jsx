@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { images } from "../../assets";
 import Contributor from "../../components/Contributor/Contributor";
 import constactStyles from "./Contact.module.css";
+import { ToastContainer, toast } from 'react-toastify';
+
 const Contact = () => {
   function reset() {
     document.getElementById("name").value = "";
@@ -17,22 +19,54 @@ const Contact = () => {
     var message = document.getElementById("message").value;
     var  phone = document.getElementById("phone").value;
     if (name === "" || mail === "" || message === "") {
-      alert("Please fill all the fields");
+      toast.warn("Please fill all the fields",{
+        position:"top-center"
+      });
     } else if (phone.length>0 && phone.length < 10) {
-      alert("Please enter a valid phone number");
+      toast.warn
+
+
+
+("Please enter a valid phone number",{
+        position:"top-center"
+      });
     }
       else if (!mail.includes("@") || !mail.includes(".")) {
-      alert("Please enter a valid email");
+        toast.warn
+
+
+
+("Please enter a valid email",{
+          position:"top-center"
+        });
     } else if (message.length < 10) {
-      alert("Please enter a valid message");
+      toast.warn
+
+
+
+("Please enter a valid message",{
+        position:"top-center"
+      });
     } else if (name.length < 3) {
-      alert("Please enter a valid name");
+      toast.warn
+
+
+
+("Please enter a valid name",{
+        position:"top-center"
+      });
     } else {
       try {
         return true;
       } catch (error) {
         confirm.log(error);
-        alert("Something went wrong");
+        toast.warn
+
+
+
+("Something went wrong",{
+          position:"top-center"
+        });
       }
     }
   }
@@ -61,7 +95,13 @@ const Contact = () => {
   function checkEmail() {
     var mail = document.getElementById("subEmail").value;
     if (!mail.includes("@") || !mail.includes(".")) {
-      alert("Please enter a valid email");
+      toast.warn
+
+
+
+("Please enter a valid email",{
+        position:"top-center"
+      });
     } else {
       return true;
     }
@@ -88,10 +128,16 @@ const Contact = () => {
         
         if(!(emailResponse.status===422)){
           reset();
-          alert(emailData.message);
+          toast.success(`${emailData.message}`,{
+            position:"top-center"
+          });
+    
+          
         }
         else{
-          alert(emailData.message); // Show response object in alert
+          toast.error(`${emailData.message}`,{
+            position:"top-center"
+          }); 
         }
       }
     } catch (error) {
@@ -116,10 +162,21 @@ const Contact = () => {
         console.log(contactData);
         if (!(contactResponse.status === 422)) {
           reset();
-          alert(contactData.message); 
+          toast.success(`${contactData.message}`,{
+            position:"top-center"
+          });
         }
-        else{
-          alert(contactData.extraDetails); // Show response object in alert
+
+        else{ if(contactData.extrD){
+          toast.error(`${contactData.msg+contactData.extrD}`,{
+            position:"top-center"
+          });
+        }else{
+          toast.error(`${contactData.msg}`,{
+            position:"top-center"
+          });;
+        }
+           
         }
       }
     } catch (error) {
@@ -241,6 +298,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

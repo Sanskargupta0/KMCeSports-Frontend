@@ -14,6 +14,7 @@ import Logout from './pages/Logout/Logout'
 import Error from './pages/Error/Error'
 import OtpVerfication from './pages/OtpVerfication/OtpVerfication'
 import './App.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const {islogedIn} = useAuth();

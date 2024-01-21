@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import otpStyle from "./OtpVerfication.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const OtpVerfication = () => {
   const navigate = useNavigate();
@@ -16,18 +18,26 @@ const OtpVerfication = () => {
   }, [getEmail]);
   function checkemail() {
     if (email === "") {
-      alert("Please enter your email");
+      toast.warn("Please enter your email", {
+        position: "top-center"
+      });
     } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      alert("Please enter a valid email address");
+      toast.warn("Please enter a valid email address", {
+        position: "top-center"
+      });
     } else {
       return true;
     }
   }
   function checkOtp() {
     if (inputOtp === "") {
-      alert("Please enter the OTP");
+      toast.warn("Please enter the otp", {
+        position: "top-center"
+      });
     } else if (inputOtp.length !== 4) {
-      alert("Please enter a 4-digit OTP");
+      toast.warn("Please enter the 4-digit otp", {
+        position: "top-center"
+      });
     } else {
       return true;
     }
@@ -36,11 +46,16 @@ const OtpVerfication = () => {
     let pass = document.getElementById("pass").value;
     let cpass = document.getElementById("cpass").value;
     if (pass === "") {
-      alert("Please enter a password");
+      toast.warn("Please enter a password", {
+        position: "top-center"
+      });
     } else if (pass.length < 8) {
-      alert("Password should be atleast 8 characters long");
-    } else if (pass !== cpass) {
-      alert("Passwords do not match");
+      toast.warn("Password should be atleast 8 characters long", {
+        position: "top-center"
+      });
+      toast.warn("Password do not match", {
+        position: "top-center"
+      });
     } else {
       return true;
     }
@@ -107,13 +122,19 @@ const OtpVerfication = () => {
         console.log(response);
         console.log(responseData);
         if (response.status === 200) {
-          alert(responseData.msg);
+          toast.success(`${responseData.msg}`, {
+            position: "top-center"
+          });
           navigate("/login");
         } else {
           if (responseData.extraD === undefined) {
-            alert(responseData.msg);
+            toast.error(`${responseData.msg}`, {
+              position: "top-center"
+            });
           } else {
-            alert(responseData.msg + responseData.extraD);
+            toast.error(`${responseData.msg + responseData.extraD}`, {
+              position: "top-center"
+            });
           }
         }
       } catch (error) {
@@ -133,7 +154,17 @@ const OtpVerfication = () => {
           }),
         });
         const jsonData = await response.json();
-        alert(jsonData.msg);
+        if (response.status === 200) {
+          toast.success(`${jsonData.msg}`, {
+            position: "top-center"
+          });
+        }
+
+        else {
+          toast.error(`${jsonData.msg}`, {
+            position: "top-center"
+          });
+        }
         if (jsonData.redirected) {
           setShow(false);
         }
@@ -333,7 +364,7 @@ bWVzdGFtcAAyMDIzLTAyLTEzVDEzOjE1OjUxKzAwOjAwIIO3fQAAAABJRU5ErkJggg=="
             </form>
           </div>
         </>
-      )}
+      )}<ToastContainer />
     </div>
   );
 };

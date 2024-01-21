@@ -4,6 +4,7 @@ import MorphSVGPlugin from "gsap-trial/dist/MorphSVGPlugin";
 import "./Login.scss";
 import { useAuth } from '../../store/auth';
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
 
 //register plugins
 gsap.config({ trialWarn: false });
@@ -652,7 +653,9 @@ const Login = () => {
       const responseData = await response.json();
       if (response.status === 200) {
         storeTokenInLs(responseData.token , responseData.userid);
-        alert(responseData.msg);
+        toast.success(`${responseData.msg}`,{
+          position:"top-center"
+        });
         setLogin({
           email: "",
           password: "",
@@ -662,7 +665,9 @@ const Login = () => {
       }else if (responseData.redirectedURL) {
          navigate((responseData.redirectedURL+`?email=${login.email}`))
       } else {
-        alert(responseData.msg);
+        toast.error(`${responseData.msg}`,{
+          position:"top-center"
+        });
       }
     } catch (err) {
       console.log(err);
@@ -1161,6 +1166,7 @@ const Login = () => {
             Signup
           </a>
         </p>
+        <ToastContainer />
       </div>
     </>
   );
