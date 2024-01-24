@@ -2,15 +2,19 @@ import React, { useState } from "react";
 import { gsap, Power2, Expo, Quad } from "gsap";
 import MorphSVGPlugin from "gsap-trial/dist/MorphSVGPlugin";
 import "./Login.scss";
-import { useAuth } from '../../store/auth';
+import { useAuth } from "../../store/auth";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import {
+  auth,
+  googleProvider,
+  twitterProvide,
+} from "../../store/firebase-auth";
+import { signInWithPopup } from "firebase/auth";
 
 //register plugins
 gsap.config({ trialWarn: false });
 gsap.registerPlugin(MorphSVGPlugin);
-
-
 
 const Login = () => {
   const navigate = useNavigate();
@@ -652,9 +656,9 @@ const Login = () => {
       });
       const responseData = await response.json();
       if (response.status === 200) {
-        storeTokenInLs(responseData.token , responseData.userid);
-        toast.success(`${responseData.msg}`,{
-          position:"top-center"
+        storeTokenInLs(responseData.token);
+        toast.success(`${responseData.msg}`, {
+          position: "top-center",
         });
         setLogin({
           email: "",
@@ -662,15 +666,96 @@ const Login = () => {
         });
         navigate("/");
         window.location.reload();
-      }else if (responseData.redirectedURL) {
-         navigate((responseData.redirectedURL+`?email=${login.email}`))
+      } else if (responseData.redirectedURL) {
+        navigate(responseData.redirectedURL + `?email=${login.email}`);
       } else {
-        toast.error(`${responseData.msg}`,{
-          position:"top-center"
+        toast.error(`${responseData.msg}`, {
+          position: "top-center",
         });
       }
     } catch (err) {
       console.log(err);
+    }
+  };
+  const handleGoogleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const userData = await signInWithPopup(auth, googleProvider);
+      const extractedUserData = {
+        email: userData.user.email,
+        displayName: userData.user.displayName,
+        photoURL: userData.user.photoURL,
+        phoneNumber: userData.user.phoneNumber,
+      };
+      const response = await fetch(
+        `http://localhost:3000/loginWithSocialMedia`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(extractedUserData),
+        }
+      );
+      const responseData = await response.json();
+      if (response.status === 200 || response.status === 201) {
+        storeTokenInLs(responseData.token);
+        toast.success(`${responseData.msg}`, {
+          position: "top-center",
+        });
+        navigate("/");
+        window.location.reload();
+      } else {
+        toast.error(`${responseData.msg}`, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Login failed", {
+        position: "top-center",
+      });
+    }
+  };
+  const handleTwitterLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const userData = await signInWithPopup(auth, twitterProvide);
+      const extractedUserData = {
+        email: userData.user.email,
+        displayName: userData.user.displayName,
+        photoURL: userData.user.photoURL,
+        phoneNumber: userData.user.phoneNumber,
+      };
+      console.log(extractedUserData);
+      const response = await fetch(
+        `http://localhost:3000/loginWithSocialMedia`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(extractedUserData),
+        }
+      );
+      const responseData = await response.json();
+      if (response.status === 200 || response.status === 201) {
+        storeTokenInLs(responseData.token);
+        toast.success(`${responseData.msg}`, {
+          position: "top-center",
+        });
+        navigate("/");
+        window.location.reload();
+      } else {
+        toast.error(`${responseData.msg}`, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Login failed", {
+        position: "top-center",
+      });
     }
   };
   return (
@@ -1065,7 +1150,7 @@ const Login = () => {
             />
             <label id="showPasswordToggle" htmlFor="showPasswordCheck">
               Show
-              <input id="showPasswordCheck" type="checkbox"/>
+              <input id="showPasswordCheck" type="checkbox" />
               <div className="indicator"></div>
             </label>
           </div>
@@ -1083,12 +1168,17 @@ const Login = () => {
               <div className="checkmark"></div>
             </label>
             <label style={{ fontSize: "1em" }}>Remember me</label>
-            <a href={"/otpVerfication?email="+login.email+"&mode=ResetPassword"} className="forget-password">
+            <a
+              href={
+                "/otpVerfication?email=" + login.email + "&mode=ResetPassword"
+              }
+              className="forget-password"
+            >
               Forget Password?
             </a>
           </div>
           <div className="otherSginInOptions">
-            <button className="oauthButton">
+            <button className="oauthButton" onClick={handleGoogleLogin}>
               <svg className="icon" viewBox="0 0 24 24">
                 <path
                   d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
@@ -1112,36 +1202,24 @@ const Login = () => {
             </button>
           </div>
           <div className="otherSginInOptions" style={{ marginTop: "1rem" }}>
-            <button className="oauthButton facebookIcon">
+            <button
+              className="oauthButton facebookIcon"
+              onClick={handleTwitterLogin}
+            >
               <svg
-                version="1.0"
+                width="1200"
+                height="1227"
+                viewBox="0 0 1200 1227"
+                fill=""
+                style={{ height: "1.5rem", width: "1.5rem" }}
                 xmlns="http://www.w3.org/2000/svg"
-                width="512.000000pt"
-                height="512.000000pt"
-                viewBox="0 0 512.000000 512.000000"
-                preserveAspectRatio="xMidYMid meet"
-                style={{ height: "2rem", width: "2rem" }}
               >
-                <g
-                  transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                  fill="#000000"
-                  stroke="none"
-                >
-                  <path
-                    d="M2363 5109 c-430 -31 -865 -182 -1224 -425 -164 -110 -242 -175 -394
--328 -293 -295 -492 -620 -618 -1012 -164 -509 -164 -1059 0 -1568 128 -397
-326 -719 628 -1021 302 -302 624 -500 1021 -628 509 -164 1059 -164 1568 0
-397 128 719 326 1021 628 302 302 500 624 628 1021 164 509 164 1059 0 1568
--92 284 -215 520 -407 776 -82 109 -317 350 -425 435 -421 331 -899 517 -1426
-555 -156 11 -209 11 -372 -1z m907 -1269 l0 -290 -206 0 c-314 0 -308 6 -312
--292 l-3 -208 260 0 261 0 -4 -22 c-3 -13 -17 -146 -32 -295 l-28 -273 -228 0
--228 0 0 -840 0 -840 -347 2 -348 3 -3 838 -2 837 -165 0 -165 0 0 295 0 295
-164 0 164 0 4 248 c5 276 16 344 74 471 59 129 148 223 269 283 130 65 210 76
-573 77 l302 1 0 -290z"
-                  />
-                </g>
+                <path
+                  d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"
+                  fill="black"
+                />
               </svg>
-              Continue with Facebook
+              Continue with Twitter
             </button>
           </div>
         </form>
