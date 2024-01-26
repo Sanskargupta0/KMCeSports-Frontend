@@ -17,12 +17,12 @@ import './App.css'
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
-  const {islogedIn} = useAuth();
+  const {islogedIn ,userdata } = useAuth();
   
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar islogedIn={islogedIn}/>
+        <Navbar islogedIn={islogedIn} avatarURL={userdata.avatarURL}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />

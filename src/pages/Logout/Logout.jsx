@@ -6,6 +6,6 @@ export default function Logout() {
     const {logoutUser} = useAuth();
   useEffect(() => {
     logoutUser();
-  }, [logoutUser]);
+  }, []);
   return <Navigate to="/login" />;
 };

@@ -1,21 +1,84 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 
 export const Authprovider = ({ children }) => {
+  // storing token in state
   const [token, setToken] = useState({ token: localStorage.getItem("Token") });
-
+  // storing user data in state
+  const [userdata, setUserData] = useState({
+    id: "",
+    userName: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    avatarURL: "",
+  });
+  // checking if user is logged in or not
   const islogedIn = !!token.token;
-
+  // logout user
   const logoutUser = () => {
-    localStorage.removeItem("Token");
     setToken({ token: null });
+    setUserData({
+      id: null,
+      userName: null,
+      firstName: null,
+      lastName: null,
+      email: null,
+      phone: null,
+      avatarURL: null,
+    });
+    localStorage.removeItem("Token");
+  };
+  // Get user data from backend using token
+  const getUserData = async (token) => {
+    try {
+      const res = await fetch("http://localhost:3000/userData ", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data);
+      } else {
+        setUserData({
+          id: data._id,
+          userName: data.userName,
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          phone: data.phone,
+          avatarURL: data.avatarURL,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  // useEffect(() => {
+  //   console.log(token); // Log the updated userdata state
+  //   console.log(userdata); // Log the updated userdata state
+  // }, [userdata, token]);
+  // store token in local storage
   const storeTokenInLs = (token) => {
     localStorage.setItem("Token", token);
   };
+
+  useEffect(() => {
+    // console.log("start useEffect");
+    // console.log(token.token);
+    if (token.token != null)
+      // console.log("start updating userdata"),
+      getUserData(token.token);
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ storeTokenInLs, logoutUser, islogedIn }}>
+    <AuthContext.Provider
+      value={{ storeTokenInLs, logoutUser, islogedIn, userdata }}
+    >
       {children}
     </AuthContext.Provider>
   );
