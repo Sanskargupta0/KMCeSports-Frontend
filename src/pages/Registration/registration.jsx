@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import registrationStyle from "./Registration.module.css";
-import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, Link } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import config from "../../config";
 
 const registration = () => {
   const nevigate = useNavigate();
@@ -14,36 +15,36 @@ const registration = () => {
     var cpassword = document.getElementById("cpassword").value;
 
     if (firstName.length < 3) {
-      toast.warn("First name should be at least 3 characters long",{
-        position:"top-center"
+      toast.warn("First name should be at least 3 characters long", {
+        position: "top-center",
       });
     } else if (lastName.length < 3) {
-      toast.warn("Last name should be at least 3 characters long",{
-        position:"top-center"
+      toast.warn("Last name should be at least 3 characters long", {
+        position: "top-center",
       });
     } else if (!/^[a-zA-Z0-9]+$/.test(userName)) {
-      toast.warn("Username can only contain letters and numbers",{
-        position:"top-center"
+      toast.warn("Username can only contain letters and numbers", {
+        position: "top-center",
       });
     } else if (email === "") {
-      toast.warn("Please enter your email",{
-        position:"top-center"
+      toast.warn("Please enter your email", {
+        position: "top-center",
       });
     } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      toast.warn("Please enter a valid email address",{
-        position:"top-center"
+      toast.warn("Please enter a valid email address", {
+        position: "top-center",
       });
     } else if (password === "") {
-      toast.warn("Please enter your password",{
-        position:"top-center"
+      toast.warn("Please enter your password", {
+        position: "top-center",
       });
     } else if (cpassword === "") {
-      toast.warn("Please enter your confirm password",{
-        position:"top-center"
+      toast.warn("Please enter your confirm password", {
+        position: "top-center",
       });
     } else if (password !== cpassword) {
-      toast.warn("Password and confirm password do not match",{
-        position:"top-center"
+      toast.warn("Password and confirm password do not match", {
+        position: "top-center",
       });
     } else {
       return true;
@@ -73,7 +74,7 @@ const registration = () => {
       const pass = checkInput();
       if (pass) {
         const registrationResponse = await fetch(
-          `http://localhost:3000/register`,
+          `${config.backendUrl}/register`,
           {
             method: "POST",
             headers: {
@@ -84,7 +85,6 @@ const registration = () => {
         );
 
         const registrationData = await registrationResponse.json();
-        console.log(registrationData);
         if (registrationResponse.status === 201) {
           setUser({
             firstName: "",
@@ -94,20 +94,21 @@ const registration = () => {
             password: "",
           });
           document.getElementById("password").value = "";
-          toast.success(`${registrationData.msg}`,{
-            position:"top-center"
+          toast.success(`${registrationData.msg}`, {
+            position: "top-center",
           });
-          nevigate(`/otpVerfication?email=${user.email}`)
+          nevigate(`/otpVerfication?email=${user.email}`);
         } else {
-          if(registrationData.extrD === undefined){
-            toast.error(`${registrationData.msg}`,{
-              position:"top-center"
-            }); 
-          }else{
-            toast.error(`${registrationData.msg+registrationData.extrD}`,{
-              position:"top-center"
+          if (registrationData.extrD === undefined) {
+            toast.error(`${registrationData.msg}`, {
+              position: "top-center",
             });
-        }}
+          } else {
+            toast.error(`${registrationData.msg + registrationData.extrD}`, {
+              position: "top-center",
+            });
+          }
+        }
       }
     } catch (error) {
       console.log({ err: error });
@@ -217,17 +218,14 @@ const registration = () => {
               SIGN UP
             </button>
             <p>
-              Have an Account?{" "}
-              <a className={registrationStyle.link} href="/login">
-                Login Here!
-              </a>
+              Have an Account? <Link to="/login">Login Here!</Link>
             </p>
-            <a className={registrationStyle.link} href=""></a>
+            <a className={registrationStyle.link}></a>
           </div>
-          <a className={registrationStyle.link} href=""></a>
+          <a className={registrationStyle.link}></a>
         </form>
       </div>
-      <a className={registrationStyle.link} href=""></a>
+      <a className={registrationStyle.link}></a>
       <ToastContainer />
     </div>
   );

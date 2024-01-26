@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import otpStyle from "./OtpVerfication.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
-import Loader from "../../components/Loader/Loader";
-import { ToastContainer, toast } from 'react-toastify';
-
+import { components } from "../../components";
+import { ToastContainer, toast } from "react-toastify";
+import config from "../../config";
 
 const OtpVerfication = () => {
   const navigate = useNavigate();
@@ -18,11 +18,11 @@ const OtpVerfication = () => {
   function checkemail() {
     if (email === "") {
       toast.warn("Please enter your email", {
-        position: "top-center"
+        position: "top-center",
       });
     } else if (!/^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
       toast.warn("Please enter a valid email address", {
-        position: "top-center"
+        position: "top-center",
       });
     } else {
       return true;
@@ -31,11 +31,11 @@ const OtpVerfication = () => {
   function checkOtp() {
     if (inputOtp === "") {
       toast.warn("Please enter the otp", {
-        position: "top-center"
+        position: "top-center",
       });
     } else if (inputOtp.length !== 4) {
       toast.warn("Please enter the 4-digit otp", {
-        position: "top-center"
+        position: "top-center",
       });
     } else {
       return true;
@@ -46,14 +46,14 @@ const OtpVerfication = () => {
     let cpass = document.getElementById("cpass").value;
     if (pass === "") {
       toast.warn("Please enter a password", {
-        position: "top-center"
+        position: "top-center",
       });
     } else if (pass.length < 8) {
       toast.warn("Password should be atleast 8 characters long", {
-        position: "top-center"
+        position: "top-center",
       });
       toast.warn("Password do not match", {
-        position: "top-center"
+        position: "top-center",
       });
     } else {
       return true;
@@ -82,12 +82,12 @@ const OtpVerfication = () => {
     setPass(value);
   };
   const ResetPassword = {
-    Url1: "http://localhost:3000/forgotPassword",
-    Url2: "http://localhost:3000/validatePassResetOTP",
+    Url1: `${config.backendUrl}/forgotPassword`,
+    Url2: `${config.backendUrl}/validatePassResetOTP`,
   };
   const ValidateUser = {
-    Url1: "http://localhost:3000/validateUser",
-    Url2: "http://localhost:3000/validateOtp",
+    Url1: `${config.backendUrl}/validateUser`,
+    Url2: `${config.backendUrl}/validateOtp`,
   };
   let Url1 = "";
   let Url2 = "";
@@ -121,17 +121,17 @@ const OtpVerfication = () => {
         const responseData = await response.json();
         if (response.status === 200) {
           toast.success(`${responseData.msg}`, {
-            position: "top-center"
+            position: "top-center",
           });
           navigate("/login");
         } else {
           if (responseData.extraD === undefined) {
             toast.error(`${responseData.msg}`, {
-              position: "top-center"
+              position: "top-center",
             });
           } else {
             toast.error(`${responseData.msg + responseData.extraD}`, {
-              position: "top-center"
+              position: "top-center",
             });
           }
         }
@@ -206,7 +206,7 @@ const OtpVerfication = () => {
             </>
           ) : (
             <>
-              <Loader />
+              <components.Loader />
               <div className="font-semibold text-xl text-lime-600">
                 <h2 className={otpStyle.text}>
                   Your OTP Verification Mail is getting Generated
@@ -366,7 +366,8 @@ bWVzdGFtcAAyMDIzLTAyLTEzVDEzOjE1OjUxKzAwOjAwIIO3fQAAAABJRU5ErkJggg=="
             </form>
           </div>
         </>
-      )}<ToastContainer />
+      )}
+      <ToastContainer />
     </div>
   );
 };

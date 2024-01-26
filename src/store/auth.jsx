@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
+import config from "../config";
 
 export const Authprovider = ({ children }) => {
   // storing token in state
@@ -33,7 +34,7 @@ export const Authprovider = ({ children }) => {
   // Get user data from backend using token
   const getUserData = async (token) => {
     try {
-      const res = await fetch("http://localhost:3000/userData ", {
+      const res = await fetch(`${config.backendUrl}/userData`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -58,20 +59,14 @@ export const Authprovider = ({ children }) => {
     }
   };
 
-  // useEffect(() => {
-  //   console.log(token); // Log the updated userdata state
-  //   console.log(userdata); // Log the updated userdata state
-  // }, [userdata, token]);
+
   // store token in local storage
   const storeTokenInLs = (token) => {
     localStorage.setItem("Token", token);
   };
 
   useEffect(() => {
-    // console.log("start useEffect");
-    // console.log(token.token);
     if (token.token != null)
-      // console.log("start updating userdata"),
       getUserData(token.token);
   }, []);
 

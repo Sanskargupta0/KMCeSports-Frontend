@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { images } from "../../assets";
-import Contributor from "../../components/Contributor/Contributor";
+import { components } from "../../components";
 import constactStyles from "./Contact.module.css";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import config from "../../config";
 
 const Contact = () => {
   function reset() {
@@ -17,55 +19,34 @@ const Contact = () => {
     var name = document.getElementById("name").value;
     var mail = document.getElementById("mail").value;
     var message = document.getElementById("message").value;
-    var  phone = document.getElementById("phone").value;
+    var phone = document.getElementById("phone").value;
     if (name === "" || mail === "" || message === "") {
-      toast.warn("Please fill all the fields",{
-        position:"top-center"
+      toast.warn("Please fill all the fields", {
+        position: "top-center",
       });
-    } else if (phone.length>0 && phone.length < 10) {
-      toast.warn
-
-
-
-("Please enter a valid phone number",{
-        position:"top-center"
+    } else if (phone.length > 0 && phone.length < 10) {
+      toast.warn("Please enter a valid phone number", {
+        position: "top-center",
       });
-    }
-      else if (!mail.includes("@") || !mail.includes(".")) {
-        toast.warn
-
-
-
-("Please enter a valid email",{
-          position:"top-center"
-        });
+    } else if (!mail.includes("@") || !mail.includes(".")) {
+      toast.warn("Please enter a valid email", {
+        position: "top-center",
+      });
     } else if (message.length < 10) {
-      toast.warn
-
-
-
-("Please enter a valid message",{
-        position:"top-center"
+      toast.warn("Please enter a valid message", {
+        position: "top-center",
       });
     } else if (name.length < 3) {
-      toast.warn
-
-
-
-("Please enter a valid name",{
-        position:"top-center"
+      toast.warn("Please enter a valid name", {
+        position: "top-center",
       });
     } else {
       try {
         return true;
       } catch (error) {
         confirm.log(error);
-        toast.warn
-
-
-
-("Something went wrong",{
-          position:"top-center"
+        toast.warn("Something went wrong", {
+          position: "top-center",
         });
       }
     }
@@ -95,12 +76,8 @@ const Contact = () => {
   function checkEmail() {
     var mail = document.getElementById("subEmail").value;
     if (!mail.includes("@") || !mail.includes(".")) {
-      toast.warn
-
-
-
-("Please enter a valid email",{
-        position:"top-center"
+      toast.warn("Please enter a valid email", {
+        position: "top-center",
       });
     } else {
       return true;
@@ -112,7 +89,7 @@ const Contact = () => {
       const pass = checkEmail();
       if (pass) {
         const emailResponse = await fetch(
-          `http://localhost:3000/subscribeEmail`,
+          `${config.backendUrl}/subscribeEmail`,
           {
             method: "POST",
             headers: {
@@ -124,20 +101,22 @@ const Contact = () => {
           }
         );
         const emailData = await emailResponse.json();
-        console.log(emailData);
-        
-        if(!(emailResponse.status===422)){
+
+        if (!(emailResponse.status === 422)) {
           reset();
-          toast.success(`${emailData.message}`,{
-            position:"top-center"
+          toast.success(`${emailData.message}`, {
+            position: "top-center",
           });
-    
-          
-        }
-        else{
-          toast.error(`${emailData.message}`,{
-            position:"top-center"
-          }); 
+        } else {
+          if (contactData.extrD) {
+            toast.error(`${contactData.msg + contactData.extrD}`, {
+              position: "top-center",
+            });
+          } else {
+            toast.error(`${contactData.msg}`, {
+              position: "top-center",
+            });
+          }
         }
       }
     } catch (error) {
@@ -150,8 +129,7 @@ const Contact = () => {
       e.preventDefault();
       const pass = check();
       if (pass) {
-        console.log(contact);
-        const contactResponse = await fetch(`http://localhost:3000/contact`, {
+        const contactResponse = await fetch(`${config.backendUrl}/contact`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -159,24 +137,21 @@ const Contact = () => {
           body: JSON.stringify(contact),
         });
         const contactData = await contactResponse.json();
-        console.log(contactData);
         if (!(contactResponse.status === 422)) {
           reset();
-          toast.success(`${contactData.message}`,{
-            position:"top-center"
+          toast.success(`${contactData.message}`, {
+            position: "top-center",
           });
-        }
-
-        else{ if(contactData.extrD){
-          toast.error(`${contactData.msg+contactData.extrD}`,{
-            position:"top-center"
-          });
-        }else{
-          toast.error(`${contactData.msg}`,{
-            position:"top-center"
-          });;
-        }
-           
+        } else {
+          if (contactData.extrD) {
+            toast.error(`${contactData.msg + contactData.extrD}`, {
+              position: "top-center",
+            });
+          } else {
+            toast.error(`${contactData.msg}`, {
+              position: "top-center",
+            });
+          }
         }
       }
     } catch (error) {
@@ -243,7 +218,7 @@ const Contact = () => {
       </div>
 
       <div className={constactStyles.Contributor}>
-        <Contributor
+        <components.Contributor
           name="Akash Gupta"
           dev="Co-Founder"
           images={images.Akash}
@@ -251,7 +226,7 @@ const Contact = () => {
           mail="mailto:10582akash@gmail.com"
           linkedin="https://www.linkedin.com/in/saysky2/"
         />
-        <Contributor
+        <components.Contributor
           name="Sanskar Gupta"
           dev=" Founder"
           images={images.Sanskar}
@@ -259,7 +234,14 @@ const Contact = () => {
           mail="mailto:Sanskar362002@gmail.com"
           linkedin="https://www.linkedin.com/in/sanskar-gupta-12476423b/"
         />
-        <Contributor name="Aman Raj" dev="Co-Founder" images={images.Aman} />
+        <components.Contributor
+          name="Aman Raj"
+          dev="Co-Founder"
+          images={images.Aman}
+          git="https://github.com/igamanraj"
+          mail="mailto:amanra812727@gmail.com"
+          linkedin="https://www.linkedin.com/in/aman-raj-63733623b/?trk=contact-info"
+        />
       </div>
 
       <div
@@ -292,9 +274,9 @@ const Contact = () => {
           </form>
 
           <div className="flex justify-center mt-4">
-            <a className="text-sm text-gray-400 hover:underline" href="#">
+            <Link className="text-sm text-gray-400 hover:underline" to="/legal">
               Privacy Policy
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import styleAbout from './About.module.css'
+import styleAbout from "./About.module.css";
 const About = () => {
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -79,11 +79,7 @@ const About = () => {
         </ul>
       </div>
       <div id="default-tab-content">
-        <div
-          
-          style={{ display: aboutStyles.display }}
-          id="aboutUsBody"
-        >
+        <div style={{ display: aboutStyles.display }} id="aboutUsBody">
           <div className={styleAbout.stickybtn}>
             <a href="#">
               <button className={styleAbout.button}>
@@ -254,10 +250,10 @@ const About = () => {
                 <li>
                   <a href="#ourMission">Our Mission</a>
                   <ul>
-                    <li >
+                    <li>
                       <a href="#ourMission1">Platform for gamers</a>
                     </li>
-                    <li >
+                    <li>
                       <a href="#ourMission2">Values</a>
                     </li>
                   </ul>
@@ -265,10 +261,10 @@ const About = () => {
                 <li>
                   <a href="#whatWeOffer">What We Offer</a>
                   <ul>
-                    <li >
+                    <li>
                       <a href="#whatWeOffer1">Tournaments</a>
                     </li>
-                    <li >
+                    <li>
                       <a href="#whatWeOffer2">Claim Your Glory</a>
                     </li>
                   </ul>
@@ -276,21 +272,21 @@ const About = () => {
                 <li>
                   <a href="#powerhouse">Prize Pool</a>
                   <ul>
-                    <li >
+                    <li>
                       <a href="#powerhouse1">Exciting Escalation</a>
                     </li>
-                    <li >
+                    <li>
                       <a href="#powerhouse2">Multiple prize tiers</a>
                     </li>
-                    <li >
+                    <li>
                       <a href="#powerhouse3">Rewards</a>
                     </li>
                   </ul>
                 </li>
-                <li >
+                <li>
                   <a href="#pointsSystem">Points System</a>
                 </li>
-                <li >
+                <li>
                   <a href="#KMCesports">KMCesports</a>
                 </li>
               </ol>
@@ -306,7 +302,7 @@ const About = () => {
             </nav>
           </main>
         </div>
-        <div  id="joinbody" style={{ display: joinStyles.display }}>
+        <div id="joinbody" style={{ display: joinStyles.display }}>
           <div className={styleAbout.stickybtn}>
             <a href="#">
               <button className={styleAbout.button}>
@@ -453,10 +449,10 @@ const About = () => {
                 <li>
                   <a href="#getStarted">How to get started</a>
                   <ul>
-                    <li >
+                    <li>
                       <a href="#getStarted1">Visit KMCesports</a>
                     </li>
-                    <li >
+                    <li>
                       <a href="#getStarted2">Browse Tournaments</a>
                     </li>
                   </ul>
@@ -464,12 +460,12 @@ const About = () => {
                 <li>
                   <a href="#Regt-tour">Register to Tournament</a>
                   <ul>
-                    <li >
+                    <li>
                       <a href="#Regt-tour1" style={{ textWrap: "nowrap" }}>
                         Review Tournament Details
                       </a>
                     </li>
-                    <li >
+                    <li>
                       <a href="#Regt-tour2">Participate in Tournament</a>
                     </li>
                   </ul>
@@ -477,21 +473,21 @@ const About = () => {
                 <li>
                   <a href="#prep4tour">Prep for Tournament</a>
                   <ul>
-                    <li >
+                    <li>
                       <a href="#prep4tour1">Set Up Your Gaming Gear</a>
                     </li>
-                    <li >
+                    <li>
                       <a href="#prep4tour2">Practice and Warm-up</a>
                     </li>
-                    <li >
+                    <li>
                       <a href="#prep4tour3">Enter Tournament Lobby</a>
                     </li>
                   </ul>
                 </li>
-                <li >
+                <li>
                   <a href="#fun-enjoy">Compete and Enjoy</a>
                 </li>
-                <li >
+                <li>
                   <a href="#connected">Stay Informed and Connect</a>
                 </li>
               </ol>

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { gsap, Power2, Expo, Quad } from "gsap";
-import MorphSVGPlugin from "gsap-trial/dist/MorphSVGPlugin";
 import "./Login.scss";
 import { useAuth } from "../../store/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import {
   auth,
@@ -11,11 +10,11 @@ import {
   twitterProvide,
 } from "../../store/firebase-auth";
 import { signInWithPopup } from "firebase/auth";
-import Loader from "../../components/Loader/Loader";
+import { components } from "../../components";
+import config from "../../config";
 
 //register plugins
 gsap.config({ trialWarn: false });
-gsap.registerPlugin(MorphSVGPlugin);
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,7 +22,6 @@ const Login = () => {
   setTimeout(() => {
     var emailLabel = document.querySelector("#loginEmailLabel"),
       email = document.querySelector("#loginEmail"),
-      passwordLabel = document.querySelector("#loginPasswordLabel"),
       password = document.querySelector("#loginPassword"),
       showPasswordCheck = document.querySelector("#showPasswordCheck"),
       showPasswordToggle = document.querySelector("#showPasswordToggle"),
@@ -663,7 +661,7 @@ const Login = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:3000/login`, {
+      const response = await fetch(`${config.backendUrl}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -705,7 +703,7 @@ const Login = () => {
         phoneNumber: userData.user.phoneNumber,
       };
       const response = await fetch(
-        `http://localhost:3000/loginWithSocialMedia`,
+        `${config.backendUrl}/loginWithSocialMedia`,
         {
           method: "POST",
           headers: {
@@ -748,9 +746,8 @@ const Login = () => {
         photoURL: userData.user.photoURL,
         phoneNumber: userData.user.phoneNumber,
       };
-      console.log(extractedUserData);
       const response = await fetch(
-        `http://localhost:3000/loginWithSocialMedia`,
+        `${config.backendUrl}/loginWithSocialMedia`,
         {
           method: "POST",
           headers: {
@@ -795,7 +792,7 @@ const Login = () => {
             marginBottom: "10rem",
           }}
         >
-          <Loader />
+          <components.Loader />
           <div className="font-semibold text-xl text-lime-600">
             <h2
               style={{
@@ -1230,8 +1227,8 @@ const Login = () => {
                   <div className="checkmark"></div>
                 </label>
                 <label style={{ fontSize: "1em" }}>Remember me</label>
-                <a
-                  href={
+                <Link
+                  to={
                     "/otpVerfication?email=" +
                     login.email +
                     "&mode=ResetPassword"
@@ -1239,7 +1236,7 @@ const Login = () => {
                   className="forget-password"
                 >
                   Forget Password?
-                </a>
+                </Link>
               </div>
               <div className="otherSginInOptions">
                 <button className="oauthButton" onClick={handleGoogleLogin}>
@@ -1300,13 +1297,13 @@ const Login = () => {
               }}
             >
               Don't have an account?{" "}
-              <a
-                href="/registration"
+              <Link
+                to="/registration"
                 className="underline decoration-red-500"
                 style={{ cursor: "pointer", fontSize: "30px" }}
               >
                 Signup
-              </a>
+              </Link>
             </p>
             <ToastContainer />
           </div>

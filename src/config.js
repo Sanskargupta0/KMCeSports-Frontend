@@ -5,7 +5,8 @@ const config ={
   storageBucket:import.meta.env.VITE_REACT_APP_StorageBucket,
   messagingSenderId:import.meta.env.VITE_REACT_APP_MessagingSenderId,
   appId:import.meta.env.VITE_REACT_APP_AppId,
-  measurementId:import.meta.env.VITE_REACT_APP_MeasurementId
+  measurementId:import.meta.env.VITE_REACT_APP_MeasurementId,
+  backendUrl:import.meta.env.VITE_REACT_APP_BackendUrl
 };
 
 export default config;

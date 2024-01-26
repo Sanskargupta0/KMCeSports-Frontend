@@ -1,16 +1,17 @@
 import React from "react";
 import { images } from "../../assets";
+import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer style={{backgroundColor: "rgb(31 41 55)"}}>
+      <footer style={{ backgroundColor: "rgb(31 41 55)" }}>
         <div
           className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 "
           style={{ background: "#1F2937" }}
         >
           <div className="md:flex md:justify-between">
             <div className="mb-6 md:mb-0">
-              <a href="#" className="flex items-center">
+              <Link to="/" className="flex items-center">
                 <img
                   src={images.KMCeSportsLogo}
                   className="h-14 me-3"
@@ -19,7 +20,7 @@ const Footer = () => {
                 <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-[#47F252]">
                   KMCeSports
                 </span>
-              </a>
+              </Link>
             </div>
             <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
               <div>
@@ -28,45 +29,45 @@ const Footer = () => {
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4" style={{ marginLeft: "0rem" }}>
-                    <a
-                      href="#"
+                    <Link
+                      to="/About"
                       className="hover:underline hover:text-[#47F252]"
                     >
                       About Us
-                    </a>
+                    </Link>
                   </li>
                   <li style={{ marginLeft: "0rem", marginBottom: "1rem" }}>
-                    <a
-                      href="#"
+                    <Link
+                      to="/About#getStarted"
                       className="hover:underline hover:text-[#47F252]"
                     >
                       How to join ?
-                    </a>
+                    </Link>
                   </li>
+
                   <li style={{ marginLeft: "0rem", marginBottom: "1rem" }}>
-                    <a
-                      href="#"
-                      className="hover:underline hover:text-[#47F252]"
-                    ></a>
-                  </li>
-                  <li style={{ marginLeft: "0rem", marginBottom: "1rem" }}>
-                    <a
-                      href="#"
+                    <Link
+                      to="About#powerhouse"
                       className="hover:underline hover:text-[#47F252]"
                     >
                       Prize Pool
-                    </a>
+                    </Link>
                   </li>
-                  <li style={{ marginLeft: "0rem", marginBottom: "1rem"   ,  textWrap: "nowrap" }}>
-                    <a
-                      href="#"
+                  <li
+                    style={{
+                      marginLeft: "0rem",
+                      marginBottom: "1rem",
+                      textWrap: "nowrap",
+                    }}
+                  >
+                    <Link
+                      to="/About#KMCesports"
                       className="hover:underline hover:text-[#47F252]"
-
                     >
                       Become a Moderator
                       <br />
                       /Contributor
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -76,36 +77,49 @@ const Footer = () => {
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4" style={{ marginLeft: "0rem" }}>
-                    <a
-                      href="#"
+                    <Link
+                      target="_blank"
+                      to="https://www.facebook.com/profile.php?id=61555978796619"
                       className="hover:underline hover:text-[#47F252] "
                     >
                       Facebook
-                    </a>
+                    </Link>
                   </li>
                   <li className="mb-4" style={{ marginLeft: "0rem" }}>
-                    <a
-                      href="#"
+                    <Link
+                      target="_blank"
+                      to="https://www.instagram.com/kmcesportsofficial/"
                       className="hover:underline hover:text-[#47F252] "
                     >
                       Instagram
-                    </a>
+                    </Link>
                   </li>
                   <li className="mb-4" style={{ marginLeft: "0rem" }}>
-                    <a
-                      href="#"
+                    <Link
+                      target="_blank"
+                      to="https://github.com/Sanskargupta0/KMCeSports-Frontend"
                       className="hover:underline hover:text-[#47F252] "
                     >
                       Github
-                    </a>
+                    </Link>
+                  </li>
+                  <li className="mb-4" style={{ marginLeft: "0rem" }}>
+                    <Link
+                      target="_blank"
+                      to="https://twitter.com/kmcesportsofficial"
+                      className="hover:underline hover:text-[#47F252] "
+                    >
+                      Twitter
+                    </Link>
                   </li>
                   <li style={{ marginLeft: "0rem" }}>
-                    <a
-                      href="#"
+                    <Link
+                      target="_blank"
+                      to="https://discord.gg/9m8uJUQWSm"
                       className="hover:underline hover:text-[#47F252]"
                     >
                       Discord
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -115,20 +129,20 @@ const Footer = () => {
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
                   <li className="mb-4" style={{ marginLeft: "0rem" }}>
-                    <a
-                      href="/legal"
+                    <Link
+                      to="/legal"
                       className="hover:underline hover:text-[#47F252]"
                     >
                       Privacy Policy
-                    </a>
+                    </Link>
                   </li>
-                  <li style={{ marginLeft: "0rem"  ,  textWrap: "nowrap"}}>
-                    <a
-                      href="/legal"
+                  <li style={{ marginLeft: "0rem", textWrap: "nowrap" }}>
+                    <Link
+                      to="/legal"
                       className="hover:underline hover:text-[#47F252]"
                     >
                       Terms &amp; Conditions
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
@@ -138,14 +152,15 @@ const Footer = () => {
           <div className="sm:flex sm:items-center sm:justify-between">
             <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
               © 2024{" "}
-              <a href="#" className="hover:underline hover:text-[#47F252]">
+              <Link to="/" className="hover:underline hover:text-[#47F252]">
                 KMCeSports™
-              </a>
+              </Link>
               . All Rights Reserved.
             </span>
             <div className="flex mt-4 sm:justify-center sm:mt-0">
-              <a
-                href="#"
+              <Link
+                target="_blank"
+                to="https://www.facebook.com/profile.php?id=61555978796619"
                 className="text-gray-500 hover:text-gray-900 dark:hover:text-white"
               >
                 <svg
@@ -163,9 +178,10 @@ const Footer = () => {
                   />
                 </svg>
                 <span className="sr-only">Facebook page</span>
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                target="_blank"
+                to="https://discord.gg/9m8uJUQWSm"
                 className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
               >
                 <svg
@@ -179,9 +195,10 @@ const Footer = () => {
                   <path d="M16.942 1.556a16.3 16.3 0 0 0-4.126-1.3 12.04 12.04 0 0 0-.529 1.1 15.175 15.175 0 0 0-4.573 0 11.585 11.585 0 0 0-.535-1.1 16.274 16.274 0 0 0-4.129 1.3A17.392 17.392 0 0 0 .182 13.218a15.785 15.785 0 0 0 4.963 2.521c.41-.564.773-1.16 1.084-1.785a10.63 10.63 0 0 1-1.706-.83c.143-.106.283-.217.418-.33a11.664 11.664 0 0 0 10.118 0c.137.113.277.224.418.33-.544.328-1.116.606-1.71.832a12.52 12.52 0 0 0 1.084 1.785 16.46 16.46 0 0 0 5.064-2.595 17.286 17.286 0 0 0-2.973-11.59ZM6.678 10.813a1.941 1.941 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.919 1.919 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Zm6.644 0a1.94 1.94 0 0 1-1.8-2.045 1.93 1.93 0 0 1 1.8-2.047 1.918 1.918 0 0 1 1.8 2.047 1.93 1.93 0 0 1-1.8 2.045Z" />
                 </svg>
                 <span className="sr-only">Discord community</span>
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                target="_blank"
+                to="https://twitter.com/kmcesportsofficial"
                 className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
               >
                 <svg
@@ -199,9 +216,10 @@ const Footer = () => {
                   />
                 </svg>
                 <span className="sr-only">Twitter page</span>
-              </a>
-              <a
-                href="#"
+              </Link>
+              <Link
+                target="_blank"
+                to="https://github.com/Sanskargupta0/KMCeSports-Frontend"
                 className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
               >
                 <svg
@@ -219,27 +237,28 @@ const Footer = () => {
                   />
                 </svg>
                 <span className="sr-only">GitHub account</span>
-              </a>
-              <a
-  href="#"
-  className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
->
-  <svg
-    version="1.0"
-    xmlns="http://www.w3.org/2000/svg"
-    width="512.000000pt"
-    height="512.000000pt"
-    viewBox="0 0 512.000000 512.000000"
-    preserveAspectRatio="xMidYMid meet"
-    style={{ width: "24px", height: "24px" }}
-  >
-   <g
-      transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-      fill="currentColor" 
-      stroke="none"
-    >
-      <path
-        d="M1609 5110 c-330 -14 -556 -56 -747 -138 -179 -77 -285 -148 -417
+              </Link>
+              <Link
+                target="_blank"
+                to="https://www.instagram.com/kmcesportsofficial/"
+                className="text-gray-500 hover:text-gray-900 dark:hover:text-white ms-5"
+              >
+                <svg
+                  version="1.0"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="512.000000pt"
+                  height="512.000000pt"
+                  viewBox="0 0 512.000000 512.000000"
+                  preserveAspectRatio="xMidYMid meet"
+                  style={{ width: "24px", height: "24px" }}
+                >
+                  <g
+                    transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+                    fill="currentColor"
+                    stroke="none"
+                  >
+                    <path
+                      d="M1609 5110 c-330 -14 -556 -56 -747 -138 -179 -77 -285 -148 -417
 -279 -178 -177 -289 -376 -359 -643 -62 -236 -76 -507 -76 -1490 0 -967 13
 -1241 71 -1477 144 -587 574 -961 1207 -1048 181 -24 561 -35 1287 -35 675 0
 1064 10 1239 31 358 42 638 166 859 378 249 240 381 527 429 936 19 160 19
@@ -251,27 +270,26 @@ const Footer = () => {
 53 -185 177 -227 247 -84 140 -134 337 -151 587 -30 454 -20 2012 14 2270 36
 267 119 447 276 599 172 167 398 248 748 270 76 4 587 7 1137 5 853 -2 1016
 -4 1107 -18z"
-      />
-      <path
-        d="M3802 4200 c-113 -57 -167 -145 -167 -275 0 -94 22 -150 86 -214 64
+                    />
+                    <path
+                      d="M3802 4200 c-113 -57 -167 -145 -167 -275 0 -94 22 -150 86 -214 64
 -63 120 -86 214 -86 67 0 89 4 137 28 101 50 158 137 166 253 7 103 -16 163
 -87 235 -66 66 -124 89 -221 89 -54 0 -78 -6 -128 -30z"
-      />
-      <path
-        d="M2336 3854 c-263 -48 -496 -171 -692 -368 -260 -259 -385 -562 -385
+                    />
+                    <path
+                      d="M2336 3854 c-263 -48 -496 -171 -692 -368 -260 -259 -385 -562 -385
 -926 0 -220 41 -401 132 -583 280 -556 896 -841 1495 -692 236 59 418 161 595
 332 159 154 266 322 333 523 48 145 66 257 66 420 0 162 -18 275 -65 417 -64
 192 -157 344 -302 494 -198 204 -445 336 -717 384 -111 19 -352 19 -460 -1z
 m396 -458 c458 -88 762 -538 674 -999 -54 -279 -259 -527 -521 -628 -128 -50
 -202 -62 -350 -56 -105 4 -146 10 -215 32 -303 96 -524 341 -586 649 -24 119
 -15 304 21 416 94 298 345 525 644 585 89 18 243 18 333 1z"
-      />
-    </g>
-  </svg>
+                    />
+                  </g>
+                </svg>
 
-  <span className="sr-only">Instagram</span>
-</a>
-
+                <span className="sr-only">Instagram</span>
+              </Link>
             </div>
           </div>
         </div>
