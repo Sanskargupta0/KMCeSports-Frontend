@@ -22,7 +22,7 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar islogedIn={islogedIn} avatarURL={userdata.avatarURL}/>
+        <Navbar islogedIn={islogedIn} avatarURL={userdata.avatarURL} firstName={userdata.firstName}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/About" element={<About />} />
