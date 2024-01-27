@@ -153,10 +153,20 @@ const OtpVerfication = () => {
           }),
         });
         const jsonData = await response.json();
-        alert(jsonData.msg);
-        if (jsonData.redirected) {
-          setShow(false);
+        if(response.ok){
+          toast.success(`${jsonData.msg}`, {
+            position: "top-center",
+          });
+          if (jsonData.redirected) {
+            setShow(false);
+          }
         }
+        else{
+          toast.error(`${jsonData.msg}`, {
+            position: "top-center",
+          });
+        }
+        setShowLoader(true);
       } catch (error) {
         console.log(error);
       }

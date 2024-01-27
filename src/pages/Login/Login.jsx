@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { gsap, Power2, Expo, Quad } from "gsap";
 import "./Login.scss";
 import { useAuth } from "../../store/auth";
@@ -18,7 +18,12 @@ gsap.config({ trialWarn: false });
 
 const Login = () => {
   const navigate = useNavigate();
-  const { storeTokenInLs } = useAuth();
+  const { storeTokenInLs, islogedIn } = useAuth();
+  useEffect(() => {
+    if (islogedIn) {
+      navigate("/dashboard");
+    }
+  }, []);
   setTimeout(() => {
     var emailLabel = document.querySelector("#loginEmailLabel"),
       email = document.querySelector("#loginEmail"),
@@ -678,7 +683,7 @@ const Login = () => {
           email: "",
           password: "",
         });
-        navigate("/");
+        navigate("/dashboard");
         window.location.reload();
       } else if (responseData.redirectedURL) {
         navigate(responseData.redirectedURL + `?email=${login.email}`);

@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../../store/auth";
 import { images } from "../../assets";
 import navStyles from "./Navbar.module.css";
 
@@ -16,7 +17,8 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Navbar(props) {
+export default function Navbar() {
+  const { islogedIn, userdata } = useAuth();
   const location = useLocation();
   // Update the current property based on the current path
   navigation.forEach((item) => {
@@ -80,7 +82,7 @@ export default function Navbar(props) {
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 ">
-                {!props.islogedIn ? (
+                {!islogedIn ? (
                   <div className={navStyles.fix}>
                     <Link to="/login">
                       <button className={navStyles.login}>
@@ -153,7 +155,7 @@ export default function Navbar(props) {
                           <span className="sr-only">Open user menu</span>
                           <img
                             className="h-8 w-8 rounded-full"
-                            src={props.avatarURL}
+                            src={userdata.avatarURL}
                             alt="User Image"
                           />
                         </Menu.Button>
@@ -179,7 +181,7 @@ export default function Navbar(props) {
                               <p
                                 style={{ fontWeight: "bold", color: "#47f252" }}
                               >
-                                &nbsp;{props.firstName}
+                                &nbsp;{userdata.firstName}
                               </p>
                             </div>
                           </Menu.Item>

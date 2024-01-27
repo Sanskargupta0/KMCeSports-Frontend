@@ -68,7 +68,7 @@ export const Authprovider = ({ children }) => {
   useEffect(() => {
     if (token.token != null)
       getUserData(token.token);
-  }, []);
+  }, [token.token]);
 
   return (
     <AuthContext.Provider

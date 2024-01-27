@@ -8,6 +8,8 @@ import Logout from "./Logout/Logout";
 import OtpVerfication from "./OtpVerfication/OtpVerfication";
 import Registration from "./Registration/registration";
 import TopPlayers from "./TopPlayers/TopPlayers";
+import Dashboard from "./Dashboard/Dashboard";
+import Protected from "./Protected/Protected"
 
 export default{
     About,
@@ -20,4 +22,6 @@ export default{
     OtpVerfication,
     Registration,
     TopPlayers,
+    Dashboard,
+    Protected,
     };
