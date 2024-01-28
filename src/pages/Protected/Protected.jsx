@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import config from "../../config";
 const Protected = (props) => {
   const navigate = useNavigate();
@@ -13,15 +14,20 @@ const Protected = (props) => {
       },
     });
     await response.json();
-    console.log(response);
     if (response.status !== 200) {
       navigate("/login");
       localStorage.removeItem("Token");
+      toast.error(`You are Trying Access Proteced Route`, {
+        position: "top-center",
+      });
     }
   };
   useEffect(() => {
     if (!token) {
       navigate("/login");
+      toast.error(`You are Trying Access Proteced Route`, {
+        position: "top-center",
+      });
     } else {
       verifyToken();
     }

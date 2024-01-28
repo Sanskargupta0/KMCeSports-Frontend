@@ -6,5 +6,5 @@ export default defineConfig({
   plugins: [react()],
   css: {
     modules: true, // Enable CSS Modules
-  },
+  }
 })

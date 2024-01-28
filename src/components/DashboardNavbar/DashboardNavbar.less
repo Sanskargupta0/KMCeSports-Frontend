@@ -1,0 +1,105 @@
+.dashboardNavbar {
+  position: absolute;
+  * {
+    font-family: "Open Sans", sans-serif;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 100%;
+    line-height: 1.5;
+  }
+  body {
+    background: #9fcedf;
+    margin: 0;
+  }
+  nav {
+    --duration: 0.5s;
+    --easing: ease-in-out;
+    position: relative;
+    width: 220px;
+    margin: 20px;
+    ol {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin: -4px 0 0 0;
+    }
+    a {
+      display: block;
+      text-decoration: none;
+      background: #73ff7c;
+      transform-origin: 0 0;
+      transition: transform var(--duration) var(--easing),
+        color var(--duration) var(--easing);
+      transition-delay: var(--delay-out);
+      border-radius: 4px;
+      padding: 1em 1.52em;
+      &:hover {
+        background: #efefef;
+      }
+    }
+    .sub-menu {
+      a {
+        font-size: 0.9em;
+        color: white;
+        border-left: 2em solid #1f2937;
+        padding: 0.75em;
+        background: #1f2937;
+        &:hover {
+          background: linear-gradient(to right, #73ff7c 2px, #efefef 2px);
+          color: #333;
+        }
+      }
+    }
+    header {
+      color: white;
+      font-weight: 600;
+      display: block;
+      background: #1f2937;
+      transform-origin: 0 0;
+      transition: transform var(--duration) var(--easing),
+        color var(--duration) var(--easing);
+      transition-delay: var(--delay-out);
+      border-radius: 4px;
+      padding: 1em 1.52em;
+      span {
+        color: white;
+        border: none;
+        background: transparent;
+        font-size: 1.5em;
+        padding: 0;
+        cursor: pointer;
+        line-height: 1;
+        float: right;
+      }
+    }
+    footer button {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border: none;
+      padding: calc(~"1em - 2px");
+      width: 100%;
+      transform-origin: 0 0;
+      transition: transform var(--duration) var(--easing);
+      transition-delay: calc(~"var(--duration) + (.1s * (var(--count) / 2))");
+      cursor: pointer;
+      outline: none;
+      background: #cdcdcd;
+      opacity: 0;
+    }
+    &.closed {
+      a,
+      header {
+        transform: translateY(~"calc(var(--top) * -1)") scaleY(0.1) scaleX(0.1);
+        transition-delay: var(--delay-in);
+        color: transparent;
+      }
+      footer button {
+        transition-delay: 0s;
+        transform: scaleY(0.7) scaleX(0.1);
+      }
+    }
+  }
+}

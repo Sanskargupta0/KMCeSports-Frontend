@@ -8,8 +8,17 @@ import Logout from "./Logout/Logout";
 import OtpVerfication from "./OtpVerfication/OtpVerfication";
 import Registration from "./Registration/registration";
 import TopPlayers from "./TopPlayers/TopPlayers";
-import Dashboard from "./Dashboard/Dashboard";
+import Dashboard from "./Protected Pages/Dashboard/Dashboard";
 import Protected from "./Protected/Protected"
+import UserProfile from "./Protected Pages/UserProfile/UserProfile";
+import Notification from "./Protected Pages/Notifications/Notifications";
+import JoinedGames from "./Protected Pages/JoinedGames/JoinedGames";
+import BookmarkEvent from "./Protected Pages/BookmarkEvent/BookmarkEvent";
+import KMCWallet from "./Protected Pages/Payment/KMCWallet/KMCWallet";
+import PaymentHistory from "./Protected Pages/Payment/PaymentHistory/PaymentHistory";
+import RedeemPoints from "./Protected Pages/Payment/RedeemPoints/RedeemPoints"
+import HelpDesk from "./Protected Pages/NeedHelp/HelpDesk/HelpDesk";
+import ReportBug from "./Protected Pages/NeedHelp/ReportBug/ReportBug";
 
 export default{
     About,
@@ -24,4 +33,13 @@ export default{
     TopPlayers,
     Dashboard,
     Protected,
+    UserProfile,
+    Notification,
+    JoinedGames,
+    BookmarkEvent,
+    KMCWallet,
+    PaymentHistory,
+    RedeemPoints,
+    HelpDesk,
+    ReportBug
     };

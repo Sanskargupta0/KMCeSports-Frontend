@@ -21,7 +21,10 @@ const Login = () => {
   const { storeTokenInLs, islogedIn } = useAuth();
   useEffect(() => {
     if (islogedIn) {
-      navigate("/dashboard");
+      
+      toast.error(`You are Already Loged In`, {
+        position: "top-center",
+      });navigate("/dashboard");
     }
   }, []);
   setTimeout(() => {

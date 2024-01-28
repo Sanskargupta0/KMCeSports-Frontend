@@ -24,6 +24,42 @@ const App = () => {
             path="/dashboard"
             element={<pages.Protected Component={pages.Dashboard} />}
           />
+          <Route
+            path="/userProfile"
+            element={<pages.Protected Component={pages.UserProfile} />}
+          />
+          <Route
+            path="/notification"
+            element={<pages.Protected Component={pages.Notification} />}
+          />
+          <Route
+            path="/joinedGames"
+            element={<pages.Protected Component={pages.JoinedGames} />}
+          />
+          <Route
+            path="/bookmarkEvent"
+            element={<pages.Protected Component={pages.BookmarkEvent} />}
+          />
+          <Route
+            path="/payment-KMCWallet"
+            element={<pages.Protected Component={pages.KMCWallet} />}
+          />
+          <Route
+            path="/payment-paymentHistory"
+            element={<pages.Protected Component={pages.PaymentHistory} />}
+          />
+          <Route
+            path="/payment-redeemPoints"
+            element={<pages.Protected Component={pages.RedeemPoints} />}
+          />
+          <Route
+            path="/needHelp-helpDesk"
+            element={<pages.Protected Component={pages.HelpDesk} />}
+          />
+          <Route
+            path="/needHelp-reportBug"
+            element={<pages.Protected Component={pages.ReportBug} />}
+          />
           <Route path="*" element={<pages.Error />} />
         </Routes>
         <components.Footer />
