@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import otpStyle from "./OtpVerfication.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 import { components } from "../../components";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import config from "../../config";
 
 const OtpVerfication = () => {
@@ -153,15 +153,14 @@ const OtpVerfication = () => {
           }),
         });
         const jsonData = await response.json();
-        if(response.ok){
+        if (response.ok) {
           toast.success(`${jsonData.msg}`, {
             position: "top-center",
           });
           if (jsonData.redirected) {
             setShow(false);
           }
-        }
-        else{
+        } else {
           toast.error(`${jsonData.msg}`, {
             position: "top-center",
           });
@@ -377,7 +376,6 @@ bWVzdGFtcAAyMDIzLTAyLTEzVDEzOjE1OjUxKzAwOjAwIIO3fQAAAABJRU5ErkJggg=="
           </div>
         </>
       )}
-      <ToastContainer />
     </div>
   );
 };

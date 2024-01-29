@@ -19,7 +19,6 @@ const DashboardNavbar = () => {
     setCount(count);
     setEls($els);
     setGroupLength(grouplength);
-   
 
     $els.forEach((el, j) => {
       if (i > grouplength) {
@@ -29,7 +28,10 @@ const DashboardNavbar = () => {
       el.setAttribute("data-group", groupNumber);
       i++;
     });
-    
+    setTimeout(() => {
+      let buttom = document.querySelector(".dashboardNavbar button");
+      buttom.click();
+    }, 500);
   }, []);
 
   const handleClick = (e) => {
@@ -56,7 +58,7 @@ const DashboardNavbar = () => {
     e.stopPropagation();
   };
 
-
+  
 
   return (
     <div className="dashboardNavbar">
@@ -72,7 +74,9 @@ const DashboardNavbar = () => {
             <Link to="/bookmarkEvent">Bookmark event</Link>
           </li>
           <li className="menu-item">
-            <Link to="" style={{cursor:"default"}}>Payment</Link>
+            <Link to="" style={{ cursor: "default" }}>
+              Payment
+            </Link>
             <ol className="sub-menu">
               <li className="menu-item">
                 <Link to="/payment-KMCWallet">KMC Wallet</Link>
@@ -86,7 +90,9 @@ const DashboardNavbar = () => {
             </ol>
           </li>
           <li className="menu-item">
-            <Link to=""  style={{cursor:"default"}}>Need help ?</Link>
+            <Link to="" style={{ cursor: "default" }}>
+              Need help ?
+            </Link>
             <ol className="sub-menu">
               <li className="menu-item">
                 <Link to="/needHelp-helpDesk">Help desk </Link>

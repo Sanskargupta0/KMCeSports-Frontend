@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { images } from "../../assets";
 import { components } from "../../components";
 import constactStyles from "./Contact.module.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import config from "../../config";
 
@@ -280,7 +280,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

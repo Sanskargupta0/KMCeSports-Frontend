@@ -1,7 +1,7 @@
 import { Fragment, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../../store/auth";
 import { images } from "../../assets";
 import navStyles from "./Navbar.module.css";
@@ -18,15 +18,17 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
+  const nevigate = useNavigate();
   const { islogedIn, userdata } = useAuth();
   useEffect(()=>{
+    console.log("running")
     if(islogedIn){
       navigation.unshift({ name: "Dashboard", Link: "/dashboard", current: false });
     }
     else{
       if(navigation[0].name === "Dashboard"){
       navigation.shift({});
-      window.location.reload();
+      nevigate("/login");
       }
     }
   },[islogedIn])

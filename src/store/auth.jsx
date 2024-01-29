@@ -63,6 +63,7 @@ export const Authprovider = ({ children }) => {
   // store token in local storage
   const storeTokenInLs = (token) => {
     localStorage.setItem("Token", token);
+    setToken({ token: token });
   };
 
   useEffect(() => {

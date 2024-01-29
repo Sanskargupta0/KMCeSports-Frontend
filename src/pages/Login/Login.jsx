@@ -3,7 +3,7 @@ import { gsap, Power2, Expo, Quad } from "gsap";
 import "./Login.scss";
 import { useAuth } from "../../store/auth";
 import { Link, useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import {
   auth,
   googleProvider,
@@ -21,10 +21,10 @@ const Login = () => {
   const { storeTokenInLs, islogedIn } = useAuth();
   useEffect(() => {
     if (islogedIn) {
-      
       toast.error(`You are Already Loged In`, {
         position: "top-center",
-      });navigate("/dashboard");
+      });
+      navigate("/dashboard");
     }
   }, []);
   setTimeout(() => {
@@ -687,7 +687,6 @@ const Login = () => {
           password: "",
         });
         navigate("/dashboard");
-        window.location.reload();
       } else if (responseData.redirectedURL) {
         navigate(responseData.redirectedURL + `?email=${login.email}`);
       } else {
@@ -727,8 +726,7 @@ const Login = () => {
         toast.success(`${responseData.msg}`, {
           position: "top-center",
         });
-        navigate("/");
-        window.location.reload();
+        navigate("/dashboard");
       } else {
         setLoader(false);
         toast.error(`${responseData.msg}`, {
@@ -771,8 +769,7 @@ const Login = () => {
         toast.success(`${responseData.msg}`, {
           position: "top-center",
         });
-        navigate("/");
-        window.location.reload();
+        navigate("/dashboard");
       } else {
         setLoader(false);
         toast.error(`${responseData.msg}`, {
@@ -1313,7 +1310,6 @@ const Login = () => {
                 Signup
               </Link>
             </p>
-            <ToastContainer />
           </div>
         </>
       )}

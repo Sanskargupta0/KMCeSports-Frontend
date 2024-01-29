@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import registrationStyle from "./Registration.module.css";
 import { useNavigate, Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import config from "../../config";
 
 const registration = () => {
@@ -226,7 +226,7 @@ const registration = () => {
         </form>
       </div>
       <a className={registrationStyle.link}></a>
-      <ToastContainer />
+    
     </div>
   );
 };
