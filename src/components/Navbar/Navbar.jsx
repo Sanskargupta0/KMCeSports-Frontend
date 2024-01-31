@@ -21,7 +21,6 @@ export default function Navbar() {
   const nevigate = useNavigate();
   const { islogedIn, userdata } = useAuth();
   useEffect(()=>{
-    console.log("running")
     if(islogedIn){
       navigation.unshift({ name: "Dashboard", Link: "/dashboard", current: false });
     }

@@ -785,7 +785,7 @@ const Login = () => {
     }
   };
   return (
-    <>
+    <div className="loginFormContainer">
       {loader ? (
         <div
           className="loader"
@@ -1313,7 +1313,7 @@ const Login = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
 export default Login;

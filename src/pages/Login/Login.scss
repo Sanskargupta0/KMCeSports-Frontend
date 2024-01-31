@@ -4,6 +4,8 @@ $medBlue: #4eb8dd;
 $lightBlue: #ddf1fa;
 $inputBG: #f3fafd;
 
+.loginFormContainer{
+
 .loginForm html {
   width: 100%;
   height: 100%;
@@ -410,4 +412,6 @@ $inputBG: #f3fafd;
 
 .facebookIcon:hover svg path {
   fill: white;
+}
+
 }

@@ -3,6 +3,7 @@ import Footer from "./Footer/Footer";
 import Navbar from "./Navbar/Navbar";
 import Loader from "./Loader/Loader";
 import DashboardNavbar from "./DashboardNavbar/DashboardNavbar";
+import GameCard from "./GameCard/GameCard";
 
 export default {
   Contributor,
@@ -10,4 +11,5 @@ export default {
   Navbar,
   Loader,
   DashboardNavbar,
+  GameCard,
 };
