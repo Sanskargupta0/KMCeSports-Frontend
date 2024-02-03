@@ -3,87 +3,88 @@ import { components } from "../../../components";
 import styleDashboard from "./Dashboard.module.css";
 
 const Dashboard = () => {
+  const data = [
+    {
+      title: "Pubg Mobile Tournament",
+      subtitle: "Make your team and win the prize pool of 1000$",
+      type: "Paid Tournament 10$",
+      startTime: "2024-03-01T00:07:00",
+      extraDetails:
+        "This is a paid tournament. You have to pay 10$ to join this tournament. The prize pool is 1000$.",
+      link: "/Contact",
+      image: "Crocodile",
+    },
+    {
+      title: "Exciting Pubg Championship",
+      subtitle: "Assemble your squad and compete for a $1500 prize",
+      type: "Paid Entry $15",
+      startTime: "2024-03-15T14:30:00",
+      extraDetails:
+        "Join this thrilling tournament with a paid entry of $15. Total prize money is $1500.",
+      link: "/Registration",
+      image: "Crocodile",
+    },
+    {
+      title: "Battle Royale Showdown",
+      subtitle: "Form your dream team and seize the $800 grand prize",
+      type: "Entry Fee $8",
+      startTime: "2024-04-02T18:45:00",
+      extraDetails:
+        "Participate in this intense battle with an entry fee of $8. The winner takes home the grand prize of $800.",
+      link: "/SignUp",
+      image: "Crocodile",
+    },
+    {
+      title: "Elite Squad Showdown",
+      subtitle: "Compete against top teams for a chance to win $1200",
+      type: "Paid Entry $12",
+      startTime: "2024-04-20T21:15:00",
+      extraDetails:
+        "A challenging tournament awaits you. Secure your spot by paying the entry fee of $12. Prize pool: $1200.",
+      link: "/Details",
+      image: "Crocodile",
+    },
+    {
+      title: "Ultimate Pubg Challenge",
+      subtitle: "Battle it out for the title and a $2000 cash prize",
+      type: "Paid Entry $20",
+      startTime: "2024-05-05T12:00:00",
+      extraDetails:
+        "The ultimate challenge is here. Pay the entry fee of $20 and stand a chance to win the grand prize of $2000.",
+      link: "/RegisterNow",
+      image: "Crocodile",
+    },
+    {
+      title: "Clash of Champions",
+      subtitle: "Gather your squad for a shot at the $1000 prize pool",
+      type: "Paid Entry $10",
+      startTime: "2024-05-18T17:30:00",
+      extraDetails:
+        "Join the Clash of Champions with an entry fee of $10. Compete for a share of the $1000 prize pool.",
+      link: "/JoinNow",
+      image: "Crocodile",
+    },
+  ];
   return (
-    <>
-      <components.DashboardNavbar />
-      <div>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam ratione
-        accusamus sed praesentium eveniet iusto nostrum saepe nisi perspiciatis.
-        Aliquid saepe eius iure deleniti nulla harum et dolore delectus
-        laudantium ea modi, quam ipsa voluptatem distinctio quia, consectetur
-        voluptatum debitis amet pariatur accusantium earum laboriosam ut! Ad
-        voluptates molestias nihil sint sed, earum quo dignissimos eligendi quis
-        odit libero voluptas esse? Commodi ratione quos dolorum itaque,
-        molestias, ex nam qui tempore assumenda minima earum aut vitae
-        architecto? Porro necessitatibus mollitia, voluptates corporis odit
-        fugit, dolorum consequatur qui commodi expedita ratione numquam. Quia,
-        ratione minima, iusto hic sapiente adipisci perspiciatis praesentium
-        illum voluptate ipsam aliquid accusamus corrupti. A culpa cum illum,
-        blanditiis impedit consequatur, possimus esse, repellendus totam dolorum
-        optio nemo magni? Qui, reprehenderit nostrum deleniti distinctio vel
-        debitis, incidunt dolorum doloremque voluptatibus aliquam harum error,
-        eius reiciendis ut. Facilis ipsam, ex voluptate sapiente hic vitae vero,
-        labore error aut ratione autem, ab atque. Saepe deserunt fugiat fuga
-        accusantium eaque itaque assumenda voluptatem adipisci velit dicta ex,
-        eveniet quo sint voluptates mollitia tenetur consequatur ducimus eius
-        molestiae voluptatibus laboriosam, nisi architecto. Reprehenderit odio
-        ut, suscipit pariatur veniam maxime a alias, voluptatibus praesentium,
-        in sapiente at est molestias illo! Amet nemo praesentium consectetur
-        temporibus exercitationem et illo! Minima non autem ullam pariatur
-        recusandae eum quidem sint quis et accusamus aut rerum, officia fuga
-        laudantium earum! Officia deleniti, amet, quam maiores cum nostrum
-        doloremque sequi unde repellat quae nemo vero dolorum molestias
-        exercitationem voluptatibus quod asperiores rerum reprehenderit, saepe
-        fugit maxime enim! Assumenda blanditiis quidem molestiae nam illo
-        veniam, dolor quisquam voluptas fugiat, expedita sed alias omnis esse
-        quas minus, officia dolores! Delectus rem repellendus quos atque odit
-        repellat iste non, illum ipsum corporis error molestias temporibus
-        quibusdam eum facilis architecto excepturi alias quas expedita ullam.
-        Quod possimus qui, perspiciatis earum vitae molestiae atque quia velit
-        nemo, eligendi enim sit ratione! Unde inventore necessitatibus
-        repellendus neque nihil? Voluptatibus laudantium id mollitia dolore
-        impedit dignissimos nostrum voluptatum enim quaerat quia iste sapiente
-        fugiat quod, iure doloremque veritatis nisi possimus deleniti laboriosam
-        quis esse explicabo natus illum velit. Quisquam nemo porro iusto est
-        accusamus. Molestias qui cumque voluptatem eligendi facilis adipisci,
-        dolore temporibus nemo rerum quas totam sunt blanditiis fugit officiis
-        illum, quasi quibusdam explicabo corporis similique? Dignissimos sint
-        quia esse velit dicta quis maxime itaque magni voluptatibus a eveniet
-        praesentium facere inventore quibusdam sapiente illo, vel cumque
-        doloribus totam, molestias reiciendis optio officiis. Quisquam aliquid
-        hic minus atque aut, illum id possimus excepturi, veritatis ex, neque
-        perspiciatis eum. Ea nihil repudiandae explicabo assumenda accusantium
-        necessitatibus porro quas, voluptas mollitia. Qui molestiae odio
-        placeat. Minus sint itaque iure eum libero molestiae adipisci deserunt
-        consequuntur vitae rem inventore repellendus dicta magni quaerat officia
-        quis ullam, odit veniam consectetur! Tempora labore temporibus earum vel
-        nesciunt distinctio expedita dolor tempore eos iure deleniti, aliquid
-        illum corporis pariatur accusamus repellat in eaque architecto eligendi
-        cum aut omnis suscipit et dolorum! At iste incidunt quae cupiditate
-        doloremque dicta asperiores, veniam, quaerat eaque excepturi a vitae
-        delectus voluptatibus, dolor illo officiis eum eos. Voluptatibus, quas
-        voluptatem. Alias delectus porro nemo molestias fugiat perspiciatis, quo
-        tenetur ea eius veritatis voluptatibus libero voluptatem assumenda
-        beatae omnis est consectetur exercitationem, vel obcaecati, optio neque.
-        Nisi expedita esse veniam, praesentium quasi accusamus rerum, explicabo
-        repudiandae velit aliquid enim totam repellendus? Ad atque consectetur
-        repudiandae commodi perspiciatis placeat obcaecati dolorem aliquam
-        quaerat vero deserunt perferendis a hic illum aliquid, magni numquam
-        neque laborum asperiores? Asperiores consectetur tempore repellat velit
-        at iusto, saepe nam blanditiis sit, vel exercitationem laudantium
-        facere, alias placeat sunt sint dolore voluptatem odit quaerat. Culpa
-        nemo veritatis voluptas expedita nulla, ipsum alias aperiam vel
-        recusandae nam iste unde tenetur quod nisi nostrum voluptates illo
-        pariatur ullam accusamus id cum quasi accusantium itaque optio.
-        Voluptatibus ipsa eaque necessitatibus quidem hic culpa. Sed sequi
-        aperiam, ab voluptatibus vel dolore corrupti soluta suscipit a id dicta
-        facere vitae rerum repudiandae voluptas voluptate dignissimos architecto
-        dolorum tempore libero atque. Consectetur, at! Quasi nisi aut porro
-        tenetur eaque at delectus exercitationem! Dolores, tempore error,
-        doloremque, deleniti repellendus nihil eius dolore quibusdam veniam
-        reprehenderit fugiat?
-      </div>
-    </>
+    <div className="maincardclass mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+          <components.DashboardNavbar/>
+    <ul>
+      {data.map((item, index) => {
+        return (
+          <components.GameCard
+            key={index}
+            title={item.title}
+            subtitle={item.subtitle}
+            type={item.type}
+            startTime={item.startTime}
+            extraDetails={item.extraDetails}
+            link={item.link}
+            image={item.image}
+          />
+        );
+      })}
+    </ul>
+  </div>
   );
 };
 
