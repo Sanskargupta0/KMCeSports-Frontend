@@ -8,6 +8,7 @@ import Girl from './Images/Avatar/girl.jpg'
 import Gorilla from './Images/Avatar/gorilla.jpg'
 import Mummy from './Images/Avatar/mummy.jpg'
 import Ninja from './Images/Avatar/ninja.jpg'
+import CommingSoon from './Images/coming-soon.png'
 export default {
     KMCeSportsLogo,
     Sanskar,
@@ -19,4 +20,5 @@ export default {
     Gorilla,
     Mummy,
     Ninja,
+    CommingSoon,
 }

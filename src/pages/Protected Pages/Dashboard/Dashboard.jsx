@@ -1,7 +1,7 @@
 import React from "react";
 import { components } from "../../../components";
-import styleDashboard from "./Dashboard.module.css";
-
+import "./Dashboard.css";
+import { images } from "../../../assets";
 const Dashboard = () => {
   const data = [
     {
@@ -66,25 +66,61 @@ const Dashboard = () => {
     },
   ];
   return (
-    <div className="maincardclass mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
-          <components.DashboardNavbar/>
-    <ul>
-      {data.map((item, index) => {
-        return (
-          <components.GameCard
-            key={index}
-            title={item.title}
-            subtitle={item.subtitle}
-            type={item.type}
-            startTime={item.startTime}
-            extraDetails={item.extraDetails}
-            link={item.link}
-            image={item.image}
-          />
-        );
-      })}
-    </ul>
-  </div>
+    <div className="dashboard">
+      <div className="maincardclass  mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+        <components.DashboardNavbar />
+        <h1>
+          <p className="maintext">Level Up Your Game</p>{" "}
+          <p>Join Exciting Esports Tournaments and Compete for Glory!</p>
+        </h1>
+        <div className="games panel">
+          <div className="title">
+            <h1>Battle Arena</h1>
+            <p>Games Tournament Section</p>
+          </div>
+          <ul>
+            {data.map((item, index) => {
+              return (
+                <components.GameCard
+                  key={index}
+                  title={item.title}
+                  subtitle={item.subtitle}
+                  type={item.type}
+                  startTime={item.startTime}
+                  extraDetails={item.extraDetails}
+                  link={item.link}
+                  image={item.image}
+                />
+              );
+            })}
+          </ul>
+        </div>
+        <div className="Bookmark panel">
+          <div className="title">
+            <h1>Tourney Tracker</h1>
+            <p>Secure Your Play Space</p>
+          </div>
+        </div>
+        <div className="upcoming panel">
+          <div className="title">
+            <h1>
+              Future Clash <span>Calendar</span>
+            </h1>
+            <p>
+              Upcoming Tournaments <br /> Section
+            </p>
+          </div>
+          <div style={{display: "flex", justifyContent: "center"}}>
+            {/* <img
+              src={images.CommingSoon}
+              alt="comming soon"
+              style={{ width: "-webkit-fill-available" }}
+            /> */}
+            <components.CommingSoon />
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

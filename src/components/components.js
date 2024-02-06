@@ -4,6 +4,7 @@ import Navbar from "./Navbar/Navbar";
 import Loader from "./Loader/Loader";
 import DashboardNavbar from "./DashboardNavbar/DashboardNavbar";
 import GameCard from "./GameCard/GameCard";
+import CommingSoon from "./CommingSoon/CommingSoon";
 
 export default {
   Contributor,
@@ -12,4 +13,5 @@ export default {
   Loader,
   DashboardNavbar,
   GameCard,
+  CommingSoon,
 };

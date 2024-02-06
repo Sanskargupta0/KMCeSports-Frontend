@@ -1,0 +1,104 @@
+
+
+.dashboard {
+  background: radial-gradient(
+    ellipse at 100% 100%,
+    rgba(71, 242, 82, 1) 0%,
+    rgba(31, 41, 55, 1) 100%
+  );
+
+  h1 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    p {
+      margin-top: 1rem;
+      color: white;
+      font-size: 2rem;
+    }
+  }
+
+  h1 .maintext {
+    font-size: 8vw;
+    line-height: 1em;
+    animation: animate 10s ease-in-out infinite;
+    background: -webkit-repeating-linear-gradient(
+      -60deg,
+      #71b7e6,
+      #47f252,
+      #b98acc,
+      #ee8176,
+      #b98acc,
+      #47f252,
+      #9b59b6
+    );
+    background-size: 500%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.25);
+    position: relative;
+    -webkit-animation: animate 10s ease-in-out infinite;
+  }
+
+  @keyframes animate {
+    0% {
+      background-position: 0 0;
+    }
+    25% {
+      background-position: 100% 0;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    75% {
+      background-position: 0% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+}
+
+.panel {
+  margin-top: 2rem;
+  background: linear-gradient(
+    50deg,
+    rgba(255, 255, 255, 0.4) 12%,
+    rgba(255, 255, 255, 0.1) 77%
+  );
+  background-blend-mode: ;
+  box-shadow: 0px 4px 24px 1px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(5px);
+  border-radius: 2rem;
+  -webkit-backdrop-filter: blur(5px);
+  .title {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    h1 {
+      background-image: url(../../../assets/Images/Thunder.gif);
+      background-size: cover;
+      color: transparent;
+      -moz-background-clip: text;
+      -webkit-background-clip: text;
+      text-transform: uppercase;
+      font-size: 10vw;
+    }
+    p {
+      color: white;
+      font-size: 2rem;
+    }
+  }
+}
+
+
+ @media screen and (min-width: 1200px) {
+  .panel .title h1 {
+    font-size: 8rem;
+  }
+}
