@@ -1,3 +1,31 @@
+.upcoming li {
+  position: relative;
+  width: 300px;
+  display: flex;
+  flex: 0 0 300px;
+  flex-direction: column;
+  margin: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f0f0f0;
+  text-align: center;
+  color: #0a4870;
+  transition: 0.3s;
+  height: fit-content;
+}
+@media screen and (max-width: 400px){
+  .upcoming li {
+    width: 250px;
+    flex: 0 0 250px;
+  }   
+  .img-card .card-image img {
+    width: 250px
+  }
+
+}
+
+
 /* Image Card */
 .img-card {
   width: 300px;
@@ -20,7 +48,6 @@
 }
 
 .img-card .card-image img {
-  width: 100%;
   border-radius: 5px 5px 0px 0px;
 
   -webkit-transition: all 0.8s;
@@ -78,12 +105,13 @@
   z-index: 1;
   top: 10px;
   left: 10px;
-  font-size: 30px;
-  color: #fff;
+  color: black;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .img-card.iCard-style1 .card-text {
-  color: #795548;
+  color: #0a4870;
 }
 
 .img-card.iCard-style1 .card-link a {

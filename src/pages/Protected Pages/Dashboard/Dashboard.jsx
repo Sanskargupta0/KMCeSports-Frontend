@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { components } from "../../../components";
 import "./Dashboard.css";
 import { images } from "../../../assets";
 const Dashboard = () => {
-  const data = [
+  const [gameData, setGameData] = useState([
     {
+      id: 1,
       title: "Pubg Mobile Tournament",
       subtitle: "Make your team and win the prize pool of 1000$",
       type: "Paid Tournament 10$",
@@ -15,6 +16,7 @@ const Dashboard = () => {
       image: "Crocodile",
     },
     {
+      id: 2,
       title: "Exciting Pubg Championship",
       subtitle: "Assemble your squad and compete for a $1500 prize",
       type: "Paid Entry $15",
@@ -25,6 +27,7 @@ const Dashboard = () => {
       image: "Crocodile",
     },
     {
+      id: 3,
       title: "Battle Royale Showdown",
       subtitle: "Form your dream team and seize the $800 grand prize",
       type: "Entry Fee $8",
@@ -35,6 +38,7 @@ const Dashboard = () => {
       image: "Crocodile",
     },
     {
+      id: 4,
       title: "Elite Squad Showdown",
       subtitle: "Compete against top teams for a chance to win $1200",
       type: "Paid Entry $12",
@@ -45,6 +49,7 @@ const Dashboard = () => {
       image: "Crocodile",
     },
     {
+      id: 5,
       title: "Ultimate Pubg Challenge",
       subtitle: "Battle it out for the title and a $2000 cash prize",
       type: "Paid Entry $20",
@@ -55,6 +60,7 @@ const Dashboard = () => {
       image: "Crocodile",
     },
     {
+      id: 6,
       title: "Clash of Champions",
       subtitle: "Gather your squad for a shot at the $1000 prize pool",
       type: "Paid Entry $10",
@@ -64,7 +70,71 @@ const Dashboard = () => {
       link: "/JoinNow",
       image: "Crocodile",
     },
+  ]);
+  const [bookmarkData, setBookmarkData] = useState([]);
+  const commingSoonData = [
+    {
+      title: "Comming Soon",
+      description: "Stay Tuned for More Exciting Tournaments",
+      images: "Cat",
+      link: "/CommingSoon"
+    },
+    {
+      title: "Upcoming Events",
+      description: "Check out our calendar for upcoming tournaments",
+      images: "Cat",
+      link: "/UpcomingEvents"
+    },
+    {
+      title: "Latest Updates",
+      description: "Catch up on the latest news and announcements",
+      images: "Cat",
+      link: "/LatestUpdates"
+    },
+    {
+      title: "Special Announcement",
+      description: "Exciting news coming your way soon!",
+      images: "Cat",
+      link: "/SpecialAnnouncement"
+    },
+    {
+      title: "Exclusive Sneak Peek",
+      description: "Get a glimpse of what's in store for you",
+      images: "Cat",
+      link: "/ExclusiveSneakPeek"
+    }
   ];
+  
+  const [commingSoon, setCommingSoon] = useState(true);
+  const [bookmark, setBookmark] = useState(true);
+
+  const handleCheckboxToggle = (item) => {
+    if (bookmarkData.find((bookmarkItem) => bookmarkItem.id === item.id)) {
+      // If item is already in bookmarkData, remove it
+      setBookmarkData(
+        bookmarkData.filter((bookmarkItem) => bookmarkItem.id !== item.id)
+      );
+    } else {
+      // If item is not in bookmarkData, add it
+      setBookmarkData([...bookmarkData, item]);
+    }
+  };
+  useEffect(() => {
+    if (bookmarkData.length > 0) {
+      setBookmark(false);
+    } else {
+      setBookmark(true);
+    }
+  }, [bookmarkData]);
+
+  useEffect(()=>{
+    if (commingSoonData.length>0){
+      setCommingSoon(false);
+    }
+    else{
+      setCommingSoon(true);
+    }
+  },[commingSoonData])
   return (
     <div className="dashboard">
       <div className="maincardclass  mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -79,10 +149,10 @@ const Dashboard = () => {
             <p>Games Tournament Section</p>
           </div>
           <ul>
-            {data.map((item, index) => {
+            {gameData.map((item) => {
               return (
                 <components.GameCard
-                  key={index}
+                  key={item.id}
                   title={item.title}
                   subtitle={item.subtitle}
                   type={item.type}
@@ -90,6 +160,10 @@ const Dashboard = () => {
                   extraDetails={item.extraDetails}
                   link={item.link}
                   image={item.image}
+                  checked={bookmarkData.some(
+                    (bookmarkItem) => bookmarkItem.id === item.id
+                  )}
+                  onCheckboxToggle={() => handleCheckboxToggle(item)}
                 />
               );
             })}
@@ -100,6 +174,41 @@ const Dashboard = () => {
             <h1>Tourney Tracker</h1>
             <p>Secure Your Play Space</p>
           </div>
+          {bookmark ? (
+            <>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <img
+                  src={images.NoBookmark}
+                  alt="NoBookmark"
+                  style={{ width: "100%", maxWidth: "700px" }}
+                />
+              </div>
+              <p className="title" style={{ fontSize: "3vw", color: "red" }}>
+                No BookMark Found !
+              </p>{" "}
+            </>
+          ) : (
+            <ul>
+              {bookmarkData.map((item) => {
+                return (
+                  <components.GameCard
+                    key={item.id}
+                    title={item.title}
+                    subtitle={item.subtitle}
+                    type={item.type}
+                    startTime={item.startTime}
+                    extraDetails={item.extraDetails}
+                    link={item.link}
+                    image={item.image}
+                    checked={bookmarkData.some(
+                      (bookmarkItem) => bookmarkItem.id === item.id
+                    )}
+                    onCheckboxToggle={() => handleCheckboxToggle(item)}
+                  />
+                );
+              })}
+            </ul>
+          )}
         </div>
         <div className="upcoming panel">
           <div className="title">
@@ -110,14 +219,27 @@ const Dashboard = () => {
               Upcoming Tournaments <br /> Section
             </p>
           </div>
-          <div style={{display: "flex", justifyContent: "center"}}>
-            {/* <img
+          {commingSoon ? (
+            <img
               src={images.CommingSoon}
               alt="comming soon"
               style={{ width: "-webkit-fill-available" }}
-            /> */}
-            <components.CommingSoon />
-          </div>
+            />
+          ) : (
+            <ul>
+              {commingSoonData.map((item, index) => {
+                return (
+                  <components.CommingSoon
+                    key={index}
+                    title={item.title}
+                    description={item.description}
+                    images={item.images}
+                    link={item.link}
+                  />
+                );
+              })}
+            </ul>
+          )}
         </div>
       </div>
     </div>

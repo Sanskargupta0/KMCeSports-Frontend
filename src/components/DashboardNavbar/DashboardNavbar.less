@@ -1,6 +1,10 @@
 .dashboardNavbar {
-  position: absolute;
+  position: fixed;
   z-index: 1;
+  @media screen and (max-width: 1024px) {
+    left: -2px;
+  
+  }
   * {
     font-family: "Open Sans", sans-serif;
     box-sizing: border-box;
@@ -91,13 +95,16 @@
       opacity: 0;
     }
     &.closed {
+      width: 0rem;
       a,
       header {
         transform: translateY(~"calc(var(--top) * -1)") scaleY(0.1) scaleX(0.1);
         transition-delay: var(--delay-in);
         color: transparent;
+        width: 10rem;
       }
       footer button {
+        width: 10rem;
         transition-delay: 0s;
         transform: scaleY(0.7) scaleX(0.1);
       }

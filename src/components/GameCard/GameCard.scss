@@ -224,6 +224,12 @@ $bluegrey: #49606e;
         @include cardsOpen();
       }
     }
+    @media screen and (max-width: 400px){
+      .booking-card {
+        width: 250px;
+        flex: 0 0 250px;
+    }
+  }
   }
 
   @media (max-width: 100px) {
@@ -461,4 +467,10 @@ $bluegrey: #49606e;
   }
 
 
+ 
+
 }
+
+
+  
+
