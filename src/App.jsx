@@ -37,10 +37,6 @@ const App = () => {
             element={<pages.Protected Component={pages.JoinedGames} />}
           />
           <Route
-            path="/bookmarkEvent"
-            element={<pages.Protected Component={pages.BookmarkEvent} />}
-          />
-          <Route
             path="/payment-KMCWallet"
             element={<pages.Protected Component={pages.KMCWallet} />}
           />

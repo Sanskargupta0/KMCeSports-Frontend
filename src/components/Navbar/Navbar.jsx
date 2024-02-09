@@ -168,7 +168,7 @@ export default function Navbar() {
                           <span className="sr-only">Open user menu</span>
                           <img
                             className="h-8 w-8 rounded-full"
-                            src={images[userdata.avatarURL]}
+                            src={userdata.avatarURL==null?"":userdata.avatarURL.length < 10 ? images[userdata.avatarURL] : userdata.avatarURL}
                             alt="User Image"
                           />
                         </Menu.Button>

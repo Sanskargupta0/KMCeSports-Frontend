@@ -14,6 +14,7 @@ export const Authprovider = ({ children }) => {
     email: "",
     phone: "",
     avatarURL: "",
+    bookmarks: [],
   });
   // checking if user is logged in or not
   const islogedIn = !!token.token;
@@ -28,6 +29,7 @@ export const Authprovider = ({ children }) => {
       email: null,
       phone: null,
       avatarURL: null,
+      bookmarks: null,
     });
     localStorage.removeItem("Token");
   };
@@ -52,6 +54,7 @@ export const Authprovider = ({ children }) => {
           email: data.email,
           phone: data.phone,
           avatarURL: data.avatarURL,
+          bookmarks: data.bookmarks,
         });
       }
     } catch (error) {

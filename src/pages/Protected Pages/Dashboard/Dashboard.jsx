@@ -2,123 +2,127 @@ import React, { useEffect, useState } from "react";
 import { components } from "../../../components";
 import "./Dashboard.css";
 import { images } from "../../../assets";
+import config from "../../../config";
+import { toast } from "react-toastify";
+
 const Dashboard = () => {
-  const [gameData, setGameData] = useState([
-    {
-      id: 1,
-      title: "Pubg Mobile Tournament",
-      subtitle: "Make your team and win the prize pool of 1000$",
-      type: "Paid Tournament 10$",
-      startTime: "2024-03-01T00:07:00",
-      extraDetails:
-        "This is a paid tournament. You have to pay 10$ to join this tournament. The prize pool is 1000$.",
-      link: "/Contact",
-      image: "Crocodile",
-    },
-    {
-      id: 2,
-      title: "Exciting Pubg Championship",
-      subtitle: "Assemble your squad and compete for a $1500 prize",
-      type: "Paid Entry $15",
-      startTime: "2024-03-15T14:30:00",
-      extraDetails:
-        "Join this thrilling tournament with a paid entry of $15. Total prize money is $1500.",
-      link: "/Registration",
-      image: "Crocodile",
-    },
-    {
-      id: 3,
-      title: "Battle Royale Showdown",
-      subtitle: "Form your dream team and seize the $800 grand prize",
-      type: "Entry Fee $8",
-      startTime: "2024-04-02T18:45:00",
-      extraDetails:
-        "Participate in this intense battle with an entry fee of $8. The winner takes home the grand prize of $800.",
-      link: "/SignUp",
-      image: "Crocodile",
-    },
-    {
-      id: 4,
-      title: "Elite Squad Showdown",
-      subtitle: "Compete against top teams for a chance to win $1200",
-      type: "Paid Entry $12",
-      startTime: "2024-04-20T21:15:00",
-      extraDetails:
-        "A challenging tournament awaits you. Secure your spot by paying the entry fee of $12. Prize pool: $1200.",
-      link: "/Details",
-      image: "Crocodile",
-    },
-    {
-      id: 5,
-      title: "Ultimate Pubg Challenge",
-      subtitle: "Battle it out for the title and a $2000 cash prize",
-      type: "Paid Entry $20",
-      startTime: "2024-05-05T12:00:00",
-      extraDetails:
-        "The ultimate challenge is here. Pay the entry fee of $20 and stand a chance to win the grand prize of $2000.",
-      link: "/RegisterNow",
-      image: "Crocodile",
-    },
-    {
-      id: 6,
-      title: "Clash of Champions",
-      subtitle: "Gather your squad for a shot at the $1000 prize pool",
-      type: "Paid Entry $10",
-      startTime: "2024-05-18T17:30:00",
-      extraDetails:
-        "Join the Clash of Champions with an entry fee of $10. Compete for a share of the $1000 prize pool.",
-      link: "/JoinNow",
-      image: "Crocodile",
-    },
-  ]);
+  let token = localStorage.getItem("Token");
+  const [gameData, setGameData] = useState([]);
   const [bookmarkData, setBookmarkData] = useState([]);
-  const commingSoonData = [
-    {
-      title: "Comming Soon",
-      description: "Stay Tuned for More Exciting Tournaments",
-      images: "Cat",
-      link: "/CommingSoon"
-    },
-    {
-      title: "Upcoming Events",
-      description: "Check out our calendar for upcoming tournaments",
-      images: "Cat",
-      link: "/UpcomingEvents"
-    },
-    {
-      title: "Latest Updates",
-      description: "Catch up on the latest news and announcements",
-      images: "Cat",
-      link: "/LatestUpdates"
-    },
-    {
-      title: "Special Announcement",
-      description: "Exciting news coming your way soon!",
-      images: "Cat",
-      link: "/SpecialAnnouncement"
-    },
-    {
-      title: "Exclusive Sneak Peek",
-      description: "Get a glimpse of what's in store for you",
-      images: "Cat",
-      link: "/ExclusiveSneakPeek"
-    }
-  ];
-  
+  const [userBookmarkData, setUserBookmarkData] = useState([]);
+  const [commingSoonData, setCommingSoonData] = useState([]);
+
   const [commingSoon, setCommingSoon] = useState(true);
   const [bookmark, setBookmark] = useState(true);
 
   const handleCheckboxToggle = (item) => {
-    if (bookmarkData.find((bookmarkItem) => bookmarkItem.id === item.id)) {
+    if (bookmarkData.find((bookmarkItem) => bookmarkItem._id === item._id)) {
       // If item is already in bookmarkData, remove it
+      removeBookmark(item._id);
       setBookmarkData(
-        bookmarkData.filter((bookmarkItem) => bookmarkItem.id !== item.id)
+        bookmarkData.filter((bookmarkItem) => bookmarkItem._id !== item._id)
       );
     } else {
       // If item is not in bookmarkData, add it
+      addBookmark(item._id);
       setBookmarkData([...bookmarkData, item]);
     }
   };
+  const getGameData = async (token) => {
+    try {
+      const response = await fetch(`${config.backendUrl}/gamedata`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await response.json();
+      if (response.ok) {
+        // game data
+        setGameData(data.gameData);
+        // user bookmark data
+        setUserBookmarkData(data.userBookmark);
+        // comming soon data
+        setCommingSoonData(data.commingSoonData);
+      } else {
+        toast.error(`failed to get Games Data`, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const addBookmark = async (gameId) => {
+    try {
+      const response = await fetch(`${config.backendUrl}/userBookmarkAdd`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ gameId }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        toast.success(data.msg, {
+          position: "top-center",
+        });
+      } else {
+        toast.error(`failed to Add BookMark`, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const removeBookmark = async (gameId) => {
+    try {
+      const response = await fetch(`${config.backendUrl}/userBookmarkRemove`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ gameId }),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        toast.success(data.msg, {
+          position: "top-center",
+        });
+      } else {
+        toast.error(`failed to Remove BookMark`, {
+          position: "top-center",
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+  useEffect(() => {
+    getGameData(token);
+  }, []);
+
+  useEffect(() => {
+    if (userBookmarkData !== null) {
+      setBookmarkData((prevBookmarkData) => {
+        let updatedBookmarkData = [...prevBookmarkData]; // Create a copy of the previous state
+        for (let i = 0; i < gameData.length; i++) {
+          for (let j = 0; j < userBookmarkData.length; j++) {
+            if (gameData[i]._id === userBookmarkData[j]) {
+              updatedBookmarkData.push(gameData[i]); // Push the new bookmark into the copy
+            }
+          }
+        }
+        return updatedBookmarkData; // Return the updated state
+      });
+    }
+  }, [userBookmarkData]);
+
   useEffect(() => {
     if (bookmarkData.length > 0) {
       setBookmark(false);
@@ -127,14 +131,14 @@ const Dashboard = () => {
     }
   }, [bookmarkData]);
 
-  useEffect(()=>{
-    if (commingSoonData.length>0){
+  useEffect(() => {
+    if (commingSoonData.length > 0) {
       setCommingSoon(false);
-    }
-    else{
+    } else {
       setCommingSoon(true);
     }
-  },[commingSoonData])
+  }, [commingSoonData]);
+
   return (
     <div className="dashboard">
       <div className="maincardclass  mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
@@ -152,7 +156,7 @@ const Dashboard = () => {
             {gameData.map((item) => {
               return (
                 <components.GameCard
-                  key={item.id}
+                  key={item._id}
                   title={item.title}
                   subtitle={item.subtitle}
                   type={item.type}
@@ -161,7 +165,7 @@ const Dashboard = () => {
                   link={item.link}
                   image={item.image}
                   checked={bookmarkData.some(
-                    (bookmarkItem) => bookmarkItem.id === item.id
+                    (bookmarkItem) => bookmarkItem._id === item._id
                   )}
                   onCheckboxToggle={() => handleCheckboxToggle(item)}
                 />
@@ -169,7 +173,7 @@ const Dashboard = () => {
             })}
           </ul>
         </div>
-        <div className="Bookmark panel">
+        <div className="Bookmark panel" id="bookmarksection">
           <div className="title">
             <h1>Tourney Tracker</h1>
             <p>Secure Your Play Space</p>
@@ -192,7 +196,7 @@ const Dashboard = () => {
               {bookmarkData.map((item) => {
                 return (
                   <components.GameCard
-                    key={item.id}
+                    key={item._id}
                     title={item.title}
                     subtitle={item.subtitle}
                     type={item.type}
@@ -201,7 +205,7 @@ const Dashboard = () => {
                     link={item.link}
                     image={item.image}
                     checked={bookmarkData.some(
-                      (bookmarkItem) => bookmarkItem.id === item.id
+                      (bookmarkItem) => bookmarkItem._id === item._id
                     )}
                     onCheckboxToggle={() => handleCheckboxToggle(item)}
                   />

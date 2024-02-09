@@ -58,6 +58,13 @@ const DashboardNavbar = () => {
     e.stopPropagation();
   };
 
+  const handleScroll = (e) => {
+    e.preventDefault();
+    const targetSection = document.querySelector('#bookmarksection');
+    targetSection.scrollIntoView({ behavior: 'smooth' });
+  };
+  
+
   
 
   return (
@@ -70,8 +77,8 @@ const DashboardNavbar = () => {
           <li className="menu-item">
             <Link to="/joinedGames">Joined Games</Link>
           </li>
-          <li className="menu-item">
-            <Link to="/bookmarkEvent">Bookmark event</Link>
+          <li className="menu-item" onClick={handleScroll}> 
+            <Link>Bookmark event</Link>
           </li>
           <li className="menu-item">
             <Link to="" style={{ cursor: "default" }}>

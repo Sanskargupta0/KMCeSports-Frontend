@@ -13,7 +13,6 @@ import Protected from "./Protected/Protected"
 import UserProfile from "./Protected Pages/UserProfile/UserProfile";
 import Notification from "./Protected Pages/Notifications/Notifications";
 import JoinedGames from "./Protected Pages/JoinedGames/JoinedGames";
-import BookmarkEvent from "./Protected Pages/BookmarkEvent/BookmarkEvent";
 import KMCWallet from "./Protected Pages/Payment/KMCWallet/KMCWallet";
 import PaymentHistory from "./Protected Pages/Payment/PaymentHistory/PaymentHistory";
 import RedeemPoints from "./Protected Pages/Payment/RedeemPoints/RedeemPoints"
@@ -36,7 +35,6 @@ export default{
     UserProfile,
     Notification,
     JoinedGames,
-    BookmarkEvent,
     KMCWallet,
     PaymentHistory,
     RedeemPoints,
