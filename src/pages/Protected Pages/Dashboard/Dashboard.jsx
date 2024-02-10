@@ -4,9 +4,11 @@ import "./Dashboard.css";
 import { images } from "../../../assets";
 import config from "../../../config";
 import { toast } from "react-toastify";
+import { useAuth } from "../../../store/auth";
 
 const Dashboard = () => {
   let token = localStorage.getItem("Token");
+  const { userdata } = useAuth();
   const [gameData, setGameData] = useState([]);
   const [bookmarkData, setBookmarkData] = useState([]);
   const [userBookmarkData, setUserBookmarkData] = useState([]);
@@ -41,7 +43,7 @@ const Dashboard = () => {
         // game data
         setGameData(data.gameData);
         // user bookmark data
-        setUserBookmarkData(data.userBookmark);
+        setUserBookmarkData(userdata.bookmarks);
         // comming soon data
         setCommingSoonData(data.commingSoonData);
       } else {
@@ -105,7 +107,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     getGameData(token);
-  }, []);
+  }, [userdata]);
 
   useEffect(() => {
     if (userBookmarkData !== null) {
@@ -124,6 +126,7 @@ const Dashboard = () => {
   }, [userBookmarkData]);
 
   useEffect(() => {
+
     if (bookmarkData.length > 0) {
       setBookmark(false);
     } else {
@@ -132,6 +135,7 @@ const Dashboard = () => {
   }, [bookmarkData]);
 
   useEffect(() => {
+
     if (commingSoonData.length > 0) {
       setCommingSoon(false);
     } else {

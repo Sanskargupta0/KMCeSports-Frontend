@@ -5,8 +5,12 @@ import constactStyles from "./Contact.module.css";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import config from "../../config";
+import { useAuth } from "../../store/auth";
 
 const Contact = () => {
+  const { userdata }= useAuth();
+  const [contactData, setContactData] = useState(true);
+  
   function reset() {
     document.getElementById("name").value = "";
     document.getElementById("mail").value = "";
@@ -158,6 +162,14 @@ const Contact = () => {
       console.log({ err: error });
     }
   };
+
+  if(contactData && userdata){
+    setContactData(false);
+    if(userdata.firstName!==null && userdata.email!==null){
+    setEmail(userdata.email);
+    setContact({...contact, name: userdata.firstName, email: userdata.email});
+    }
+  };
   return (
     <div>
       <div className={constactStyles.formscontainer}>
@@ -260,7 +272,7 @@ const Contact = () => {
               type="email"
               name="email"
               id="subEmail"
-              value={email.email}
+              value={email}
               onChange={handelEmail}
             />
 

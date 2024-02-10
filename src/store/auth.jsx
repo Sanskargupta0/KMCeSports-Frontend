@@ -15,6 +15,10 @@ export const Authprovider = ({ children }) => {
     phone: "",
     avatarURL: "",
     bookmarks: [],
+    tournaments: {
+      participated: 0,
+      won: 0,
+    },
   });
   // checking if user is logged in or not
   const islogedIn = !!token.token;
@@ -30,6 +34,12 @@ export const Authprovider = ({ children }) => {
       phone: null,
       avatarURL: null,
       bookmarks: null,
+      facebook: null,
+      instagram: null,
+      tournaments: {
+        participated: null,
+        won: null,
+      },
     });
     localStorage.removeItem("Token");
   };
@@ -55,6 +65,12 @@ export const Authprovider = ({ children }) => {
           phone: data.phone,
           avatarURL: data.avatarURL,
           bookmarks: data.bookmarks,
+          facebook: data.facebook,
+          instagram: data.instagram,
+          tournaments: {
+            participated: data.tournaments.participated,
+            won: data.tournaments.won,
+          },
         });
       }
     } catch (error) {

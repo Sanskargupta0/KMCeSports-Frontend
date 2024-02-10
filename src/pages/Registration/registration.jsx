@@ -14,12 +14,12 @@ const registration = () => {
     var password = document.getElementById("password").value;
     var cpassword = document.getElementById("cpassword").value;
 
-    if (firstName.length < 3) {
-      toast.warn("First name should be at least 3 characters long", {
+    if (firstName.length < 4) {
+      toast.warn("First name should be at least 4 characters long", {
         position: "top-center",
       });
-    } else if (lastName.length < 3) {
-      toast.warn("Last name should be at least 3 characters long", {
+    } else if (lastName.length < 4) {
+      toast.warn("Last name should be at least 4 characters long", {
         position: "top-center",
       });
     } else if (!/^[a-zA-Z0-9]+$/.test(userName)) {

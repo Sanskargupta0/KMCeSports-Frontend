@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./DashboardNavbar.less";
 
 const DashboardNavbar = () => {
@@ -8,6 +8,8 @@ const DashboardNavbar = () => {
   const [groupNumber, setGroupNumber] = useState(0);
   const [els, setEls] = useState([]);
   const [grouplength, setGroupLength] = useState(0);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const $els = document.querySelectorAll(".menu a, .menu header");
@@ -60,12 +62,17 @@ const DashboardNavbar = () => {
 
   const handleScroll = (e) => {
     e.preventDefault();
-    const targetSection = document.querySelector('#bookmarksection');
-    targetSection.scrollIntoView({ behavior: 'smooth' });
+    if (window.location.pathname === "/dashboard") {
+      const targetSection = document.querySelector("#bookmarksection");
+      targetSection.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/dashboard");
+      setTimeout(() => {
+        const targetSection = document.querySelector("#bookmarksection");
+        targetSection.scrollIntoView({ behavior: "smooth" });
+      }, 1000);
+    }
   };
-  
-
-  
 
   return (
     <div className="dashboardNavbar">
@@ -77,8 +84,8 @@ const DashboardNavbar = () => {
           <li className="menu-item">
             <Link to="/joinedGames">Joined Games</Link>
           </li>
-          <li className="menu-item" onClick={handleScroll}> 
-            <Link>Bookmark event</Link>
+          <li className="menu-item">
+            <Link onClick={handleScroll}>Bookmark event</Link>
           </li>
           <li className="menu-item">
             <Link to="" style={{ cursor: "default" }}>
