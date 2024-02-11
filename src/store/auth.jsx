@@ -20,6 +20,8 @@ export const Authprovider = ({ children }) => {
       won: 0,
     },
   });
+
+  const [rerun , setRerun ]=useState(true);
   // checking if user is logged in or not
   const islogedIn = !!token.token;
   // logout user
@@ -84,15 +86,18 @@ export const Authprovider = ({ children }) => {
     localStorage.setItem("Token", token);
     setToken({ token: token });
   };
+  const setRerunData = () => {
+    setRerun(!rerun);
+  };
 
   useEffect(() => {
     if (token.token != null)
       getUserData(token.token);
-  }, [token.token]);
+  }, [token.token , rerun ]);
 
   return (
     <AuthContext.Provider
-      value={{ storeTokenInLs, logoutUser, islogedIn, userdata }}
+      value={{ storeTokenInLs, logoutUser, islogedIn, userdata, setRerunData }}
     >
       {children}
     </AuthContext.Provider>

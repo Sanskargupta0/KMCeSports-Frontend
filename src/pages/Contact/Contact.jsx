@@ -8,9 +8,9 @@ import config from "../../config";
 import { useAuth } from "../../store/auth";
 
 const Contact = () => {
-  const { userdata }= useAuth();
+  const { userdata } = useAuth();
   const [contactData, setContactData] = useState(true);
-  
+
   function reset() {
     document.getElementById("name").value = "";
     document.getElementById("mail").value = "";
@@ -24,11 +24,12 @@ const Contact = () => {
     var mail = document.getElementById("mail").value;
     var message = document.getElementById("message").value;
     var phone = document.getElementById("phone").value;
+
     if (name === "" || mail === "" || message === "") {
       toast.warn("Please fill all the fields", {
         position: "top-center",
       });
-    } else if (phone.length > 0 && phone.length < 10) {
+    } else if (phone.length > 0 && phone.length != 10) {
       toast.warn("Please enter a valid phone number", {
         position: "top-center",
       });
@@ -163,13 +164,17 @@ const Contact = () => {
     }
   };
 
-  if(contactData && userdata){
+  if (contactData && userdata) {
     setContactData(false);
-    if(userdata.firstName!==null && userdata.email!==null){
-    setEmail(userdata.email);
-    setContact({...contact, name: userdata.firstName, email: userdata.email});
+    if (userdata.firstName !== null && userdata.email !== null) {
+      setEmail(userdata.email);
+      setContact({
+        ...contact,
+        name: userdata.firstName,
+        email: userdata.email,
+      });
     }
-  };
+  }
   return (
     <div>
       <div className={constactStyles.formscontainer}>

@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import config from "../../../config";
 import "./UserProfile.css";
 const UserProfile = () => {
-  const { userdata , storeTokenInLs } = useAuth();
+  const { userdata, setRerunData } = useAuth();
   const [user, setUser] = useState({
     userName: "",
     firstName: "",
@@ -46,10 +46,7 @@ const UserProfile = () => {
       toast.warn("Username should be at least 4 characters long", {
         position: "top-center",
       });
-    } else if (
-      user.phone.length != 0  &&
-      user.phone.length != 10
-    ) {
+    } else if (user.phone.length != 0 && user.phone.length != 10) {
       toast.warn("Phone number must be 10 digits long", {
         position: "top-center",
       });
@@ -160,7 +157,7 @@ const UserProfile = () => {
         });
         const data = await responce.json();
         if (responce.status === 200) {
-          storeTokenInLs(Token);
+          setRerunData();
           toast.success(data.msg, {
             position: "top-center",
           });
