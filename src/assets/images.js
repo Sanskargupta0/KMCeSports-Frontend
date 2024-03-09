@@ -10,6 +10,7 @@ import Mummy from './Images/Avatar/mummy.jpg'
 import Ninja from './Images/Avatar/ninja.jpg'
 import CommingSoon from './Images/coming-soon.png'
 import NoBookmark from './Images/NoBookmark.png'
+import NoGames from './Images/NoGames.png'
 export default {
     KMCeSportsLogo,
     Sanskar,
@@ -23,4 +24,5 @@ export default {
     Ninja,
     CommingSoon,
     NoBookmark,
+    NoGames,
 }

@@ -109,13 +109,13 @@ const DashboardNavbar = () => {
             </Link>
             <ol className="sub-menu">
               <li className="menu-item">
-                <Link to="/needHelp-helpDesk">Help desk </Link>
+                <Link to="/helpDesk">Help desk </Link>
               </li>
               <li className="menu-item">
                 <Link to="/Contact">Contact Us</Link>
               </li>
               <li className="menu-item">
-                <Link to="/needHelp-reportBug">Report a Bug!</Link>
+                <Link to="/reportBug">Report a Bug!</Link>
               </li>
             </ol>
           </li>

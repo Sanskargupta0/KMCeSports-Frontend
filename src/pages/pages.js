@@ -18,6 +18,8 @@ import PaymentHistory from "./Protected Pages/Payment/PaymentHistory/PaymentHist
 import RedeemPoints from "./Protected Pages/Payment/RedeemPoints/RedeemPoints"
 import HelpDesk from "./Protected Pages/NeedHelp/HelpDesk/HelpDesk";
 import ReportBug from "./Protected Pages/NeedHelp/ReportBug/ReportBug";
+import CommingSoon from "./Protected Pages/CommingSoon/CommingSoon";
+import GameRegistration from "./Protected Pages/Registration/Registration";
 
 export default{
     About,
@@ -39,5 +41,7 @@ export default{
     PaymentHistory,
     RedeemPoints,
     HelpDesk,
-    ReportBug
+    ReportBug,
+    CommingSoon,
+    GameRegistration
     };

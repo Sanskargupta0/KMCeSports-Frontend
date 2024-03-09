@@ -39,8 +39,8 @@ const Contributor = (props) => {
               target="_blank"
             >
               <svg
-                width="1em"
-                height="1em"
+                width="2rem"
+                height="2rem"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
                 fill="none"

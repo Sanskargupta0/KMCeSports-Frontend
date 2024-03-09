@@ -264,7 +264,7 @@ $bluegrey: #49606e;
   
   .ui-bookmark {
     --icon-size: 24px;
-    --icon-secondary-color: rgb(77, 77, 77);
+    --icon-secondary-color: white;
     --icon-hover-color: rgb(97, 97, 97);
     --icon-primary-color: gold;
     --icon-circle-border: 1px solid var(--icon-primary-color);
@@ -339,6 +339,7 @@ $bluegrey: #49606e;
     opacity: 0;
   }
   
+  
   /* actions */
   
   .ui-bookmark:hover .bookmark {
@@ -353,6 +354,7 @@ $bluegrey: #49606e;
     -webkit-animation-delay: var(--icon-anmt-duration);
     animation-delay: var(--icon-anmt-duration);
   }
+  
   
   .ui-bookmark input:checked + .bookmark {
     fill: var(--icon-primary-color);

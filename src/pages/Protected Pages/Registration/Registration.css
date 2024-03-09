@@ -1,0 +1,778 @@
+.Registration {
+  @media screen and (max-width: 600px) {
+    .blog-slider {
+      flex-direction: column;
+    }
+    img {
+      height: 40vw;
+      width: 40vw;
+    }
+  }
+
+  .blog-slider {
+    padding-bottom: 4rem;
+    .backk {
+      .buttonbck {
+        display: flex;
+        height: 0rem;
+        .button {
+          display: block;
+          position: relative;
+          width: 56px;
+          height: 56px;
+          margin: 0;
+          overflow: hidden;
+          outline: none;
+          background-color: transparent;
+          cursor: pointer;
+          border: 0;
+        }
+
+        .button:before,
+        .button:after {
+          content: "";
+          position: absolute;
+          border-radius: 50%;
+          inset: 7px;
+        }
+
+        .button:before {
+          border: 4px solid black;
+          transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+            transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+        }
+
+        .button:after {
+          border: 4px solid #47f252;
+          transform: scale(1.3);
+          transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+            transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          opacity: 0;
+        }
+
+        .button:hover:before,
+        .button:focus:before {
+          opacity: 0;
+          transform: scale(0.7);
+          transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+            transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .button:hover:after,
+        .button:focus:after {
+          opacity: 1;
+          transform: scale(1);
+          transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+            transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+        }
+
+        .button-box {
+          display: flex;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        .button-elem {
+          display: block;
+          width: 20px;
+          height: 20px;
+          margin: 17px 18px 0 18px;
+          transform: rotate(180deg);
+          fill: black;
+        }
+
+        .button:hover .button-box,
+        .button:focus .button-box {
+          transition: 0.4s;
+          transform: translateX(-56px);
+        }
+      }
+    }
+
+    .container {
+      background-color: #ffffff;
+      display: flex;
+      width: 270px;
+      height: 120px;
+      position: relative;
+      border-radius: 6px;
+      transition: 0.3s ease-in-out;
+    }
+
+    .container:hover {
+      transform: scale(1.03);
+    }
+
+    .container:hover .left-side {
+      width: 100%;
+    }
+
+    .left-side {
+      background-color: #5de2a3;
+      width: 130px;
+      height: 120px;
+      border-radius: 4px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.3s;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .right-side {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      cursor: pointer;
+      justify-content: space-between;
+      white-space: nowrap;
+      transition: 0.3s;
+    }
+
+    .right-side:hover {
+      background-color: #f9f7f9;
+    }
+
+    .arrow {
+      width: 20px;
+      height: 20px;
+      margin-right: 20px;
+    }
+
+    .new {
+      font-size: 23px;
+      font-family: "Lexend Deca", sans-serif;
+      margin-left: 20px;
+    }
+
+    .card {
+      width: 70px;
+      height: 46px;
+      background-color: #c7ffbc;
+      border-radius: 6px;
+      position: absolute;
+      display: flex;
+      z-index: 10;
+      flex-direction: column;
+      align-items: center;
+      -webkit-box-shadow: 9px 9px 9px -2px rgba(77, 200, 143, 0.72);
+      -moz-box-shadow: 9px 9px 9px -2px rgba(77, 200, 143, 0.72);
+      -webkit-box-shadow: 9px 9px 9px -2px rgba(77, 200, 143, 0.72);
+    }
+
+    .card-line {
+      width: 65px;
+      height: 13px;
+      background-color: #80ea69;
+      border-radius: 2px;
+      margin-top: 7px;
+    }
+
+    @media only screen and (max-width: 480px) {
+      .container {
+        transform: scale(0.7);
+      }
+
+      .container:hover {
+        transform: scale(0.74);
+      }
+
+      .new {
+        font-size: 18px;
+      }
+    }
+
+    .buttons {
+      width: 8px;
+      height: 8px;
+      background-color: #379e1f;
+      box-shadow: 0 -10px 0 0 #26850e, 0 10px 0 0 #56be3e;
+      border-radius: 50%;
+      margin-top: 5px;
+      transform: rotate(90deg);
+      margin: 10px 0 0 -30px;
+    }
+
+    .container:hover .card {
+      animation: slide-top 1.2s cubic-bezier(0.645, 0.045, 0.355, 1) both;
+    }
+
+    .container:hover .post {
+      animation: slide-post 1s cubic-bezier(0.165, 0.84, 0.44, 1) both;
+    }
+
+    @keyframes slide-top {
+      0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+
+      50% {
+        -webkit-transform: translateY(-70px) rotate(90deg);
+        transform: translateY(-70px) rotate(90deg);
+      }
+
+      60% {
+        -webkit-transform: translateY(-70px) rotate(90deg);
+        transform: translateY(-70px) rotate(90deg);
+      }
+
+      100% {
+        -webkit-transform: translateY(-8px) rotate(90deg);
+        transform: translateY(-8px) rotate(90deg);
+      }
+    }
+
+    .post {
+      width: 63px;
+      height: 75px;
+      background-color: #dddde0;
+      position: absolute;
+      z-index: 11;
+      bottom: 10px;
+      top: 120px;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .post-line {
+      width: 47px;
+      height: 9px;
+      background-color: #545354;
+      position: absolute;
+      border-radius: 0px 0px 3px 3px;
+      right: 8px;
+      top: 8px;
+    }
+
+    .post-line:before {
+      content: "";
+      position: absolute;
+      width: 47px;
+      height: 9px;
+      background-color: #757375;
+      top: -8px;
+    }
+
+    .screen {
+      width: 47px;
+      height: 23px;
+      background-color: #ffffff;
+      position: absolute;
+      top: 22px;
+      right: 8px;
+      border-radius: 3px;
+    }
+
+    .numbers {
+      width: 12px;
+      height: 12px;
+      background-color: #838183;
+      box-shadow: 0 -18px 0 0 #838183, 0 18px 0 0 #838183;
+      border-radius: 2px;
+      position: absolute;
+      transform: rotate(90deg);
+      left: 25px;
+      top: 52px;
+    }
+
+    .numbers-line2 {
+      width: 12px;
+      height: 12px;
+      background-color: #aaa9ab;
+      box-shadow: 0 -18px 0 0 #aaa9ab, 0 18px 0 0 #aaa9ab;
+      border-radius: 2px;
+      position: absolute;
+      transform: rotate(90deg);
+      left: 25px;
+      top: 68px;
+    }
+
+    @keyframes slide-post {
+      50% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+      }
+
+      100% {
+        -webkit-transform: translateY(-70px);
+        transform: translateY(-70px);
+      }
+    }
+
+    .dollar {
+      position: absolute;
+      font-size: 16px;
+      font-family: "Lexend Deca", sans-serif;
+      width: 100%;
+      left: 0;
+      top: 0;
+      color: #4b953b;
+      text-align: center;
+    }
+
+    .container:hover .dollar {
+      animation: fade-in-fwd 0.3s 1s backwards;
+    }
+
+    @keyframes fade-in-fwd {
+      0% {
+        opacity: 0;
+        transform: translateY(-5px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  .blog-slider__wrp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .content {
+    .regbtn {
+      align-items: baseline;
+    }
+    button {
+      position: relative;
+      width: 11em;
+      height: 4em;
+      outline: none;
+      transition: 0.1s;
+      background-color: transparent;
+      border: none;
+      font-size: 13px;
+      font-weight: bold;
+      color: black;
+    }
+
+    #clip {
+      --color: #2761c3;
+      position: absolute;
+      top: 0;
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+      border: 5px double var(--color);
+      box-shadow: inset 0px 0px 15px #195480;
+      -webkit-clip-path: polygon(
+        30% 0%,
+        70% 0%,
+        100% 30%,
+        100% 70%,
+        70% 100%,
+        30% 100%,
+        0% 70%,
+        0% 30%
+      );
+    }
+
+    .arrow {
+      position: absolute;
+      transition: 0.2s;
+      background-color: #2761c3;
+      top: 35%;
+      width: 11%;
+      height: 30%;
+    }
+
+    #leftArrow {
+      left: -13.5%;
+      -webkit-clip-path: polygon(100% 0, 100% 100%, 0 50%);
+    }
+
+    #rightArrow {
+      -webkit-clip-path: polygon(100% 49%, 0 0, 0 100%);
+      left: 102%;
+    }
+
+    button:hover #rightArrow {
+      background-color: #27c39f;
+      left: -15%;
+      animation: 0.6s ease-in-out both infinite alternate rightArrow8;
+    }
+
+    button:hover #leftArrow {
+      background-color: #27c39f;
+      left: 103%;
+      animation: 0.6s ease-in-out both infinite alternate leftArrow8;
+    }
+
+    .corner {
+      position: absolute;
+      width: 4em;
+      height: 4em;
+      background-color: #2761c3;
+      box-shadow: inset 1px 1px 8px #2781c3;
+      transform: scale(1) rotate(45deg);
+      transition: 0.2s;
+    }
+
+    #rightTop {
+      top: -1.98em;
+      left: 91%;
+    }
+
+    #leftTop {
+      top: -1.96em;
+      left: -3em;
+    }
+
+    #leftBottom {
+      top: 2.1em;
+      left: -2.15em;
+    }
+
+    #rightBottom {
+      top: 45%;
+      left: 88%;
+    }
+
+    button:hover #leftTop {
+      animation: 0.1s ease-in-out 0.05s both changeColor8,
+        0.2s linear 0.4s both lightEffect8;
+    }
+
+    button:hover #rightTop {
+      animation: 0.1s ease-in-out 0.15s both changeColor8,
+        0.2s linear 0.4s both lightEffect8;
+    }
+
+    button:hover #rightBottom {
+      animation: 0.1s ease-in-out 0.25s both changeColor8,
+        0.2s linear 0.4s both lightEffect8;
+    }
+
+    button:hover #leftBottom {
+      animation: 0.1s ease-in-out 0.35s both changeColor8,
+        0.2s linear 0.4s both lightEffect8;
+    }
+
+    button:hover .corner {
+      transform: scale(1.25) rotate(45deg);
+    }
+
+    button:hover #clip {
+      animation: 0.2s ease-in-out 0.55s both greenLight8;
+      --color: #27c39f;
+    }
+
+    @keyframes changeColor8 {
+      from {
+        background-color: #2781c3;
+      }
+
+      to {
+        background-color: #27c39f;
+      }
+    }
+
+    @keyframes lightEffect8 {
+      from {
+        box-shadow: 1px 1px 5px #27c39f;
+      }
+
+      to {
+        box-shadow: 0 0 2px #27c39f;
+      }
+    }
+
+    @keyframes greenLight8 {
+      from {
+      }
+
+      to {
+        box-shadow: inset 0px 0px 32px #27c39f;
+      }
+    }
+
+    @keyframes leftArrow8 {
+      from {
+        transform: translate(0px);
+      }
+
+      to {
+        transform: translateX(10px);
+      }
+    }
+
+    @keyframes rightArrow8 {
+      from {
+        transform: translate(0px);
+      }
+
+      to {
+        transform: translateX(-10px);
+      }
+    }
+  }
+  .info-and-date-container {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    .box {
+      text-align: center;
+    }
+  }
+  .form {
+    background-color: #15172b;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: auto;
+    padding: 20px;
+    width: 320px;
+  }
+
+  .title {
+    font-family: sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+  }
+
+  .subtitle {
+    color: #eee;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .input-container {
+    height: 40px;
+    position: relative;
+    width: 100%;
+  }
+
+  .ic1 {
+    margin-top: 20px;
+  }
+
+  .ic2 {
+    margin-top: 30px;
+  }
+
+  .input {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 40px;
+    outline: 0;
+    padding: 4px 10px 0;
+    width: 100%;
+  }
+
+  .cut {
+    background-color: #15172b;
+    border-radius: 10px;
+    height: 10px;
+    left: 20px;
+    position: absolute;
+    top: -20px;
+    transform: translateY(0);
+    transition: transform 200ms;
+    width: 76px;
+  }
+
+  .cut-short {
+    width: 30px;
+  }
+
+  .input:focus ~ .cut,
+  .input:not(:placeholder-shown) ~ .cut {
+    transform: translateY(1px);
+  }
+
+  .placeholder {
+    color: #65657b;
+    font-family: sans-serif;
+    left: 20px;
+    line-height: 14px;
+    pointer-events: none;
+    position: absolute;
+    transform-origin: 0 50%;
+    transition: transform 200ms, color 200ms;
+    top: 20px;
+  }
+
+  .input:focus ~ .placeholder,
+  .input:not(:placeholder-shown) ~ .placeholder {
+    transform: translateY(-30px) translateX(10px) scale(0.75);
+  }
+
+  .input:not(:placeholder-shown) ~ .placeholder {
+    color: #808097;
+  }
+
+  .input:focus ~ .placeholder {
+    color: #dc2f55;
+  }
+
+  .submit {
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .submit:active {
+    background-color: #06b;
+  }
+
+  .delete {
+    .backk {
+      .buttonbck {
+        display: flex;
+        height: 0rem;
+        .button {
+          display: block;
+          position: relative;
+          width: 56px;
+          height: 56px;
+          margin: 0;
+          overflow: hidden;
+          outline: none;
+          background-color: transparent;
+          cursor: pointer;
+          border: 0;
+        }
+
+        .button:before,
+        .button:after {
+          content: "";
+          position: absolute;
+          border-radius: 50%;
+          inset: 7px;
+        }
+
+        .button:before {
+          border: 4px solid white;
+          transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+            transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+        }
+
+        .button:after {
+          border: 4px solid #47f252;
+          transform: scale(1.3);
+          transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+            transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          opacity: 0;
+        }
+
+        .button:hover:before,
+        .button:focus:before {
+          opacity: 0;
+          transform: scale(0.7);
+          transition: opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+            transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .button:hover:after,
+        .button:focus:after {
+          opacity: 1;
+          transform: scale(1);
+          transition: opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+            transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+        }
+
+        .button-box {
+          display: flex;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        .button-elem {
+          display: block;
+          width: 20px;
+          height: 20px;
+          margin: 17px 18px 0 18px;
+          transform: rotate(180deg);
+          fill: white;
+        }
+
+        .button:hover .button-box,
+        .button:focus .button-box {
+          transition: 0.4s;
+          transform: translateX(-56px);
+        }
+      }
+    }
+    justify-content: center;
+    display: flex;
+    margin-top: 0.5rem;
+    gap: 4rem;
+    .button {
+      margin-top: 3px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: white;
+      border: none;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+      cursor: pointer;
+      transition-duration: 0.3s;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .svgIcon {
+      width: 12px;
+      transition-duration: 0.3s;
+    }
+
+    .svgIcon path {
+      fill: black;
+    }
+
+    .button:hover {
+      width: 140px;
+      border-radius: 50px;
+      transition-duration: 0.3s;
+      background-color: rgb(255, 69, 69);
+      align-items: center;
+    }
+
+    .button:hover .svgIcon {
+      width: 50px;
+      transition-duration: 0.3s;
+      transform: translateY(60%);
+    }
+
+    .button::before {
+      position: absolute;
+      top: -20px;
+      content: "Delete";
+      color: black;
+      transition-duration: 0.3s;
+      font-size: 2px;
+    }
+
+    .button:hover::before {
+      font-size: 13px;
+      opacity: 1;
+      transform: translateY(30px);
+      transition-duration: 0.3s;
+    }
+  }
+}

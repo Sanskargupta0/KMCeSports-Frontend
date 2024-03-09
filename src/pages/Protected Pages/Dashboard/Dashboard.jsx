@@ -16,6 +16,7 @@ const Dashboard = () => {
 
   const [commingSoon, setCommingSoon] = useState(true);
   const [bookmark, setBookmark] = useState(true);
+  const [games, setGames] = useState(true);
 
   const handleCheckboxToggle = (item) => {
     if (bookmarkData.find((bookmarkItem) => bookmarkItem._id === item._id)) {
@@ -46,6 +47,7 @@ const Dashboard = () => {
         setUserBookmarkData(userdata.bookmarks);
         // comming soon data
         setCommingSoonData(data.commingSoonData);
+        console.log(data.gameData);
       } else {
         toast.error(`failed to get Games Data`, {
           position: "top-center",
@@ -91,7 +93,7 @@ const Dashboard = () => {
       });
       const data = await response.json();
       if (response.ok) {
-        toast.success(data.msg, {
+        toast.warn(data.msg, {
           position: "top-center",
         });
       } else {
@@ -103,7 +105,6 @@ const Dashboard = () => {
       console.log(error);
     }
   };
-  
 
   useEffect(() => {
     getGameData(token);
@@ -126,7 +127,14 @@ const Dashboard = () => {
   }, [userBookmarkData]);
 
   useEffect(() => {
+    if (gameData.length > 0) {
+      setGames(false);
+    } else {
+      setGames(true);
+    }
+  }, [gameData]);
 
+  useEffect(() => {
     if (bookmarkData.length > 0) {
       setBookmark(false);
     } else {
@@ -135,7 +143,6 @@ const Dashboard = () => {
   }, [bookmarkData]);
 
   useEffect(() => {
-
     if (commingSoonData.length > 0) {
       setCommingSoon(false);
     } else {
@@ -156,26 +163,45 @@ const Dashboard = () => {
             <h1>Battle Arena</h1>
             <p>Games Tournament Section</p>
           </div>
-          <ul>
-            {gameData.map((item) => {
-              return (
-                <components.GameCard
-                  key={item._id}
-                  title={item.title}
-                  subtitle={item.subtitle}
-                  type={item.type}
-                  startTime={item.startTime}
-                  extraDetails={item.extraDetails}
-                  link={item.link}
-                  image={item.image}
-                  checked={bookmarkData.some(
-                    (bookmarkItem) => bookmarkItem._id === item._id
-                  )}
-                  onCheckboxToggle={() => handleCheckboxToggle(item)}
+          {games ? (
+            <>
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <img
+                  src={images.NoGames}
+                  alt="NoBookmark"
+                  style={{ width: "100%", maxWidth: "700px" }}
                 />
-              );
-            })}
-          </ul>
+              </div>
+              <p className="title" style={{ fontSize: "3vw", color: "red" }}>
+                “Oops! No tournament now. Please check later!” 😄
+              </p>{" "}
+            </>
+          ) : (
+            <ul>
+              {gameData.map((item) => {
+                return (
+                  <components.GameCard
+                    key={item._id}
+                    id={item._id}
+                    title={item.title}
+                    subtitle={item.subtitle}
+                    type={item.type}
+                    startTime={item.startTime}
+                    extraDetails={item.extraDetails}
+                    image={item.image}
+                    instruction={item.instruction}
+                    numberofPlayers={item.numberofPlayers.number}
+                    price={item.price}
+                    form={item.form}
+                    checked={bookmarkData.some(
+                      (bookmarkItem) => bookmarkItem._id === item._id
+                    )}
+                    onCheckboxToggle={() => handleCheckboxToggle(item)}
+                  />
+                );
+              })}
+            </ul>
+          )}
         </div>
         <div className="Bookmark panel" id="bookmarksection">
           <div className="title">
@@ -242,7 +268,8 @@ const Dashboard = () => {
                     title={item.title}
                     description={item.description}
                     images={item.images}
-                    link={item.link}
+                    id={item._id}
+                    extraDetails={item.extraDetails}
                   />
                 );
               })}

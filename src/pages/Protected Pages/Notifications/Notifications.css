@@ -1,0 +1,43 @@
+.notification {
+  background-color: rgb(10,30,10);
+  color:white;
+  font-family: sans-serif;
+
+
+.copy-container {
+  display: flex;
+  position: relative;
+  background-color: rgb(60,60,60,0.4);
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgb(1,1,1,0.1);
+  color: white;
+  margin-bottom: 10px;
+  font-family: sans-serif;
+  font-size: 16px;
+  transition: border 0.2s;
+}
+
+.copy-container:hover {
+  border: 1px solid rgb(0,200,0);
+}
+
+.copy-button {
+  border-radius: 0px 10px 00px 0px;
+  position: absolute;
+  top: 0px;
+  right: 0;
+  display: none;
+  cursor: pointer;
+  background-color: rgb(255,255,255,0.1);
+  color: white;
+  padding: 0px 5px 0px 5px;
+}
+
+.container {
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 10px;
+}
+
+}

@@ -36,7 +36,7 @@ const Protected = (props) => {
       verifyToken();
     }
   }, []);
-  return <Component />;
+  return <Component notificationData={props.notificationData}/>;
 };
 
 export default Protected;

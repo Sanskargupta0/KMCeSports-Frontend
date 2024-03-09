@@ -62,7 +62,7 @@ const GameCard = (props) => {
   }, [timerEnded]);
 
   const navigate = useNavigate(); // Using useHistory hook instead of useLocation
-  const handleJoinNow = (e) => {
+  const handleDeatils = (e) => {
     e.preventDefault();
     const data = {
       id: props.id,
@@ -75,7 +75,6 @@ const GameCard = (props) => {
       price: props.price,
       instruction: props.instruction,
       numberofPlayers: props.numberofPlayers,
-      form: props.form,
     };
     console.log(data);
     navigate("/game-registration", { state: data });
@@ -93,13 +92,7 @@ const GameCard = (props) => {
       <div className="book-container">
         <div className="content">
           <button className="btn" disabled={timerEnded}>
-            {!timerEnded ? (
-              <Link onClick={handleJoinNow}>Join Now</Link>
-            ) : (
-              <span style={{ cursor: "not-allowed", color: "red" }}>
-                Registration Ended!
-              </span>
-            )}
+              <Link onClick={handleDeatils}>Join Now</Link>
           </button>
 
           <div>

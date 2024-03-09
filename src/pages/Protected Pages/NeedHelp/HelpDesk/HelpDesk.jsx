@@ -23,8 +23,6 @@ const HelpDesk = () => {
   //for the start
 
   const filterSelectionn = (c) => {
-    console.log("atc", c);
-    console.log("ff", filter);
     const x = document.getElementsByClassName("filterDiv");
     if (c === "all") c = "";
     for (let i = 0; i < x.length; i++) {
