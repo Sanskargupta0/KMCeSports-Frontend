@@ -162,7 +162,16 @@ const Registration = () => {
         );
         console.log(formData);
         const paymentverificationData = await paymentverification.json();
-        console.log(paymentverificationData);
+        if (paymentverificationData.success === true) {
+          toast.success("You joined the Tournament successfully", {
+            position: "top-center",
+          });
+          navigate("/dashboard");
+        } else {
+          toast.error(paymentverificationData.msg, {
+            position: "top-center",
+          });
+        }
       },
       prefill: {
         name: userdata.firstName,
@@ -178,9 +187,7 @@ const Registration = () => {
     };
     const razorpay = new window.Razorpay(options);
     razorpay.on("payment.failed", function (response) {
-      toast.error(response.error.description,{
-        position: "top-center",
-      });
+      toast.error(response.error.description);
     });
     razorpay.open();
   }
